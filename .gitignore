@@ -1,0 +1,24 @@
+# ── Geheimnisse ──────────────────────────────
+# Enthält die n8n-Webhook-URLs. Vorlage: config.example.php
+config.php
+.env
+.env.*
+
+# ── Betriebssystem-Müll ──────────────────────
+desktop.ini
+Thumbs.db
+.DS_Store
+
+# ── Editoren ─────────────────────────────────
+.vscode/
+.idea/
+*.swp
+
+# ── Firebase (Backend liegt in ../lerndex) ───
+.firebase/
+firebase-debug.log
+*-debug.log
+
+# ── Sonstiges ────────────────────────────────
+node_modules/
+*.log
