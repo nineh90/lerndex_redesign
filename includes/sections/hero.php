@@ -1,9 +1,9 @@
 <?php require_once __DIR__ . '/../site.php'; ?>
 <header class="hero">
     <div class="hero-bg" aria-hidden="true">
-        <span class="blob blob-1"></span>
-        <span class="blob blob-2"></span>
-        <span class="blob blob-3"></span>
+        <span class="blob blob-1" data-parallax="0.10"></span>
+        <span class="blob blob-2" data-parallax="-0.06"></span>
+        <span class="blob blob-3" data-parallax="0.16"></span>
     </div>
 
     <div class="container hero-content">
@@ -64,7 +64,7 @@
         </div>
 
         <div class="hero-visual">
-            <div class="phone phone--back">
+            <div class="phone phone--back" data-pointer="0.5">
                 <picture>
                     <source srcset="/assets/images/screenshots/hero-startscreen.webp" type="image/webp">
                     <img src="/assets/images/screenshots/hero-startscreen.jpg"
@@ -73,7 +73,7 @@
                 </picture>
             </div>
 
-            <div class="phone phone--front">
+            <div class="phone phone--front" data-pointer="1">
                 <picture>
                     <source srcset="/assets/images/screenshots/dashboard-weiterfuehrend.webp" type="image/webp">
                     <img src="/assets/images/screenshots/dashboard-weiterfuehrend.jpg"
@@ -83,12 +83,12 @@
             </div>
 
             <?php /* Werte stammen aus dem gezeigten Screenshot – bei Bildwechsel mit anpassen */ ?>
-            <div class="hero-chip hero-chip--xp">
+            <div class="hero-chip hero-chip--xp" data-pointer="1.6">
                 <strong class="count-up" data-to="136" data-suffix=" XP">136 XP</strong>
                 <span>gesammelt</span>
             </div>
 
-            <div class="hero-chip hero-chip--streak">
+            <div class="hero-chip hero-chip--streak" data-pointer="2">
                 <?php icon('trophy', 'icon-sm'); ?>
                 <span>Noch 4 XP bis Level 3</span>
             </div>

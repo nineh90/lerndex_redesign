@@ -59,3 +59,19 @@ function e(?string $value): string
 {
     return htmlspecialchars($value ?? '', ENT_QUOTES, 'UTF-8');
 }
+
+/**
+ * Gibt zwei Varianten desselben Inhalts aus – eine fuer Eltern, eine fuer Kinder.
+ * Beide stehen im HTML, CSS blendet die inaktive aus (siehe 03-components.css).
+ *
+ * Der Text darf Markup enthalten und wird bewusst NICHT escaped: er stammt
+ * aus den Templates, nicht von Nutzern.
+ *
+ *   dual('Ihr Kind lernt …', 'Du lernst …');
+ *   dual('Sicherheit', 'Für dich', 'h3');
+ */
+function dual(string $parents, string $kids, string $tag = 'span'): void
+{
+    echo "<{$tag} class=\"for-parents\">{$parents}</{$tag}>";
+    echo "<{$tag} class=\"for-kids\">{$kids}</{$tag}>";
+}

@@ -1,0 +1,302 @@
+/* ═══════════════════════════════════════════════════════════════
+   BEWEGUNG UND ZIELGRUPPEN-SECTIONS
+   Alles hier ist Zierde: faellt es aus, bleibt die Seite benutzbar.
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ── Lesefortschritt ─────────────────────────────────────────── */
+.scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 3px;
+    width: 0;
+    z-index: 1002;
+    background: var(--gradient);
+    border-radius: 0 var(--radius-pill) var(--radius-pill) 0;
+    pointer-events: none;
+}
+
+/* ── Zeiger-Parallax ─────────────────────────────────────────── */
+/* --px/--py setzt motion.js, die Rotation kommt aus dem Layout. */
+[data-pointer] {
+    transition: transform 400ms var(--ease-out);
+}
+
+.hero-visual .phone--back {
+    transform: translate3d(calc(-26% + var(--px, 0px)), var(--py, 0px), 0) rotate(-7deg) scale(0.88);
+}
+
+.hero-visual .phone--front {
+    transform: translate3d(calc(16% + var(--px, 0px)), var(--py, 0px), 0) rotate(4deg);
+}
+
+/* Schweben und Zeiger-Parallax vertragen sich nicht auf derselben
+   transform-Eigenschaft – deshalb schwebt hier der innere Wrapper. */
+@media (prefers-reduced-motion: no-preference) {
+    .hero-visual .phone--front,
+    .hero-visual .phone--back { animation: none; }
+
+    .hero-visual .phone img { animation: float 7s ease-in-out infinite; }
+    .hero-visual .phone--back img { animation-direction: reverse; }
+}
+
+/* ── Karten-Neigung ──────────────────────────────────────────── */
+.tilt {
+    transform: perspective(900px) rotateX(var(--tilt-x, 0deg)) rotateY(var(--tilt-y, 0deg));
+    transform-style: preserve-3d;
+    transition: transform 350ms var(--ease-out), box-shadow 350ms var(--ease-out);
+    position: relative;
+}
+
+.tilt::after {
+    /* Lichtreflex, der dem Zeiger folgt */
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 350ms var(--ease-out);
+    background: radial-gradient(
+        circle at var(--glow-x, 50%) var(--glow-y, 50%),
+        rgba(255, 255, 255, 0.55),
+        transparent 55%
+    );
+}
+
+.tilt:hover::after { opacity: 1; }
+
+/* Die Neigung ersetzt das Anheben aus .card – sonst kaempfen beide
+   um dieselbe transform-Eigenschaft. */
+.benefit-card.tilt:hover { transform: perspective(900px) rotateX(var(--tilt-x, 0deg)) rotateY(var(--tilt-y, 0deg)) translateY(-4px); }
+
+
+/* ═══════════════════════════════════════════════════════════════
+   VERGLEICH (nur Eltern)
+   ═══════════════════════════════════════════════════════════════ */
+.compare { background: var(--surface-alt); }
+
+.compare-grid {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+}
+
+.compare-row {
+    display: grid;
+    gap: var(--space-3);
+}
+
+.compare-cell {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-3);
+    padding: var(--space-4) var(--space-5);
+    border-radius: var(--radius-sm);
+    font-size: var(--text-sm);
+    line-height: var(--leading-snug);
+}
+
+.compare-cell .icon { margin-top: 2px; }
+
+.compare-cell--bad {
+    background: var(--surface);
+    color: var(--text-muted);
+    border: 1px solid var(--border);
+}
+
+.compare-cell--bad .icon { color: var(--rose); }
+
+.compare-cell--good {
+    background: var(--gradient);
+    color: var(--white);
+    font-weight: 600;
+    box-shadow: var(--shadow);
+}
+
+.compare-cell--good .icon { color: #fff; }
+
+.compare-foot {
+    display: grid;
+    gap: var(--space-3);
+    margin-top: var(--space-4);
+    text-align: center;
+}
+
+.compare-label {
+    font-size: var(--text-xs);
+    font-weight: 700;
+    letter-spacing: var(--tracking-wide);
+    text-transform: uppercase;
+}
+
+.compare-label--bad  { color: var(--text-muted); }
+.compare-label--good { color: var(--accent-strong); }
+
+@media (min-width: 768px) {
+    .compare-row,
+    .compare-foot { grid-template-columns: 1fr 1fr; }
+}
+
+
+/* ═══════════════════════════════════════════════════════════════
+   KINDERWELT (nur Kinder)
+   ═══════════════════════════════════════════════════════════════ */
+.kidsworld { background: var(--surface-alt); }
+
+.subject-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: var(--space-4);
+}
+
+.subject-tile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-2);
+    padding: var(--space-5) var(--space-3);
+    border-radius: var(--radius);
+    background: var(--surface);
+    box-shadow: var(--shadow-sm);
+    text-align: center;
+    cursor: default;
+}
+
+.subject-tile strong {
+    font-size: var(--text-sm);
+    font-weight: 700;
+}
+
+.subject-emoji {
+    font-size: 2rem;
+    line-height: 1;
+}
+
+.subject-note {
+    text-align: center;
+    font-size: var(--text-sm);
+    margin-top: var(--space-4);
+}
+
+/* ── Lexi stellt sich vor ── */
+.lexi-intro {
+    display: flex;
+    align-items: center;
+    gap: var(--space-5);
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-block: var(--space-8);
+}
+
+.lexi-avatar img { width: 98px; height: auto; }
+
+.lexi-bubble {
+    position: relative;
+    max-width: 46ch;
+    padding: var(--space-5) var(--space-6);
+    border-radius: var(--radius-lg);
+    background: var(--surface);
+    box-shadow: var(--shadow);
+}
+
+.lexi-bubble p {
+    margin-bottom: 0;
+    color: var(--text);
+    font-size: var(--text-lg);
+    line-height: var(--leading-snug);
+}
+
+.lexi-bubble::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: -12px;
+    transform: translateX(-50%);
+    border: 12px solid transparent;
+    border-top: 0;
+    border-bottom-color: var(--surface);
+}
+
+@media (min-width: 700px) {
+    .lexi-intro { flex-wrap: nowrap; }
+
+    .lexi-bubble::before {
+        left: -12px;
+        top: 50%;
+        transform: translateY(-50%);
+        border: 12px solid transparent;
+        border-left: 0;
+        border-right-color: var(--surface);
+    }
+}
+
+/* ── Level-Leiter ── */
+.level-ladder {
+    max-width: 640px;
+    margin-inline: auto;
+    padding: var(--space-6);
+    border-radius: var(--radius-lg);
+    background: var(--surface);
+    box-shadow: var(--shadow);
+}
+
+.level-ladder h3 {
+    text-align: center;
+    margin-bottom: var(--space-5);
+}
+
+.ladder {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+    counter-reset: ladder;
+    list-style: none;
+    margin-bottom: var(--space-6);
+}
+
+.ladder li {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-4);
+}
+
+.ladder-step {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    background: var(--gradient);
+    color: var(--white);
+}
+
+.ladder li div { display: flex; flex-direction: column; }
+.ladder li strong { color: var(--text); }
+.ladder li span { font-size: var(--text-sm); color: var(--text-muted); }
+
+.ladder-demo {
+    padding: var(--space-4);
+    border-radius: var(--radius-sm);
+    background: var(--surface-alt);
+}
+
+.ladder-demo-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: var(--space-2);
+    font-size: var(--text-sm);
+    color: var(--text-muted);
+}
+
+.ladder-demo-top strong { color: var(--accent-strong); font-size: var(--text-lg); }
+
+.ladder-demo-note {
+    margin: var(--space-2) 0 0;
+    font-size: var(--text-sm);
+    text-align: right;
+}

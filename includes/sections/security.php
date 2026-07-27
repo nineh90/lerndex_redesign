@@ -2,10 +2,15 @@
     <div class="container">
 
         <div class="section-header">
-            <span class="badge">Kinderschutz</span>
-            <h2>Wir behaupten nicht, dass es sicher ist.<br>Wir zeigen es.</h2>
-            <p>Ihr Kind spricht mit einer KI. Das nehmen wir ernst – hier sehen Sie,
-               was passiert, wenn jemand die Grenze austestet.</p>
+            <?php dual('<span class="badge">Kinderschutz</span>', '<span class="badge">Gut zu wissen</span>'); ?>
+            <?php dual('Wir behaupten nicht, dass es sicher ist.<br>Wir zeigen es.',
+                       'Lexi macht bei Blödsinn nicht mit', 'h2'); ?>
+            <?php dual(
+                '<p>Ihr Kind spricht mit einer KI. Das nehmen wir ernst – hier sehen Sie,
+                    was passiert, wenn jemand die Grenze austestet.</p>',
+                '<p>Du kannst Lexi alles fragen. Aber bei manchen Sachen sagt er ehrlich Nein –
+                    und deine Eltern erfahren davon. Damit du weißt, woran du bist.</p>'
+            ); ?>
         </div>
 
         <div class="proof">
@@ -32,8 +37,10 @@
 
                 <p class="proof-note">
                     <?php icon('bell', 'icon-sm'); ?>
-                    Gleichzeitig landet der Vorfall in Ihrem Dashboard – markiert und nachlesbar.
-                    Sie erfahren es, ohne dass Sie danach suchen müssen.
+                    <span class="for-parents">Gleichzeitig landet der Vorfall in Ihrem Dashboard – markiert
+                    und nachlesbar. Sie erfahren es, ohne dass Sie danach suchen müssen.</span>
+                    <span class="for-kids">So etwas landet immer auch bei deinen Eltern. Kein heimliches
+                    Mitlesen – es ist von Anfang an klar, dass sie es sehen.</span>
                 </p>
 
                 <a href="/sicherheit" class="btn btn-secondary">
@@ -44,7 +51,7 @@
 
         <div class="proof-parent reveal">
             <div class="proof-parent-text">
-                <h3>Und so sieht es bei Ihnen aus</h3>
+                <?php dual('Und so sieht es bei Ihnen aus', 'So sehen es deine Eltern', 'h3'); ?>
                 <p>Jedes Gespräch ist einsehbar. Auffälliges wird hervorgehoben, statt in einer
                    Liste unterzugehen – Sie müssen nicht mitlesen, um informiert zu sein.</p>
                 <ul class="check-list">

@@ -82,3 +82,5 @@ $title = $page_title_full ?? ($page_title . ' – ' . SITE_NAME);
         } catch (e) { /* localStorage gesperrt – Eltern-Modus bleibt */ }
     })();
 </script>
+
+<div class="scroll-progress" id="scroll-progress" aria-hidden="true"></div>

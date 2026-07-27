@@ -5,6 +5,7 @@
  */
 ?>
     <script src="/script.js" defer></script>
+    <script src="/assets/js/motion.js" defer></script>
 
     <?php include __DIR__ . '/cookie_banner.php'; ?>
 </body>

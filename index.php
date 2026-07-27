@@ -71,6 +71,7 @@ include __DIR__ . '/includes/navbar.php';
     <main id="main">
         <?php include __DIR__ . '/includes/sections/hero.php'; ?>
         <?php include __DIR__ . '/includes/sections/benefits.php'; ?>
+        <?php include __DIR__ . '/includes/sections/audience_deep.php'; ?>
         <?php include __DIR__ . '/includes/sections/dashboard_slider.php'; ?>
         <?php include __DIR__ . '/includes/sections/features.php'; ?>
         <?php /* Sicherheit direkt nach den Features: staerkstes Argument, bevor es um Geld geht */ ?>
