@@ -82,14 +82,15 @@
                 </picture>
             </div>
 
+            <?php /* Werte stammen aus dem gezeigten Screenshot – bei Bildwechsel mit anpassen */ ?>
             <div class="hero-chip hero-chip--xp">
-                <strong class="count-up" data-to="190" data-suffix=" XP">190 XP</strong>
-                <span>heute gesammelt</span>
+                <strong class="count-up" data-to="136" data-suffix=" XP">136 XP</strong>
+                <span>gesammelt</span>
             </div>
 
             <div class="hero-chip hero-chip--streak">
                 <?php icon('trophy', 'icon-sm'); ?>
-                <span>Level 4 erreicht</span>
+                <span>Noch 4 XP bis Level 3</span>
             </div>
         </div>
     </div>
