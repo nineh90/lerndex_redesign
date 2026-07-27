@@ -34,3 +34,4 @@
     <link rel="stylesheet" href="/assets/css/03-components.css">
     <link rel="stylesheet" href="/assets/css/04-layout.css">
     <link rel="stylesheet" href="/assets/css/05-sections.css">
+    <link rel="stylesheet" href="/assets/css/06-hero.css">

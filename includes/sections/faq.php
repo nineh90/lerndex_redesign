@@ -18,7 +18,7 @@
                         <?php icon('chevron-down'); ?>
                     </div>
                     <div class="faq-answer">
-                        <p>Ja, Lerndex deckt die Kernfächer Mathe, Deutsch, Englisch und Sachkunde/Naturwissenschaften ab und passt sich dem Lehrplan an.</p>
+                        <p>In der Grundschule sind es Mathe, Deutsch, Englisch und Sachkunde. Ab der weiterführenden Schule kommen <strong>Biologie, Chemie, Physik und Geschichte</strong> dazu – insgesamt sieben Fächer. Im Elternbereich lassen sich einzelne Fächer ausblenden, wenn dein Kind sich auf bestimmte Bereiche konzentrieren soll.</p>
                     </div>
                 </div>
 

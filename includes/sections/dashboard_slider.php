@@ -1,60 +1,58 @@
-<section class="section dashboard-slider">
+<?php
+require_once __DIR__ . '/../site.php';
+
+$stages = [
+    [
+        'badge' => 'Klasse 1 & 2',
+        'title' => 'Ohne Lesen bedienbar',
+        'text'  => 'Große Symbole, wenig Text, Vorlesefunktion. Die Kleinsten starten allein.',
+        'img'   => 'dashboard-klasse-1-2',
+        'alt'   => 'Lerndex Dashboard für Klasse 1 und 2 mit großer Kachel Zahlen und Vorlesefunktion',
+    ],
+    [
+        'badge' => 'Klasse 3 & 4',
+        'title' => 'Lexi kommt dazu',
+        'text'  => 'Fragen stellen, Fächer wählen, erste Statistiken. Streak und XP motivieren.',
+        'img'   => 'dashboard-klasse-3-4',
+        'alt'   => 'Lerndex Dashboard für Klasse 3 und 4 mit Level, Lernzeit, Streak und den Fächern Mathe, Deutsch, Englisch und Sachkunde',
+    ],
+    [
+        'badge' => 'Klasse 5 bis ' . GRADE_MAX,
+        'title' => 'Sieben Fächer, eigene Ziele',
+        'text'  => 'Mathe, Deutsch, Englisch, Biologie, Chemie, Physik und Geschichte – Fächer lassen sich ein- und ausblenden.',
+        'img'   => 'dashboard-weiterfuehrend',
+        'alt'   => 'Lerndex Dashboard für weiterführende Schulen mit sieben Fächerkacheln und Level-Fortschritt',
+    ],
+];
+?>
+<section class="section dashboard-slider bg-light">
     <div class="container">
 
         <div class="section-header">
-            <h2>Lerndex wächst mit deinem Kind mit</h2>
-            <p>Jede Altersgruppe bekommt genau das Dashboard, das zu ihr passt.</p>
+            <span class="badge">Mitwachsend</span>
+            <h2>Ein Erstklässler braucht etwas anderes als ein Achtklässler</h2>
+            <p>Deshalb sieht Lerndex auf jeder Stufe anders aus – gleiche App, passendes Dashboard.</p>
         </div>
 
         <div class="slider-wrapper">
-
             <div class="slider-track" id="slider-track">
-
-                <!-- Slide 1 -->
-                <div class="slide">
-                    <div class="slide-mockup">
-                        <picture>
-                            <source srcset="/assets/images/screenshots/dashboard-grundschule-1-2.webp" type="image/webp">
-                            <img src="/assets/images/screenshots/dashboard-grundschule-1-2.jpeg" alt="Lerndex Schülerdashboard Klasse 1 und 2 – sprachgeführtes Interface mit großen Buttons und Vorlesefunktion" class="mockup-img" width="900" height="2001" loading="lazy" decoding="async">
-                        </picture>
+                <?php foreach ($stages as $s): ?>
+                    <div class="slide">
+                        <div class="phone phone--md">
+                            <picture>
+                                <source srcset="/assets/images/screenshots/<?= e($s['img']) ?>.webp" type="image/webp">
+                                <img src="/assets/images/screenshots/<?= e($s['img']) ?>.jpg"
+                                     alt="<?= e($s['alt']) ?>"
+                                     width="720" height="1600" loading="lazy" decoding="async">
+                            </picture>
+                        </div>
+                        <div class="slide-content">
+                            <span class="badge"><?= e($s['badge']) ?></span>
+                            <h3><?= e($s['title']) ?></h3>
+                            <p><?= e($s['text']) ?></p>
+                        </div>
                     </div>
-                    <div class="slide-content">
-                        <span class="badge">Klasse 1 & 2</span>
-                        <h3>Sprachgeführtes Dashboard</h3>
-                        <p>Große Buttons, einfache Sprache und eine Vorlesefunktion führen die Kleinsten sicher durch die App – ganz ohne Lesen zu müssen.</p>
-                    </div>
-                </div>
-
-                <!-- Slide 2 -->
-                <div class="slide">
-                    <div class="slide-mockup">
-                        <picture>
-                            <source srcset="/assets/images/screenshots/dashboard-grundschule-3-4.webp" type="image/webp">
-                            <img src="/assets/images/screenshots/dashboard-grundschule-3-4.jpeg" alt="Lerndex Schülerdashboard Klasse 3 und 4 – Dashboard mit KI-Tutor Zugang und ersten Lernstatistiken" class="mockup-img" width="900" height="2001" loading="lazy" decoding="async">
-                        </picture>
-                    </div>
-                    <div class="slide-content">
-                        <span class="badge">Klasse 3 & 4</span>
-                        <h3>Mit KI-Tutor</h3>
-                        <p>Jetzt kommt der KI-Tutor dazu: Fragen stellen, Aufgaben lösen und erste Lernstatistiken entdecken – alles kindgerecht aufbereitet.</p>
-                    </div>
-                </div>
-
-                <!-- Slide 3 -->
-                <div class="slide">
-                    <div class="slide-mockup">
-                        <picture>
-                            <source srcset="/assets/images/screenshots/dashboard-weiterfuehrend.webp" type="image/webp">
-                            <img src="/assets/images/screenshots/dashboard-weiterfuehrend.jpeg" alt="Lerndex Schülerdashboard weiterführende Schule – personalisiertes Dashboard mit Fächerwahl, XP-System und Lernzielen" class="mockup-img" width="900" height="2001" loading="lazy" decoding="async">
-                        </picture>
-                    </div>
-                    <div class="slide-content">
-                        <span class="badge">Weiterführende Schule</span>
-                        <h3>Persönliches Dashboard</h3>
-                        <p>Fächer priorisieren, Lernziele setzen und den eigenen Fortschritt mit XP und Level im Blick behalten.</p>
-                    </div>
-                </div>
-
+                <?php endforeach; ?>
             </div>
 
             <button class="slider-btn slider-btn-prev" id="slider-prev" aria-label="Vorheriges Dashboard">
@@ -63,13 +61,13 @@
             <button class="slider-btn slider-btn-next" id="slider-next" aria-label="Nächstes Dashboard">
                 <?php icon('chevron-right'); ?>
             </button>
-
         </div>
 
         <div class="slider-dots">
-            <button class="slider-dot active" data-index="0" aria-label="Dashboard 1"></button>
-            <button class="slider-dot" data-index="1" aria-label="Dashboard 2"></button>
-            <button class="slider-dot" data-index="2" aria-label="Dashboard 3"></button>
+            <?php foreach ($stages as $i => $s): ?>
+                <button class="slider-dot<?= $i === 0 ? ' active' : '' ?>" data-index="<?= $i ?>"
+                        aria-label="<?= e($s['badge']) ?>"></button>
+            <?php endforeach; ?>
         </div>
 
     </div>

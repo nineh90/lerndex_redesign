@@ -452,9 +452,11 @@
 
 /* Inhalte, die nur in einem Modus gelten.
    Bewusst display statt Entfernen aus dem DOM: beide Varianten
-   stehen im HTML und bleiben damit fuer Google lesbar. */
-.for-kids   { display: none; }
-.for-parents { display: revert; }
+   stehen im HTML und bleiben damit fuer Google lesbar.
 
-body.mode-kids .for-kids    { display: revert; }
-body.mode-kids .for-parents { display: none; }
+   Es wird ausschliesslich die inaktive Variante versteckt – die
+   aktive behaelt ihren eigenen display-Wert. Ein Zuruecksetzen per
+   revert/block wuerde sonst Layouts zerstoeren, sobald ein Element
+   mit .for-parents selbst flex oder grid ist. */
+body.mode-parents .for-kids   { display: none; }
+body.mode-kids    .for-parents { display: none; }

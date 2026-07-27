@@ -1,19 +1,95 @@
+<?php require_once __DIR__ . '/../site.php'; ?>
 <header class="hero">
+    <div class="hero-bg" aria-hidden="true">
+        <span class="blob blob-1"></span>
+        <span class="blob blob-2"></span>
+        <span class="blob blob-3"></span>
+    </div>
+
     <div class="container hero-content">
         <div class="hero-text">
-            <h1>Lernen, das Kinder lieben. <br> <span class="text-gradient">Kontrolle, die Eltern brauchen.</span></h1>
-            <p class="hero-sub">Lerndex macht Nachhilfe für Kinder spannend – durch spielerische Quizze, einen freundlichen KI-Lernbegleiter und ein transparentes Eltern-Dashboard.</p>
-            <div class="hero-cta">
-                <a href="https://play.google.com/store/apps/details?id=de.nilsdigital.lerndex&hl=de" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-lg">Playstore</a>
-                <p class="small-note"><strong>Jetzt im PlayStore!</strong></p>
+
+            <div class="audience-switch" role="group" aria-label="Für wen ist diese Seite?">
+                <button type="button" data-audience="parents" aria-pressed="true">
+                    <?php icon('users', 'icon-sm'); ?> Für Eltern
+                </button>
+                <button type="button" data-audience="kids" aria-pressed="false">
+                    <?php icon('sparkles', 'icon-sm'); ?> Für Kinder
+                </button>
             </div>
+
+            <p class="hero-eyebrow">
+                <?php icon('check-circle', 'icon-sm'); ?>
+                Jetzt im Google Play Store · Klasse <?= GRADE_MIN ?>–<?= GRADE_MAX ?>
+            </p>
+
+            <h1>
+                <span class="for-parents">
+                    Lernen, das Kinder lieben.<br>
+                    <span class="text-gradient">Kontrolle, die Sie brauchen.</span>
+                </span>
+                <span class="for-kids">
+                    Lernen, das sich<br>
+                    <span class="text-gradient">wie ein Spiel anfühlt.</span>
+                </span>
+            </h1>
+
+            <p class="hero-sub for-parents">
+                Lerndex erklärt Ihrem Kind den Schulstoff, statt Lösungen vorzusagen.
+                Sie sehen jederzeit, was gelernt wurde – und worüber gesprochen wurde.
+            </p>
+            <p class="hero-sub for-kids">
+                Lexi erklärt dir alles, was du in der Schule brauchst – geduldig und
+                so oft du willst. Sammle XP, halte deine Streak und schalte Avatare frei.
+            </p>
+
+            <div class="hero-cta">
+                <a href="<?= e(PLAY_STORE_URL) ?>" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-lg">
+                    <?php icon('sparkles'); ?>
+                    <span class="for-parents">Kostenlos testen</span>
+                    <span class="for-kids">Lexi kennenlernen</span>
+                </a>
+                <a href="#demo-quiz" class="btn btn-secondary btn-lg">
+                    <span class="for-parents">Erst ansehen</span>
+                    <span class="for-kids">Quiz ausprobieren</span>
+                </a>
+            </div>
+
+            <ul class="hero-trust">
+                <li><?php icon('check', 'icon-sm'); ?> <?= TRIAL_DAYS ?> Tage gratis</li>
+                <li><?php icon('check', 'icon-sm'); ?> Komplett werbefrei</li>
+                <li><?php icon('check', 'icon-sm'); ?> DSGVO-konform</li>
+                <li><?php icon('check', 'icon-sm'); ?> Monatlich kündbar</li>
+            </ul>
         </div>
-        <div class="hero-image">
-            <div class="mockup-placeholder">
+
+        <div class="hero-visual">
+            <div class="phone phone--back">
                 <picture>
-                            <source srcset="/assets/images/screenshots/hero-screen.webp" type="image/webp">
-                            <img src="/assets/images/screenshots/hero-screen.jpeg" alt="Lerndex App Startscreen" class="mockup-img" width="900" height="2001" loading="eager" fetchpriority="high" decoding="async">
-                        </picture>
+                    <source srcset="/assets/images/screenshots/hero-startscreen.webp" type="image/webp">
+                    <img src="/assets/images/screenshots/hero-startscreen.jpg"
+                         alt="Lerndex Startbildschirm mit dem Maskottchen Lexi"
+                         width="720" height="1600" loading="eager" fetchpriority="high" decoding="async">
+                </picture>
+            </div>
+
+            <div class="phone phone--front">
+                <picture>
+                    <source srcset="/assets/images/screenshots/dashboard-klasse-3-4.webp" type="image/webp">
+                    <img src="/assets/images/screenshots/dashboard-klasse-3-4.jpg"
+                         alt="Lerndex Schülerdashboard mit XP-Fortschritt, Lernzeit, Streak und den Fächern Mathe, Deutsch, Englisch und Sachkunde"
+                         width="720" height="1600" loading="eager" fetchpriority="high" decoding="async">
+                </picture>
+            </div>
+
+            <div class="hero-chip hero-chip--xp">
+                <strong class="count-up" data-to="190" data-suffix=" XP">190 XP</strong>
+                <span>heute gesammelt</span>
+            </div>
+
+            <div class="hero-chip hero-chip--streak">
+                <?php icon('trophy', 'icon-sm'); ?>
+                <span>Level 4 erreicht</span>
             </div>
         </div>
     </div>

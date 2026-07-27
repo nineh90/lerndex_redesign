@@ -52,6 +52,7 @@ $page_jsonld = [
         'featureList' => [
             'KI erklärt statt Lösungen vorzugeben',
             'Alters- und schulformgerechte Anpassung',
+            'Sieben Fächer: Mathe, Deutsch, Englisch, Biologie, Chemie, Physik, Geschichte',
             'Early-Learner-Modus mit Vorlesefunktion für Klasse 1–2',
             '5-Schichten-Kinderschutzsystem',
             'PIN-geschütztes Eltern-Dashboard',
@@ -72,8 +73,9 @@ include __DIR__ . '/includes/navbar.php';
         <?php include __DIR__ . '/includes/sections/benefits.php'; ?>
         <?php include __DIR__ . '/includes/sections/dashboard_slider.php'; ?>
         <?php include __DIR__ . '/includes/sections/features.php'; ?>
-        <?php include __DIR__ . '/includes/sections/how_it_works.php'; ?>
+        <?php /* Sicherheit direkt nach den Features: staerkstes Argument, bevor es um Geld geht */ ?>
         <?php include __DIR__ . '/includes/sections/security.php'; ?>
+        <?php include __DIR__ . '/includes/sections/how_it_works.php'; ?>
         <?php include __DIR__ . '/includes/sections/target_group.php'; ?>
         <?php include __DIR__ . '/includes/sections/pricing.php'; ?>
         <?php include __DIR__ . '/includes/sections/faq.php'; ?>
