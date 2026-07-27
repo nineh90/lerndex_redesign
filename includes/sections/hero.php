@@ -10,7 +10,10 @@
         </div>
         <div class="hero-image">
             <div class="mockup-placeholder">
-                <img src="assets/images/screenshots/hero-screen.jpeg" alt="Lerndex App Startscreen" class="mockup-img">
+                <picture>
+                            <source srcset="/assets/images/screenshots/hero-screen.webp" type="image/webp">
+                            <img src="/assets/images/screenshots/hero-screen.jpeg" alt="Lerndex App Startscreen" class="mockup-img" width="900" height="2001" loading="eager" fetchpriority="high" decoding="async">
+                        </picture>
             </div>
         </div>
     </div>

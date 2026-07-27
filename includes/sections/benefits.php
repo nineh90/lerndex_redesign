@@ -6,22 +6,22 @@
         </div>
         <div class="benefits-grid">
             <div class="benefit-card">
-                <div class="icon-box bg-purple"><i data-lucide="bot"></i></div>
+                <div class="icon-box bg-purple"><?php icon('bot'); ?></div>
                 <h3>Lernen mit KI</h3>
                 <p>Persönlicher Tutor, der rund um die Uhr verfügbar ist und geduldig erklärt.</p>
             </div>
             <div class="benefit-card">
-                <div class="icon-box bg-orange"><i data-lucide="trophy"></i></div>
+                <div class="icon-box bg-orange"><?php icon('trophy'); ?></div>
                 <h3>Spielerisch motiviert</h3>
                 <p>XP, Level, Streaks und Belohnungen machen Lernen zum spannenden Abenteuer.</p>
             </div>
             <div class="benefit-card">
-                <div class="icon-box bg-green"><i data-lucide="eye"></i></div>
+                <div class="icon-box bg-green"><?php icon('eye'); ?></div>
                 <h3>Volle Transparenz</h3>
                 <p>Eltern behalten den Überblick mit Live-Dashboard und Chat-Einsicht.</p>
             </div>
             <div class="benefit-card">
-                <div class="icon-box bg-blue"><i data-lucide="shield-check"></i></div>
+                <div class="icon-box bg-blue"><?php icon('shield-check'); ?></div>
                 <h3>100% Kindersicher</h3>
                 <p>5-Schicht-Schutzsystem sorgt für absolut sichere KI-Interaktionen.</p>
             </div>

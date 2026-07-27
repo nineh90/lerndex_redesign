@@ -7,15 +7,15 @@
         </div>
         <div class="testuser-benefits">
             <div class="testuser-benefit">
-                <i data-lucide="clock"></i>
+                <?php icon('clock'); ?>
                 <span>14 Tage kostenloser Vollzugriff</span>
             </div>
             <div class="testuser-benefit">
-                <i data-lucide="bell"></i>
+                <?php icon('bell'); ?>
                 <span>Sofort-Info bei Launch</span>
             </div>
             <div class="testuser-benefit">
-                <i data-lucide="sparkles"></i>
+                <?php icon('sparkles'); ?>
                 <span>Exklusive Einblicke vorab</span>
             </div>
         </div>

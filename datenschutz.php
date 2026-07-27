@@ -12,7 +12,7 @@ include __DIR__ . '/includes/navbar.php';
     <main id="main" class="legal-page">
         <div class="container">
             <a href="/" class="back-link">
-                <i data-lucide="arrow-left"></i> Zurück zur Startseite
+                <?php icon('arrow-left'); ?> Zurück zur Startseite
             </a>
             <div class="legal-content">
                 <h1>Datenschutzerklärung</h1>
@@ -20,7 +20,7 @@ include __DIR__ . '/includes/navbar.php';
 
                 <div class="children-box">
                     <div class="box-title">
-                        <i data-lucide="shield-check"></i>
+                        <?php icon('shield-check'); ?>
                         Wichtiger Hinweis für Eltern
                     </div>
                     <p>Lerndex richtet sich an Kinder und Jugendliche unter 18 Jahren. Für die Nutzung durch Kinder unter 16 Jahren ist die <strong>ausdrückliche Einwilligung eines Erziehungsberechtigten</strong> erforderlich (Art. 8 DSGVO). Eltern haben vollständigen Einblick in alle Aktivitäten und KI-Gespräche ihres Kindes und können jederzeit die Löschung aller Daten verlangen.</p>
@@ -133,7 +133,7 @@ include __DIR__ . '/includes/navbar.php';
 
                 <div class="children-box">
                     <div class="box-title">
-                        <i data-lucide="bot"></i>
+                        <?php icon('bot'); ?>
                         KI-Schutz für Kinder
                     </div>
                     <p>Jede Anfrage an den KI-Tutor wird durch unser <strong>fünfschichtiges Sicherheitssystem</strong> gefiltert: strukturierte Systemanweisungen, altersgerechte Kommunikation, Themenbeschränkung auf Schulfächer, Manipulationsresistenz und vollständige Elterntransparenz. Unangemessene Anfragen werden sofort blockiert und Eltern werden benachrichtigt.</p>

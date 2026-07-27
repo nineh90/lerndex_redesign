@@ -13,7 +13,7 @@
                 </p>
                 <div class="contact-info">
                     <div class="info-item">
-                        <i data-lucide="mail"></i>
+                        <?php icon('mail'); ?>
                         <span><a href="mailto:info@lerndex.de">info@lerndex.de</a></span>
                     </div>
                 </div>

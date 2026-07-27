@@ -12,7 +12,7 @@ $page_jsonld = [
         '@type'    => 'Organization',
         'name'     => 'Nils-Digital',
         'url'      => 'https://nils-digital.de',
-        'logo'     => SITE_URL . '/assets/images/logo/lerndex_logo.png',
+        'logo'     => SITE_URL . '/assets/images/logo/icon-512.png',
         'founder'  => ['@type' => 'Person', 'name' => 'Nils Nehring'],
     ],
     [
@@ -20,7 +20,7 @@ $page_jsonld = [
         '@type'    => 'Brand',
         'name'     => 'Lerndex',
         'url'      => SITE_URL,
-        'logo'     => SITE_URL . '/assets/images/logo/lerndex_logo.png',
+        'logo'     => SITE_URL . '/assets/images/logo/icon-512.png',
         'slogan'   => 'Lernen, das Kinder lieben. Kontrolle, die Eltern brauchen.',
         'isPartOf' => ['@type' => 'Organization', 'name' => 'Nils-Digital'],
     ],

@@ -6,7 +6,13 @@ require_once __DIR__ . '/site.php';
         <div class="footer-content">
 
             <div class="footer-brand">
-                <img src="/assets/images/logo/lerndex_logo.png" alt="Lerndex" class="logo-image-footer" width="150" height="43">
+                <div class="footer-logo">
+                    <picture>
+                        <source srcset="/assets/images/logo/lexi-96.webp" type="image/webp">
+                        <img src="/assets/images/logo/lexi-96.png" alt="" class="logo-image-footer" width="30" height="44" loading="lazy">
+                    </picture>
+                    <span class="logo-word">Lerndex</span>
+                </div>
                 <p>Ein Bildungsprojekt von <a href="https://nils-digital.de" target="_blank" rel="noopener" class="brand-link">Nils-Digital</a></p>
                 <p class="footer-tagline">Der sichere Lernbegleiter für Ihr Kind.</p>
             </div>

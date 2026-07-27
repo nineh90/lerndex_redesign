@@ -11,7 +11,11 @@ $current_page = $current_page ?? '';
 <nav class="navbar" aria-label="Hauptnavigation">
     <div class="container nav-container">
         <a href="/" class="logo" aria-label="Lerndex – zur Startseite">
-            <img src="/assets/images/logo/lerndex_logo.png" alt="Lerndex" class="logo-image" width="140" height="40">
+            <picture>
+                <source srcset="/assets/images/logo/lexi-96.webp 1x, /assets/images/logo/lexi-144.webp 1.5x" type="image/webp">
+                <img src="/assets/images/logo/lexi-96.png" alt="" class="logo-image" width="33" height="48" fetchpriority="high">
+            </picture>
+            <span class="logo-word">Lerndex</span>
         </a>
 
         <div class="nav-links nav-links--desktop">

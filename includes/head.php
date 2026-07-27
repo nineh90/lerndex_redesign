@@ -15,6 +15,7 @@
  */
 
 require_once __DIR__ . '/site.php';
+require_once __DIR__ . '/icons.php';
 
 $page_title       = $page_title       ?? SITE_NAME;
 $page_description = $page_description ?? '';
@@ -64,7 +65,7 @@ $title = $page_title_full ?? ($page_title . ' – ' . SITE_NAME);
     <script type="application/ld+json"><?= json_encode($block, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) ?></script>
 <?php endforeach; ?>
 
-    <link rel="icon" href="/assets/images/logo/favicon.svg" type="image/svg+xml">
+    <link rel="icon" href="/favicon.ico" sizes="any">
     <link rel="icon" href="/assets/images/logo/favicon-32.png" sizes="32x32" type="image/png">
     <link rel="apple-touch-icon" href="/assets/images/logo/apple-touch-icon.png">
 </head>

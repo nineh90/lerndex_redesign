@@ -4,8 +4,7 @@
  * Wird als letztes auf jeder Seite eingebunden.
  */
 ?>
-    <script src="/script.js"></script>
-    <script>lucide.createIcons();</script>
+    <script src="/script.js" defer></script>
 
     <?php include __DIR__ . '/cookie_banner.php'; ?>
 </body>

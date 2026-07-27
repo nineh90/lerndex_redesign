@@ -158,6 +158,37 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
+
+  // =========================
+  // Dashboard-Slider
+  // =========================
+  if (document.getElementById('slider-track')) {
+        const track   = document.getElementById('slider-track');
+        const dots    = document.querySelectorAll('.slider-dot');
+        const btnPrev = document.getElementById('slider-prev');
+        const btnNext = document.getElementById('slider-next');
+        const total   = 3;
+        let current   = 0;
+
+        function goTo(index) {
+            current = (index + total) % total;
+            track.style.transform = `translateX(-${current * 100}%)`;
+            dots.forEach((d, i) => d.classList.toggle('active', i === current));
+        }
+
+        btnPrev.addEventListener('click', () => goTo(current - 1));
+        btnNext.addEventListener('click', () => goTo(current + 1));
+        dots.forEach(d => d.addEventListener('click', () => goTo(Number(d.dataset.index))));
+
+        // Touch / Swipe
+        let startX = 0;
+        track.addEventListener('touchstart', e => { startX = e.touches[0].clientX; }, { passive: true });
+        track.addEventListener('touchend', e => {
+            const diff = startX - e.changedTouches[0].clientX;
+            if (Math.abs(diff) > 40) goTo(diff > 0 ? current + 1 : current - 1);
+        }, { passive: true });
+  }
+
   // =========================
   // Helper: Status messages
   // =========================

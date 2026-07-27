@@ -12,7 +12,7 @@ include __DIR__ . '/includes/navbar.php';
     <main id="main" class="legal-page">
         <div class="container">
             <a href="/" class="back-link">
-                <i data-lucide="arrow-left"></i> Zurück zur Startseite
+                <?php icon('arrow-left'); ?> Zurück zur Startseite
             </a>
             <div class="legal-content">
                 <h1>Impressum</h1>

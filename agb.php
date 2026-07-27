@@ -12,7 +12,7 @@ include __DIR__ . '/includes/navbar.php';
     <main id="main" class="legal-page">
         <div class="container">
             <a href="/" class="back-link">
-                <i data-lucide="arrow-left"></i> Zurück zur Startseite
+                <?php icon('arrow-left'); ?> Zurück zur Startseite
             </a>
             <div class="legal-content">
                 <h1>Allgemeine Geschäftsbedingungen</h1>
@@ -20,7 +20,7 @@ include __DIR__ . '/includes/navbar.php';
 
                 <div class="highlight-box">
                     <div class="box-title">
-                        <i data-lucide="users"></i>
+                        <?php icon('users'); ?>
                         Hinweis für Eltern & Erziehungsberechtigte
                     </div>
                     <p>Lerndex richtet sich an Kinder und Jugendliche. Der Vertrag wird <strong>ausschließlich mit dem Erziehungsberechtigten</strong> (dem Elternteil) abgeschlossen. Minderjährige können die App nur mit Zustimmung und unter Aufsicht ihrer Erziehungsberechtigten nutzen. Mit der Registrierung bestätigen Sie als Erziehungsberechtigter, dass Sie die Nutzung für Ihr Kind genehmigen.</p>
@@ -179,7 +179,7 @@ include __DIR__ . '/includes/navbar.php';
 
                 <div class="highlight-box">
                     <div class="box-title">
-                        <i data-lucide="rotate-ccw"></i>
+                        <?php icon('rotate-ccw'); ?>
                         Widerrufsbelehrung
                     </div>
                     <p><strong>Widerrufsrecht:</strong> Sie haben das Recht, binnen vierzehn Tagen ohne Angabe von Gründen diesen Vertrag zu widerrufen. Die Widerrufsfrist beträgt vierzehn Tage ab dem Tag des Vertragsabschlusses.</p>
