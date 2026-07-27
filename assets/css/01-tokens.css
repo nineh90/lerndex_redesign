@@ -1,0 +1,215 @@
+/* ═══════════════════════════════════════════════════════════════
+   TOKENS
+   Alle Design-Entscheidungen als Custom Properties.
+   Regeln in den anderen Dateien benutzen ausschliesslich diese
+   Variablen – keine Hex-Werte direkt in Selektoren.
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ── Schrift: selbst gehostet (Variable Font, Gewichte 200–800) ── */
+@font-face {
+    font-family: 'Plus Jakarta Sans';
+    font-style: normal;
+    font-weight: 200 800;
+    font-display: swap;
+    src: url('/assets/fonts/plus-jakarta-sans-latin.woff2') format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC,
+                   U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193,
+                   U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+    font-family: 'Plus Jakarta Sans';
+    font-style: normal;
+    font-weight: 200 800;
+    font-display: swap;
+    src: url('/assets/fonts/plus-jakarta-sans-latin-ext.woff2') format('woff2');
+    unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF,
+                   U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF,
+                   U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+:root {
+
+    /* ── Markenpalette ────────────────────────────────────────
+       Eine Skala statt verstreuter Einzelwerte. Die 800 ist das
+       Lerndex-Lila, die 600 der hellere Verlaufspartner.        */
+    --brand-950: #1E0B3C;
+    --brand-900: #2E1065;
+    --brand-800: #4A1D96;
+    --brand-700: #6A35C2;
+    --brand-600: #7C3AED;
+    --brand-500: #9061F9;
+    --brand-400: #A78BFA;
+    --brand-300: #C4B5FD;
+    --brand-200: #DDD6FE;
+    --brand-100: #EDE9FE;
+    --brand-50:  #F5F3FF;
+
+    /* ── Akzentfarben ─────────────────────────────────────────
+       Doppelt belegt: Statusfarben fuer Eltern, Spielfarben
+       fuer den Kinderbereich.                                   */
+    --amber:   #F59E0B;
+    --amber-light: #FEF3C7;
+    --emerald: #10B981;
+    --emerald-light: #D1FAE5;
+    --sky:     #3B82F6;
+    --sky-light: #DBEAFE;
+    --teal:    #14B8A6;
+    --teal-light: #CCFBF1;
+    --rose:    #F43F5E;
+    --rose-light: #FFE4E6;
+
+    /* ── Neutrale ─────────────────────────────────────────────*/
+    --white: #FFFFFF;
+    --gray-900: #111827;
+    --gray-800: #1F2937;
+    --gray-500: #6B7280;
+    --gray-300: #D1D5DB;
+    --gray-100: #F3F4F6;
+
+    /* ── Typografie: fluide Skala ─────────────────────────────
+       Waechst zwischen 360 px und 1200 px Viewport mit.         */
+    --font-main: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+
+    --text-xs:   clamp(0.75rem, 0.72rem + 0.12vw, 0.8rem);
+    --text-sm:   clamp(0.85rem, 0.81rem + 0.18vw, 0.925rem);
+    --text-base: clamp(0.95rem, 0.91rem + 0.22vw, 1.05rem);
+    --text-lg:   clamp(1.05rem, 0.98rem + 0.35vw, 1.2rem);
+    --text-xl:   clamp(1.2rem, 1.08rem + 0.55vw, 1.45rem);
+    --text-2xl:  clamp(1.45rem, 1.25rem + 0.95vw, 2rem);
+    --text-3xl:  clamp(1.8rem, 1.45rem + 1.6vw, 2.6rem);
+    --text-4xl:  clamp(2.15rem, 1.6rem + 2.6vw, 3.4rem);
+
+    --leading-tight: 1.15;
+    --leading-snug:  1.35;
+    --leading-normal: 1.65;
+
+    --tracking-tight: -0.025em;
+    --tracking-wide:   0.05em;
+
+    /* ── Abstaende ────────────────────────────────────────────*/
+    --space-1: 0.25rem;
+    --space-2: 0.5rem;
+    --space-3: 0.75rem;
+    --space-4: 1rem;
+    --space-5: 1.5rem;
+    --space-6: 2rem;
+    --space-7: 2.5rem;
+    --space-8: 3rem;
+    --space-10: 4rem;
+    --space-12: 6rem;
+
+    --section-y: clamp(3rem, 2rem + 5vw, 6rem);
+    --container-max: 1200px;
+
+    /* ── Bewegung ─────────────────────────────────────────────*/
+    --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+    --ease-spring: cubic-bezier(0.32, 0.72, 0, 1);
+    --duration-fast: 150ms;
+    --duration: 300ms;
+    --duration-slow: 550ms;
+
+    --z-nav: 1000;
+    --z-menu: 1001;
+    --z-banner: 9999;
+}
+
+
+/* ═══════════════════════════════════════════════════════════════
+   MODUS: ELTERN  (Standard)
+   Ruhig, viel Weissraum, Marken-Lila, Vertrauen vor Verspieltheit.
+   Gilt auch ohne Klasse am <body>, damit jede Seite ohne Umschalter
+   sofort richtig aussieht.
+   ═══════════════════════════════════════════════════════════════ */
+:root,
+body.mode-parents {
+    --accent:        var(--brand-600);
+    --accent-strong: var(--brand-800);
+    --accent-soft:   var(--brand-100);
+    --accent-contrast: var(--white);
+
+    --surface:     var(--white);
+    --surface-alt: var(--brand-50);
+    --surface-deep: var(--brand-900);
+
+    --text:        var(--gray-800);
+    --text-muted:  var(--gray-500);
+    --text-invert: var(--white);
+    --heading-color: var(--brand-800);
+
+    --border: rgba(74, 29, 150, 0.1);
+
+    --radius-sm:   10px;
+    --radius:      20px;
+    --radius-lg:   24px;
+    --radius-pill: 999px;
+
+    --shadow-sm:    0 2px 8px rgba(74, 29, 150, 0.06);
+    --shadow:       0 4px 20px rgba(74, 29, 150, 0.08);
+    --shadow-hover: 0 10px 30px rgba(74, 29, 150, 0.15);
+    --shadow-lift:  0 20px 50px rgba(74, 29, 150, 0.18);
+
+    --gradient: linear-gradient(135deg, var(--brand-800), var(--brand-600));
+
+    --heading-weight: 800;
+    --lift: -4px;              /* Hover-Anhebung von Karten */
+}
+
+
+/* ═══════════════════════════════════════════════════════════════
+   MODUS: KINDER
+   Gleiches Grundsystem, andere Stimmung: runder, waermer, bunter.
+   Das Lila bleibt als Markenanker, dazu kommen Sonnenfarben.
+   ═══════════════════════════════════════════════════════════════ */
+body.mode-kids {
+    --accent:        var(--teal);
+    --accent-strong: var(--brand-700);
+    --accent-soft:   var(--teal-light);
+    --accent-contrast: var(--white);
+
+    --surface:     var(--white);
+    --surface-alt: #FFF9F0;
+    --surface-deep: var(--brand-800);
+
+    --text:        var(--gray-900);
+    --text-muted:  #7A6E86;
+    --heading-color: var(--brand-700);
+
+    --border: rgba(20, 184, 166, 0.18);
+
+    /* Deutlich rundere Formen – der schnellste optische Unterschied */
+    --radius-sm:   14px;
+    --radius:      28px;
+    --radius-lg:   36px;
+
+    --shadow:       0 6px 24px rgba(124, 58, 237, 0.12);
+    --shadow-hover: 0 14px 36px rgba(245, 158, 11, 0.22);
+    --shadow-lift:  0 24px 56px rgba(124, 58, 237, 0.22);
+
+    --gradient: linear-gradient(135deg, var(--brand-600), var(--teal));
+
+    --lift: -8px;
+}
+
+
+/* ═══════════════════════════════════════════════════════════════
+   ALT-VARIABLEN
+   Die bestehenden Sections benutzen noch die urspruenglichen Namen.
+   Bis alle Regeln umgestellt sind, zeigen sie hierher – so gibt es
+   keinen Big-Bang-Umbau und nichts bricht zwischendurch.
+
+   Bewusst auf <body> und nicht auf :root: die Modus-Klasse haengt am
+   body, und ein Alias auf :root wuerde die Kinder-Overrides nie sehen
+   (Custom Properties loesen dort auf, wo sie deklariert sind).
+   ═══════════════════════════════════════════════════════════════ */
+body {
+    --primary:       var(--accent-strong);
+    --primary-light: var(--brand-700);
+    --secondary:     var(--accent);
+    --bg-light:      var(--surface-alt);
+    --text-dark:     var(--text);
+    --text-gray:     var(--text-muted);
+    --success:       var(--emerald);
+    --warning:       var(--amber);
+    --blue:          var(--sky);
+}

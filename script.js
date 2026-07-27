@@ -47,24 +47,101 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 
   // =========================
-  // Scroll Animations (safe guard)
+  // Scroll-Reveal
   // =========================
+  // Die Klasse js-anim schaltet die Startzustaende in 02-base.css erst
+  // frei, wenn der Observer wirklich existiert. Ohne JS oder bei einem
+  // Fehler bleibt der Inhalt sichtbar statt unsichtbar haengen zu bleiben.
   if ('IntersectionObserver' in window) {
-    var observerOptions = { root: null, rootMargin: '0px', threshold: 0.1 };
+    document.documentElement.classList.add('js-anim');
 
-    var observer = new IntersectionObserver(function (entries, obs) {
+    var revealObserver = new IntersectionObserver(function (entries, obs) {
       entries.forEach(function (entry) {
         if (entry.isIntersecting) {
           entry.target.classList.add('is-visible');
           obs.unobserve(entry.target);
         }
       });
-    }, observerOptions);
+    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.12 });
 
-    var sections = document.querySelectorAll('.section, .hero, .footer');
-    sections.forEach(function (section) {
-      section.classList.add('fade-in-section');
-      observer.observe(section);
+    // Sections ohne eigene Auszeichnung bekommen das Standard-Reveal
+    document.querySelectorAll('.section, .hero').forEach(function (el) {
+      if (!el.classList.contains('reveal') && !el.classList.contains('reveal-stagger')) {
+        el.classList.add('reveal');
+      }
+    });
+
+    document.querySelectorAll('.reveal, .reveal-stagger, .bar').forEach(function (el) {
+      revealObserver.observe(el);
+    });
+  }
+
+  // =========================
+  // Hochzaehlende Zahlen
+  // =========================
+  // <span class="count-up" data-to="1500" data-suffix=" XP">0</span>
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  document.querySelectorAll('.count-up').forEach(function (el) {
+    var target = parseFloat(el.dataset.to || '0');
+    var suffix = el.dataset.suffix || '';
+    var format = function (v) { return Math.round(v).toLocaleString('de-DE') + suffix; };
+
+    if (reduceMotion || !('IntersectionObserver' in window)) {
+      el.textContent = format(target);
+      return;
+    }
+
+    el.textContent = format(0);
+
+    new IntersectionObserver(function (entries, obs) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        obs.unobserve(entry.target);
+
+        var start = null;
+        var duration = 1400;
+
+        function step(now) {
+          if (start === null) start = now;
+          var p = Math.min((now - start) / duration, 1);
+          // easeOutCubic – schnell anlaufen, sanft ausrollen
+          el.textContent = format(target * (1 - Math.pow(1 - p, 3)));
+          if (p < 1) requestAnimationFrame(step);
+        }
+
+        requestAnimationFrame(step);
+      });
+    }, { threshold: 0.5 }).observe(el);
+  });
+
+  // =========================
+  // Eltern/Kinder-Umschalter
+  // =========================
+  // Der Modus steht bereits am <body> (gesetzt im Inline-Skript in head.php).
+  // Hier wird nur noch auf Klicks reagiert und die Wahl gemerkt.
+  var audienceButtons = document.querySelectorAll('[data-audience]');
+
+  if (audienceButtons.length) {
+    function applyAudience(mode) {
+      document.body.classList.toggle('mode-kids', mode === 'kids');
+      document.body.classList.toggle('mode-parents', mode !== 'kids');
+
+      audienceButtons.forEach(function (btn) {
+        var isCurrent = btn.dataset.audience === mode;
+        btn.classList.toggle('is-active', isCurrent);
+        btn.setAttribute('aria-pressed', isCurrent ? 'true' : 'false');
+      });
+
+      try { localStorage.setItem('lerndex_audience', mode); } catch (e) {}
+    }
+
+    applyAudience(document.body.classList.contains('mode-kids') ? 'kids' : 'parents');
+
+    audienceButtons.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        applyAudience(btn.dataset.audience);
+      });
     });
   }
 

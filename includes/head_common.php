@@ -27,4 +27,10 @@
     <!-- Schrift wird selbst gehostet: kein Verbindungsaufbau zu Google Fonts -->
     <link rel="preload" href="/assets/fonts/plus-jakarta-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
 
-    <link rel="stylesheet" href="/styles.css">
+    <!-- Reihenfolge ist bedeutsam: Tokens vor allem anderen,
+         Sections zuletzt (duerfen Komponenten ueberschreiben). -->
+    <link rel="stylesheet" href="/assets/css/01-tokens.css">
+    <link rel="stylesheet" href="/assets/css/02-base.css">
+    <link rel="stylesheet" href="/assets/css/03-components.css">
+    <link rel="stylesheet" href="/assets/css/04-layout.css">
+    <link rel="stylesheet" href="/assets/css/05-sections.css">

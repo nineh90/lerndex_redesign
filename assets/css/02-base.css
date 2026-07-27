@@ -1,0 +1,290 @@
+/* ═══════════════════════════════════════════════════════════════
+   BASE
+   Reset, Typografie, Layout-Grundlagen, Utilities, Animationen.
+   ═══════════════════════════════════════════════════════════════ */
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    /* Sticky-Navbar darf Ankerziele nicht verdecken */
+    scroll-padding-top: 6rem;
+    -webkit-text-size-adjust: 100%;
+}
+
+html,
+body {
+    width: 100%;
+    overflow-x: hidden;
+}
+
+body {
+    font-family: var(--font-main);
+    font-size: var(--text-base);
+    line-height: var(--leading-normal);
+    color: var(--text);
+    background-color: var(--surface);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+}
+
+/* Modus-Wechsel weich fahren, nicht hart umspringen */
+body {
+    transition: background-color var(--duration) var(--ease-out),
+                color var(--duration) var(--ease-out);
+}
+
+body.nav-open {
+    overflow: hidden;
+}
+
+
+/* ── Typografie ──────────────────────────────────────────────── */
+h1, h2, h3, h4, h5 {
+    font-weight: var(--heading-weight, 800);
+    line-height: var(--leading-tight);
+    letter-spacing: var(--tracking-tight);
+    text-wrap: balance;
+    margin-bottom: var(--space-4);
+}
+
+h1 { font-size: var(--text-4xl); }
+h2 { font-size: var(--text-3xl); color: var(--heading-color); }
+h3 { font-size: var(--text-xl); }
+h4 { font-size: var(--text-lg); }
+
+p {
+    margin-bottom: var(--space-4);
+    color: var(--text-muted);
+    text-wrap: pretty;
+}
+
+.lead {
+    font-size: var(--text-lg);
+    line-height: var(--leading-snug);
+}
+
+small { font-size: var(--text-sm); }
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: color var(--duration-fast) var(--ease-out),
+                opacity var(--duration-fast) var(--ease-out);
+}
+
+ul { list-style: none; }
+
+strong { color: var(--text); }
+
+img, picture, svg, video {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Sichtbarer Fokus – wird von keiner Komponente entfernt */
+:focus-visible {
+    outline: 3px solid var(--accent);
+    outline-offset: 3px;
+    border-radius: 4px;
+}
+
+
+/* ── Layout ──────────────────────────────────────────────────── */
+.container {
+    width: min(92%, var(--container-max));
+    margin-inline: auto;
+}
+
+.section {
+    padding-block: var(--section-y);
+}
+
+.section-header {
+    text-align: center;
+    max-width: 62ch;
+    margin-inline: auto;
+    margin-bottom: var(--space-8);
+}
+
+.section-header p {
+    font-size: var(--text-lg);
+    margin-bottom: 0;
+}
+
+
+/* ── Utilities ───────────────────────────────────────────────── */
+.icon {
+    width: 24px;
+    height: 24px;
+    display: inline-block;
+    vertical-align: middle;
+    flex-shrink: 0;
+}
+
+.icon-sm { width: 18px; height: 18px; }
+.icon-lg { width: 32px; height: 32px; }
+
+.text-gradient {
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.centered-text { text-align: center; }
+.text-center   { text-align: center; }
+.text-white    { color: var(--text-invert); }
+
+.bg-light  { background-color: var(--surface-alt); }
+.bg-purple { background-color: var(--brand-100); color: var(--brand-600); }
+.bg-orange { background-color: var(--amber-light); color: var(--amber); }
+.bg-green  { background-color: var(--emerald-light); color: var(--emerald); }
+.bg-blue   { background-color: var(--sky-light); color: var(--sky); }
+.bg-teal   { background-color: var(--teal-light); color: var(--teal); }
+
+.bg-purple-dark {
+    background: var(--gradient);
+    color: var(--text-invert);
+}
+
+/* Nur fuer Screenreader */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+
+/* ═══════════════════════════════════════════════════════════════
+   ANIMATIONEN
+   Grundregel: die Seite muss ohne JavaScript und ohne Bewegung
+   vollstaendig lesbar sein. Deshalb ist der sichtbare Zustand der
+   Normalfall – .reveal blendet nur aus, wenn JS es anfordert.
+   ═══════════════════════════════════════════════════════════════ */
+
+/* JS setzt .js-anim am <html>, sobald der Observer wirklich laeuft.
+   Ohne dieses Flag bleibt alles sichtbar – kein Blank-Screen, wenn
+   das Skript blockiert wird oder fehlschlaegt. */
+.js-anim .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity var(--duration-slow) var(--ease-out),
+                transform var(--duration-slow) var(--ease-out);
+}
+
+.js-anim .reveal.is-visible {
+    opacity: 1;
+    transform: none;
+}
+
+/* Varianten */
+.js-anim .reveal--left  { transform: translateX(-28px); }
+.js-anim .reveal--right { transform: translateX(28px); }
+.js-anim .reveal--scale { transform: scale(0.94); }
+
+.js-anim .reveal--left.is-visible,
+.js-anim .reveal--right.is-visible,
+.js-anim .reveal--scale.is-visible { transform: none; }
+
+/* Gestaffelte Kinder – fuer Karten-Grids */
+.js-anim .reveal-stagger > * {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity var(--duration-slow) var(--ease-out),
+                transform var(--duration-slow) var(--ease-out);
+}
+
+.js-anim .reveal-stagger.is-visible > * {
+    opacity: 1;
+    transform: none;
+}
+
+.js-anim .reveal-stagger.is-visible > *:nth-child(1) { transition-delay: 0ms; }
+.js-anim .reveal-stagger.is-visible > *:nth-child(2) { transition-delay: 80ms; }
+.js-anim .reveal-stagger.is-visible > *:nth-child(3) { transition-delay: 160ms; }
+.js-anim .reveal-stagger.is-visible > *:nth-child(4) { transition-delay: 240ms; }
+.js-anim .reveal-stagger.is-visible > *:nth-child(5) { transition-delay: 320ms; }
+.js-anim .reveal-stagger.is-visible > *:nth-child(6) { transition-delay: 400ms; }
+
+/* Fortschrittsbalken, der beim Sichtbarwerden hochlaeuft.
+   Ziel kommt aus --bar-value (z.B. style="--bar-value: 72%"). */
+.bar {
+    height: 10px;
+    border-radius: var(--radius-pill);
+    background: var(--accent-soft);
+    overflow: hidden;
+}
+
+.bar > span {
+    display: block;
+    height: 100%;
+    width: var(--bar-value, 0%);
+    border-radius: inherit;
+    background: var(--gradient);
+}
+
+.js-anim .bar > span {
+    width: 0;
+    transition: width 1.2s var(--ease-out);
+}
+
+.js-anim .bar.is-visible > span {
+    width: var(--bar-value, 0%);
+}
+
+/* Sanftes Schweben, z.B. fuer Lexi */
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50%      { transform: translateY(-10px); }
+}
+
+.float {
+    animation: float 5s ease-in-out infinite;
+}
+
+
+/* ── Bewegungsreduktion respektieren ─────────────────────────────
+   Greift global: alle Uebergaenge und Keyframes werden praktisch
+   ausgeschaltet, Endzustaende bleiben erhalten.                   */
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+
+    .js-anim .reveal,
+    .js-anim .reveal-stagger > * {
+        opacity: 1;
+        transform: none;
+    }
+
+    .js-anim .bar > span {
+        width: var(--bar-value, 0%);
+    }
+
+    .float {
+        animation: none;
+    }
+}

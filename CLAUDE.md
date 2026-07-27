@@ -74,11 +74,37 @@ include 'includes/head.php';
 
 `.htaccess` erzwingt HTTPS, non-www, kein Trailing Slash und blendet `.php` aus. Intern **immer ohne Endung verlinken** (`/impressum`, nicht `impressum.php`) — für `*.php` gibt es einen 301 auf die Clean URL, jeder interne Link mit Endung erzeugt also einen unnötigen Redirect.
 
+### CSS
+
+Fünf Dateien in `assets/css/`, **in dieser Reihenfolge geladen** — sie bauen aufeinander auf:
+
+| Datei | Inhalt |
+|---|---|
+| `01-tokens.css` | `@font-face`, Markenpalette, semantische Tokens, die beiden Modi |
+| `02-base.css` | Reset, Typografie, Container, Utilities, Reveal-Animationen |
+| `03-components.css` | Buttons, Cards, Badges, Phone-Frame, Formulare, Umschalter |
+| `04-layout.css` | Navbar, mobiles Menü, Footer |
+| `05-sections.css` | Seitenspezifische Blöcke inkl. Rechtsseiten |
+
+**Keine Hex-Werte in Regeln** — alles über Tokens. Neue Farbe? Erst als Token in `01-tokens.css`.
+
+Es gibt zwei Sätze semantischer Tokens: `--accent`, `--surface`, `--radius`, `--shadow`, `--gradient` usw. sind im Eltern-Modus so und im Kinder-Modus anders belegt. Eine Komponente, die nur diese Tokens benutzt, funktioniert automatisch in beiden Modi — genau das ist der Zweck. Die alten Namen (`--primary`, `--bg-light`, …) existieren weiter als Alias.
+
+Wichtig: Die Aliase stehen bewusst auf `body`, nicht auf `:root`. Die Modus-Klasse hängt am `<body>`, und eine Custom Property löst dort auf, wo sie deklariert ist — auf `:root` würden die Kinder-Overrides ins Leere laufen.
+
 ### Eltern/Kinder-Modus
 
-Die Startseite hat einen Umschalter zwischen Eltern- und Kinderansprache. **Beide Varianten stehen vollständig im HTML** und werden über eine Klasse am `<body>` per CSS umgeschaltet — nie per JS nachladen und nie indexierungsrelevanten Text nur clientseitig einfügen, sonst sieht Google die halbe Seite nicht. Die Auswahl liegt in `localStorage`, Default ist **Eltern**.
+Die Startseite hat einen Umschalter zwischen Eltern- und Kinderansprache. **Beide Varianten stehen vollständig im HTML** und werden über `body.mode-parents` / `body.mode-kids` per CSS umgeschaltet (`.for-parents` / `.for-kids`) — nie per JS nachladen und nie indexierungsrelevanten Text nur clientseitig einfügen, sonst sieht Google die halbe Seite nicht. Die Auswahl liegt in `localStorage` unter `lerndex_audience`, Default ist **Eltern**.
+
+Ein winziges Inline-Skript direkt nach dem `<body>`-Tag setzt den gemerkten Modus vor dem ersten Paint. Das muss inline und ohne `defer` bleiben, sonst blitzt kurz die falsche Variante auf.
 
 Dazu gibt es `/fuer-eltern` und `/fuer-kinder` als eigenständige Vollseiten mit eigenen Keywords.
+
+### Animationen
+
+`.reveal`, `.reveal-stagger` und `.bar` werden von einem `IntersectionObserver` in `script.js` aktiviert. Die Startzustände (unsichtbar, verschoben) hängen an `html.js-anim` — diese Klasse setzt das Skript erst, wenn der Observer wirklich existiert. Ohne JS bleibt alles sichtbar statt unsichtbar hängen. **Dieses Muster bei neuen Animationen beibehalten.**
+
+`prefers-reduced-motion: reduce` schaltet global alle Übergänge und Keyframes ab; Endzustände bleiben erhalten.
 
 ### Formulare
 

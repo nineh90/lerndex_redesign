@@ -69,4 +69,16 @@ $title = $page_title_full ?? ($page_title . ' – ' . SITE_NAME);
     <link rel="icon" href="/assets/images/logo/favicon-32.png" sizes="32x32" type="image/png">
     <link rel="apple-touch-icon" href="/assets/images/logo/apple-touch-icon.png">
 </head>
-<body class="<?= e($body_class ?? '') ?>">
+<body class="mode-parents <?= e($body_class ?? '') ?>">
+<script>
+    // Laeuft als erstes im Body, also vor dem ersten Paint: die gemerkte
+    // Ansprache wird gesetzt, ohne dass kurz die falsche Variante aufblitzt.
+    // Bewusst kein defer/extern – jede Verzoegerung waere sichtbar.
+    (function () {
+        try {
+            if (localStorage.getItem('lerndex_audience') === 'kids') {
+                document.body.classList.replace('mode-parents', 'mode-kids');
+            }
+        } catch (e) { /* localStorage gesperrt – Eltern-Modus bleibt */ }
+    })();
+</script>
