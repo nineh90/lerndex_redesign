@@ -75,9 +75,9 @@
 
             <div class="phone phone--front">
                 <picture>
-                    <source srcset="/assets/images/screenshots/dashboard-klasse-3-4.webp" type="image/webp">
-                    <img src="/assets/images/screenshots/dashboard-klasse-3-4.jpg"
-                         alt="Lerndex Schülerdashboard mit XP-Fortschritt, Lernzeit, Streak und den Fächern Mathe, Deutsch, Englisch und Sachkunde"
+                    <source srcset="/assets/images/screenshots/dashboard-weiterfuehrend.webp" type="image/webp">
+                    <img src="/assets/images/screenshots/dashboard-weiterfuehrend.jpg"
+                         alt="Lerndex Schülerdashboard einer achten Klasse mit Level-Fortschritt, Lernzeit und den Fächern Mathe, Deutsch, Englisch, Biologie, Chemie, Physik und Geschichte"
                          width="720" height="1600" loading="eager" fetchpriority="high" decoding="async">
                 </picture>
             </div>
