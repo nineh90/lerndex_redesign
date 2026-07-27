@@ -36,3 +36,5 @@
     <link rel="stylesheet" href="/assets/css/05-sections.css">
     <link rel="stylesheet" href="/assets/css/06-hero.css">
     <link rel="stylesheet" href="/assets/css/07-motion.css">
+    <link rel="stylesheet" href="/assets/css/08-quiz.css">
+    <link rel="stylesheet" href="/assets/css/09-pages.css">

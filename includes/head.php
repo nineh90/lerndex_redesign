@@ -69,7 +69,17 @@ $title = $page_title_full ?? ($page_title . ' – ' . SITE_NAME);
     <link rel="icon" href="/assets/images/logo/favicon-32.png" sizes="32x32" type="image/png">
     <link rel="apple-touch-icon" href="/assets/images/logo/apple-touch-icon.png">
 </head>
-<body class="mode-parents <?= e($body_class ?? '') ?>">
+<?php
+/**
+ * $force_mode = 'kids' | 'parents' fixiert die Ansprache fuer eine Seite.
+ * Auf /fuer-kinder waere es unsinnig, wenn eine alte localStorage-Wahl
+ * die Seite in den Elternmodus kippt.
+ */
+$force_mode = $force_mode ?? null;
+$startMode  = $force_mode === 'kids' ? 'mode-kids' : 'mode-parents';
+?>
+<body class="<?= $startMode ?> <?= e($body_class ?? '') ?>">
+<?php if (!$force_mode): ?>
 <script>
     // Laeuft als erstes im Body, also vor dem ersten Paint: die gemerkte
     // Ansprache wird gesetzt, ohne dass kurz die falsche Variante aufblitzt.
@@ -82,5 +92,6 @@ $title = $page_title_full ?? ($page_title . ' – ' . SITE_NAME);
         } catch (e) { /* localStorage gesperrt – Eltern-Modus bleibt */ }
     })();
 </script>
+<?php endif; ?>
 
 <div class="scroll-progress" id="scroll-progress" aria-hidden="true"></div>

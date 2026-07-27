@@ -15,6 +15,13 @@ if (preg_match('#^/includes/#', $uri) || preg_match('#^/config(\.example)?\.php$
     exit('403 Forbidden');
 }
 
+// ── API-Endpunkte behalten ihre Endung (wie .htaccess Punkt 3) ──
+if (preg_match('#^/api/[\w-]+\.php$#', $uri) && is_file($file)) {
+    $_SERVER['SCRIPT_FILENAME'] = $file;
+    require $file;
+    exit;
+}
+
 // ── .php-URLs auf die Clean URL umleiten (wie .htaccess Punkt 4) ──
 if (preg_match('#^(.*)\.php$#', $uri, $m)) {
     $target = ($m[1] === '/index') ? '/' : $m[1];

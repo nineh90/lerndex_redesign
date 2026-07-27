@@ -121,6 +121,11 @@ $features = [
         'alt'     => 'Belohnungsübersicht in Lerndex mit einer noch gesperrten Belohnung und der Bedingung fünf Tage am Stück lernen',
     ],
 ];
+
+/* $feature_limit setzt die Startseite, damit /funktionen den vollen
+   Inhalt behaelt und nicht zweimal dasselbe indexiert wird. */
+$feature_limit = $feature_limit ?? null;
+$shown = $feature_limit ? array_slice($features, 0, $feature_limit) : $features;
 ?>
 <section id="features" class="section features">
     <div class="container">
@@ -134,7 +139,7 @@ $features = [
             ); ?>
         </div>
 
-        <?php foreach ($features as $i => $f): ?>
+        <?php foreach ($shown as $i => $f): ?>
             <div class="feature-row<?= $i % 2 ? ' reverse' : '' ?>" id="feature-<?= e($f['id']) ?>">
                 <div class="feature-text reveal <?= $i % 2 ? 'reveal--right' : 'reveal--left' ?>">
                     <span class="badge"><?= e($f['badge']) ?></span>
@@ -165,6 +170,14 @@ $features = [
                 </div>
             </div>
         <?php endforeach; ?>
+
+        <?php if ($feature_limit && count($features) > $feature_limit): ?>
+            <p class="features-more">
+                <a href="/funktionen" class="btn btn-secondary btn-lg">
+                    Alle <?= count($features) ?> Funktionen ansehen
+                </a>
+            </p>
+        <?php endif; ?>
 
     </div>
 </section>

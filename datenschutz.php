@@ -36,6 +36,7 @@ include __DIR__ . '/includes/navbar.php';
                         <li><a href="#firebase">Firebase & Google-Dienste</a></li>
                         <li><a href="#ki-tutor">KI-Tutor & Gemini</a></li>
                         <li><a href="#analytics">Google Analytics (Website)</a></li>
+                        <li><a href="#formulare">Kontakt- und Supportformular</a></li>
                         <li><a href="#eltern">Eltern-Dashboard & Aufsicht</a></li>
                         <li><a href="#abonnement">Abonnement & Zahlung</a></li>
                         <li><a href="#speicherung">Speicherung & Löschung</a></li>
@@ -162,6 +163,30 @@ include __DIR__ . '/includes/navbar.php';
                     <li>Ihre Einwilligung können Sie jederzeit widerrufen, indem Sie Cookies in Ihrem Browser löschen.</li>
                 </ul>
                 <p>Google Analytics ist ein Dienst der Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Irland. Weitere Informationen: <a href="https://policies.google.com/privacy" target="_blank">Google Datenschutzrichtlinie</a>.</p>
+
+                <!-- 7a -->
+                <h2 id="formulare">7a. Kontakt- und Supportformular</h2>
+                <p>Auf den Seiten <a href="/kontakt">Kontakt</a> und <a href="/support">Support</a> können Sie uns über ein Formular erreichen. Dabei werden ausschließlich die von Ihnen eingegebenen Angaben verarbeitet.</p>
+                <ul>
+                    <li><strong>Kontaktformular:</strong> Name, E-Mail-Adresse, gewähltes Thema und Ihre Nachricht.</li>
+                    <li><strong>Supportformular:</strong> Gerät, Betriebssystem, App-Version, Fehlerbeschreibung, Reproduktionsschritte, Dringlichkeit sowie – freiwillig – Name und E-Mail-Adresse für Rückfragen.</li>
+                    <li><strong>Technisch mitgesendet:</strong> Zeitpunkt des Absendens, Browserkennung (User-Agent) und die zuvor besuchte Seite. Diese Angaben dienen der Missbrauchserkennung.</li>
+                </ul>
+
+                <div class="info-box">
+                    <p><strong>Bitte keine Kinderdaten:</strong> Geben Sie in den Formularen keine personenbezogenen Daten Ihres Kindes an. Für Anliegen, die ein konkretes Kindprofil betreffen, nutzen Sie bitte den Elternbereich in der App.</p>
+                </div>
+
+                <h3>Verarbeitung über n8n</h3>
+                <p>Die Formularinhalte werden von unserem Webserver an eine Automatisierungsplattform (<strong>n8n</strong>) übermittelt, über die wir Anfragen entgegennehmen und bearbeiten. Die Webhook-Adresse ist serverseitig hinterlegt und im Quelltext der Seite nicht sichtbar. Mit dem Betreiber der Instanz besteht ein Auftragsverarbeitungsvertrag.</p>
+
+                <div class="info-box">
+                    <p><span class="placeholder">Zu ergänzen</span> Betreiber und Serverstandort der n8n-Instanz sowie Speicherdauer der eingegangenen Anfragen.</p>
+                </div>
+
+                <p><strong>Rechtsgrundlage:</strong> Art. 6 Abs. 1 lit. a DSGVO (Ihre Einwilligung über die Checkbox) sowie Art. 6 Abs. 1 lit. b und f DSGVO (Bearbeitung Ihrer Anfrage und berechtigtes Interesse an funktionierendem Support).</p>
+                <p><strong>Speicherdauer:</strong> Wir bewahren Anfragen so lange auf, wie es zur Bearbeitung erforderlich ist, und löschen sie anschließend, sofern keine gesetzlichen Aufbewahrungsfristen entgegenstehen.</p>
+                <p><strong>Spamschutz:</strong> Die Formulare enthalten ein für Sie unsichtbares Zusatzfeld (Honeypot) und eine Begrenzung der Absendungen pro IP-Adresse und Stunde. Es werden dabei keine Cookies gesetzt und keine externen Dienste eingebunden.</p>
 
                 <!-- 8 -->
                 <h2 id="eltern">8. Eltern-Dashboard & Aufsicht</h2>

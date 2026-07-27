@@ -5,6 +5,9 @@ $page_title_full  = 'Lerndex – KI-Nachhilfe App für Kinder | Mathe, Deutsch, 
 $page_description = 'Lerndex ist die sichere KI-Lernapp für Schüler der Klassen 1–8. Die KI erklärt statt Lösungen vorzugeben, passt sich Alter & Schulform an und bietet volle Eltern-Transparenz. Ein Bildungsprojekt von Nils-Digital.';
 $canonical        = SITE_URL . '/';
 $current_page     = 'home';
+$needs_quiz       = true;
+$feature_limit    = 3;      // Rest steht auf /funktionen
+$faq_teaser       = true;   // alle Fragen auf /faq
 
 $page_jsonld = [
     [
@@ -70,6 +73,7 @@ include __DIR__ . '/includes/navbar.php';
 
     <main id="main">
         <?php include __DIR__ . '/includes/sections/hero.php'; ?>
+        <?php include __DIR__ . '/includes/sections/demo_quiz.php'; ?>
         <?php include __DIR__ . '/includes/sections/benefits.php'; ?>
         <?php include __DIR__ . '/includes/sections/audience_deep.php'; ?>
         <?php include __DIR__ . '/includes/sections/dashboard_slider.php'; ?>

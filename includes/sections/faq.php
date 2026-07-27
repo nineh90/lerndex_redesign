@@ -1,177 +1,79 @@
+<?php
+require_once __DIR__ . '/../faq_data.php';
+
+/**
+ * $faq_teaser = true  → nur die wichtigsten Fragen, mit Link auf /faq
+ *               false → alle Fragen in Gruppen (Unterseite)
+ */
+$faq_teaser = $faq_teaser ?? false;
+$groups     = faq_groups();
+
+if ($faq_teaser) {
+    $teaserItems = [];
+    foreach ($groups as $g) {
+        foreach ($g['items'] as $item) {
+            if (!empty($item['teaser'])) $teaserItems[] = $item;
+        }
+    }
+}
+?>
 <section id="faq" class="section faq bg-light">
     <div class="container">
+
         <div class="section-header">
-            <h2>Häufige Fragen</h2>
+            <span class="badge">Fragen</span>
+            <?php dual('Häufige Fragen', 'Was du vielleicht wissen willst', 'h2'); ?>
         </div>
-        <div class="faq-list">
 
-            <!-- ── SEKTION: Lerninhalte & App ── -->
-            <div class="faq-section-header">
-                <span>📚 Lerninhalte &amp; App</span>
-                <?php icon('chevron-down'); ?>
-            </div>
-            <div class="faq-section-body">
+        <?php if ($faq_teaser): ?>
 
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <span>Ist die App für alle Schulfächer geeignet?</span>
-                        <?php icon('chevron-down'); ?>
+            <div class="faq-list">
+                <?php foreach ($teaserItems as $item): ?>
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span><?= e($item['q']) ?></span>
+                            <?php icon('chevron-down'); ?>
+                        </div>
+                        <div class="faq-answer"><p><?= e($item['a']) ?></p></div>
                     </div>
-                    <div class="faq-answer">
-                        <p>In der Grundschule sind es Mathe, Deutsch, Englisch und Sachkunde. Ab der weiterführenden Schule kommen <strong>Biologie, Chemie, Physik und Geschichte</strong> dazu – insgesamt sieben Fächer. Im Elternbereich lassen sich einzelne Fächer ausblenden, wenn dein Kind sich auf bestimmte Bereiche konzentrieren soll.</p>
-                    </div>
-                </div>
-
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <span>Für welches Alter ist Lerndex geeignet?</span>
-                        <?php icon('chevron-down'); ?>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Lerndex deckt aktuell die Klassen 1 bis 8 ab – also etwa 6 bis 14 Jahre. Die Fragen passen sich automatisch an Klasse und Schulform deines Kindes an, egal ob Grundschule, Gymnasium, Realschule oder Gesamtschule. Für Klasse 1 und 2 gibt es einen eigenen Modus mit Vorlesefunktion, damit auch Leseanfänger allein zurechtkommen. Höhere Klassenstufen bauen wir Schritt für Schritt aus.</p>
-                    </div>
-                </div>
-
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <span>Ist der Inhalt am Lehrplan ausgerichtet?</span>
-                        <?php icon('chevron-down'); ?>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Ja. Beim Einrichten eines Kindprofils gibst du Klasse und Schulform an – Lerndex passt die Quizfragen und den KI-Tutor automatisch an das entsprechende Niveau an.</p>
-                    </div>
-                </div>
-
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <span>Wie funktioniert der KI-Tutor genau?</span>
-                        <?php icon('chevron-down'); ?>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Der KI-Tutor basiert auf Google Gemini und wird durch spezielle Prompts so gesteuert, dass er pädagogisch wertvoll erklärt – und nicht einfach nur Lösungen vorgibt. Dein Kind lernt durch gezielte Fragen und Erklärungen, statt nur Antworten abzuschreiben.</p>
-                    </div>
-                </div>
-
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <span>Auf welchen Geräten funktioniert Lerndex?</span>
-                        <?php icon('chevron-down'); ?>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Lerndex ist aktuell für Android-Smartphones und -Tablets im Google Play Store verfügbar. Eine iOS-Version ist in Vorbereitung – schreib uns gern über das Kontaktformular, dann sagen wir dir Bescheid, sobald sie da ist.</p>
-                    </div>
-                </div>
-
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <span>Funktioniert Lerndex auch offline?</span>
-                        <?php icon('chevron-down'); ?>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Für den KI-Tutor und neue Quizfragen wird eine Internetverbindung benötigt. Lerndex lädt Inhalte jedoch vorab im Hintergrund, sodass der Einstieg ins Quiz auch bei schwacher Verbindung flüssig funktioniert.</p>
-                    </div>
-                </div>
-
+                <?php endforeach; ?>
             </div>
 
-            <!-- ── SEKTION: Eltern & Sicherheit ── -->
-            <div class="faq-section-header">
-                <span>🔒 Eltern &amp; Sicherheit</span>
-                <?php icon('chevron-down'); ?>
-            </div>
-            <div class="faq-section-body">
+            <p class="faq-more">
+                <a href="/faq" class="btn btn-secondary">Alle Fragen ansehen</a>
+            </p>
 
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <span>Was kann ich als Elternteil im Dashboard sehen?</span>
+        <?php else: ?>
+
+            <div class="faq-list">
+                <?php foreach ($groups as $gi => $group): ?>
+                    <div class="faq-section-header<?= $gi === 0 ? ' open' : '' ?>">
+                        <span><?= $group['icon'] ?> <?= e($group['title']) ?></span>
                         <?php icon('chevron-down'); ?>
                     </div>
-                    <div class="faq-answer">
-                        <p>Im Eltern-Dashboard siehst du in Echtzeit: XP-Fortschritt, aktuelle Streak, echte Lernzeit (nur aktive Nutzung, kein passives Herumscrollen), Quiz-Ergebnisse und alle Chats deines Kindes mit dem KI-Tutor – auch nachträglich.</p>
+                    <div class="faq-section-body<?= $gi === 0 ? ' open' : '' ?>">
+                        <?php foreach ($group['items'] as $item): ?>
+                            <div class="faq-item">
+                                <div class="faq-question">
+                                    <span><?= e($item['q']) ?></span>
+                                    <?php icon('chevron-down'); ?>
+                                </div>
+                                <div class="faq-answer"><p><?= e($item['a']) ?></p></div>
+                            </div>
+                        <?php endforeach; ?>
                     </div>
-                </div>
-
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <span>Kann mein Kind unangemessene Inhalte anfragen?</span>
-                        <?php icon('chevron-down'); ?>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Lerndex verfügt über ein mehrstufiges Kinderschutzsystem. Der KI-Tutor ist strikt auf schulische Themen beschränkt und gibt ausschließlich pädagogisch geprüfte Antworten. Sensible Anfragen werden automatisch erkannt, blockiert und du als Elternteil wirst benachrichtigt.</p>
-                    </div>
-                </div>
-
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <span>Kann ich als Elternteil eigene Aufgaben erstellen?</span>
-                        <?php icon('chevron-down'); ?>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Ja! Du kannst einfach ein Foto einer Hausaufgabe machen – Lerndex erkennt die Aufgabe automatisch und erstellt daraus passende Übungsfragen für dein Kind.</p>
-                    </div>
-                </div>
-
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <span>Sieht mein Kind Werbung?</span>
-                        <?php icon('chevron-down'); ?>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Nein, Lerndex ist komplett werbefrei, um eine ablenkungsfreie Lernumgebung zu garantieren.</p>
-                    </div>
-                </div>
-
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <span>Ist die App DSGVO-konform?</span>
-                        <?php icon('chevron-down'); ?>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Ja. Lerndex wurde von Anfang an DSGVO-konform entwickelt. Alle Lern- und Nutzungsdaten werden in einem europäischen Rechenzentrum gespeichert, es werden keine Daten an Dritte verkauft und wir erheben nur, was für den Lernbetrieb nötig ist. Für die Antworten des KI-Tutors werden die Gespräche an Google Vertex AI übertragen – vertraglich ausgeschlossen ist dabei, dass sie zum Training von KI-Modellen verwendet werden. Alle Details stehen in unserer <a href="/datenschutz">Datenschutzerklärung</a>.</p>
-                    </div>
-                </div>
-
+                <?php endforeach; ?>
             </div>
 
-            <!-- ── SEKTION: Abo & Kosten ── -->
-            <div class="faq-section-header">
-                <span>💳 Abo &amp; Kosten</span>
-                <?php icon('chevron-down'); ?>
-            </div>
-            <div class="faq-section-body">
-
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <span>Gibt es eine kostenlose Testphase?</span>
-                        <?php icon('chevron-down'); ?>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Ja! Du kannst Lerndex 14 Tage lang kostenlos und ohne Einschränkungen testen. Erst danach wird das gewählte Abonnement aktiv – und es ist jederzeit monatlich kündbar.</p>
-                    </div>
+            <div class="faq-foot">
+                <p>Frage nicht dabei?</p>
+                <div class="faq-foot-cta">
+                    <a href="/kontakt" class="btn btn-primary"><?php icon('mail'); ?> Schreib uns</a>
+                    <a href="/support" class="btn btn-secondary">Problem mit der App melden</a>
                 </div>
-
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <span>Was ist der Unterschied zwischen Solo, Duo und Family?</span>
-                        <?php icon('chevron-down'); ?>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Die Pläne unterscheiden sich nur in der Anzahl der Kinderprofile: <strong>Solo</strong> (12,99 €/Monat) für 1 Kind, <strong>Duo</strong> (24,99 €/Monat) für 2 Kinder und <strong>Family</strong> (39,99 €/Monat) für bis zu 4 Kinder. Im Family-Plan lassen sich weitere Kinder für je 6,99 €/Monat ergänzen. Alle Funktionen sind in jedem Plan vollständig enthalten.</p>
-                    </div>
-                </div>
-
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <span>Wie kündige ich mein Abonnement?</span>
-                        <?php icon('chevron-down'); ?>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Die Kündigung läuft direkt über den Google Play Store – genauso wie bei jeder anderen App. Kein versteckter Kündigungsprozess, keine Mindestlaufzeit.</p>
-                    </div>
-                </div>
-
             </div>
 
-        </div>
+        <?php endif; ?>
+
     </div>
 </section>

@@ -49,7 +49,7 @@
                     <span class="for-parents">Kostenlos testen</span>
                     <span class="for-kids">Lexi kennenlernen</span>
                 </a>
-                <a href="#demo-quiz" class="btn btn-secondary btn-lg">
+                <a href="#demo-quiz-section" class="btn btn-secondary btn-lg">
                     <span class="for-parents">Erst ansehen</span>
                     <span class="for-kids">Quiz ausprobieren</span>
                 </a>

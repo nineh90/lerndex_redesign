@@ -106,11 +106,23 @@ Dazu gibt es `/fuer-eltern` und `/fuer-kinder` als eigenständige Vollseiten mit
 
 `prefers-reduced-motion: reduce` schaltet global alle Übergänge und Keyframes ab; Endzustände bleiben erhalten.
 
+### Seiten
+
+`/` · `/fuer-eltern` · `/fuer-kinder` · `/funktionen` · `/sicherheit` · `/preise` · `/faq` · `/kontakt` · `/support`, dazu `/impressum` · `/datenschutz` · `/agb` (noindex).
+
+**Teaser statt Dopplung:** Die Startseite setzt `$feature_limit = 3` und `$faq_teaser = true`. Dieselben Sections rendern auf `/funktionen` und `/faq` den vollen Inhalt. Wer eine Section anfasst, bedient damit beide Seiten — und Google sieht denselben Text nicht auf zwei URLs.
+
+FAQ-Inhalte stehen **nur** in `includes/faq_data.php`. Von dort holen sich sowohl die Darstellung als auch das FAQPage-JSON-LD ihren Text; eine Antwort in der Suche kann so nie von der Antwort auf der Seite abweichen.
+
+`/fuer-eltern` und `/fuer-kinder` setzen `$force_mode`, damit eine alte `localStorage`-Wahl die Seite nicht in die falsche Ansprache kippt. Der Umschalter wird dort nicht angezeigt.
+
 ### Formulare
 
-Browser → `POST /api/<name>.php` → n8n-Webhook. Der PHP-Proxy hält die Webhook-URL aus dem Quelltext, validiert serverseitig, prüft ein Honeypot-Feld und antwortet einheitlich mit `{ok: bool, message: string}`.
+Browser → `POST /api/submit.php` → n8n-Webhook. Der PHP-Proxy hält die Webhook-URL aus dem Quelltext, validiert serverseitig, prüft ein Honeypot-Feld, begrenzt auf fünf Absendungen pro IP und Stunde und antwortet einheitlich mit `{ok: bool, message: string}`. Ohne `config.php` liefert er eine verständliche Meldung statt eines Fehlers.
 
 Webhook-URLs stehen in `config.php` — **gitignored**. Vorlage: `config.example.php`.
+
+`/api/*.php` ist von der Clean-URL-Umleitung ausgenommen — in `.htaccess` **und** in `router.php`. Fehlt die Ausnahme an einer der beiden Stellen, wird der POST zu einem 301 und das Formular schlägt fehl.
 
 ### Icons
 
