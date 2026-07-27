@@ -582,6 +582,22 @@ body.nav-open {
     cursor: default;
 }
 
+/* iOS ist noch nicht verfügbar – Button sichtbar, aber klar als inaktiv erkennbar */
+.store-btn-placeholder.is-soon {
+    background: rgba(255, 255, 255, 0.08);
+    color: rgba(255, 255, 255, 0.55);
+    border: 1px dashed rgba(255, 255, 255, 0.25);
+    display: flex;
+    align-items: baseline;
+    gap: 0.4rem;
+}
+
+.store-btn-placeholder.is-soon span {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
 .footer-brand p {
     margin-bottom: 0.5rem;
 }

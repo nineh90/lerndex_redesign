@@ -39,7 +39,7 @@ include 'includes/head_legal.php';
                 <h2>Verantwortlich für die App</h2>
                 <p>
                     Lerndex ist eine Lern-App für Kinder und Jugendliche, entwickelt und betrieben von Nils-Digital.<br>
-                    Verfügbar im <strong>Apple App Store</strong> und im <strong>Google Play Store</strong>.
+                    Verfügbar im <strong>Google Play Store</strong>. Eine Version für den Apple App Store ist in Vorbereitung.
                 </p>
 
                 <h2>Umsatzsteuer</h2>

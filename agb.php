@@ -99,7 +99,7 @@ include 'includes/head_legal.php';
     </thead>
     <tbody>
         <tr>
-            <td><strong>Single</strong></td>
+            <td><strong>Solo</strong></td>
             <td>1 Monat (automatisch verlängernd)</td>
             <td>12,99 €/Monat</td>
             <td>1 Kind, monatlich kündbar</td>

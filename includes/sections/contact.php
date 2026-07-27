@@ -84,10 +84,10 @@
                         <label for="beta-ageRange">Altersbereich der Kinder</label>
                         <select id="beta-ageRange" name="ageRange" required>
                             <option value="" selected disabled>Bitte auswählen</option>
-                            <option value="6-7">6–7 Jahre</option>
-                            <option value="8-10">8–10 Jahre</option>
-                            <option value="11-13">11–13 Jahre</option>
-                            <option value="14-16">14–16 Jahre</option>
+                            <option value="6-7">6–7 Jahre (Klasse 1–2)</option>
+                            <option value="8-10">8–10 Jahre (Klasse 3–4)</option>
+                            <option value="11-12">11–12 Jahre (Klasse 5–6)</option>
+                            <option value="13-14">13–14 Jahre (Klasse 7–8)</option>
                             <option value="mix">Gemischt</option>
                         </select>
                     </div>

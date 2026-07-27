@@ -28,7 +28,7 @@
                         <i data-lucide="chevron-down"></i>
                     </div>
                     <div class="faq-answer">
-                        <p>Lerndex ist für Schülerinnen und Schüler der Klassen 1 bis 13 konzipiert. Die Fragen passen sich automatisch an Klasse und Schulform deines Kindes an – egal ob Grundschule, Gymnasium oder Realschule.</p>
+                        <p>Lerndex deckt aktuell die Klassen 1 bis 8 ab – also etwa 6 bis 14 Jahre. Die Fragen passen sich automatisch an Klasse und Schulform deines Kindes an, egal ob Grundschule, Gymnasium, Realschule oder Gesamtschule. Für Klasse 1 und 2 gibt es einen eigenen Modus mit Vorlesefunktion, damit auch Leseanfänger allein zurechtkommen. Höhere Klassenstufen bauen wir Schritt für Schritt aus.</p>
                     </div>
                 </div>
 
@@ -58,7 +58,7 @@
                         <i data-lucide="chevron-down"></i>
                     </div>
                     <div class="faq-answer">
-                        <p>Die App ist für iOS und Android Smartphones und Tablets verfügbar.</p>
+                        <p>Lerndex ist aktuell für Android-Smartphones und -Tablets im Google Play Store verfügbar. Eine iOS-Version ist in Vorbereitung – schreib uns gern über das Kontaktformular, dann sagen wir dir Bescheid, sobald sie da ist.</p>
                     </div>
                 </div>
 
@@ -127,7 +127,7 @@
                         <i data-lucide="chevron-down"></i>
                     </div>
                     <div class="faq-answer">
-                        <p>Ja. Lerndex wurde von Anfang an DSGVO-konform entwickelt. Die Server befinden sich in Europa, es werden keine Daten an Dritte verkauft und alle gespeicherten Informationen sind auf das notwendige Minimum begrenzt.</p>
+                        <p>Ja. Lerndex wurde von Anfang an DSGVO-konform entwickelt. Alle Lern- und Nutzungsdaten werden in einem europäischen Rechenzentrum gespeichert, es werden keine Daten an Dritte verkauft und wir erheben nur, was für den Lernbetrieb nötig ist. Für die Antworten des KI-Tutors werden die Gespräche an Google Vertex AI übertragen – vertraglich ausgeschlossen ist dabei, dass sie zum Training von KI-Modellen verwendet werden. Alle Details stehen in unserer <a href="/datenschutz">Datenschutzerklärung</a>.</p>
                     </div>
                 </div>
 
@@ -156,7 +156,7 @@
                         <i data-lucide="chevron-down"></i>
                     </div>
                     <div class="faq-answer">
-                        <p>Die Pläne unterscheiden sich nur in der Anzahl der Kinderprofile: <strong>Solo</strong> (12,99 €/Monat) für 1 Kind, <strong>Duo</strong> (24,99 €/Monat) für 2 Kinder und <strong>Family</strong> (39,99 €/Monat) für bis zu 4 Kinder. Alle Funktionen sind in jedem Plan vollständig enthalten.</p>
+                        <p>Die Pläne unterscheiden sich nur in der Anzahl der Kinderprofile: <strong>Solo</strong> (12,99 €/Monat) für 1 Kind, <strong>Duo</strong> (24,99 €/Monat) für 2 Kinder und <strong>Family</strong> (39,99 €/Monat) für bis zu 4 Kinder. Im Family-Plan lassen sich weitere Kinder für je 6,99 €/Monat ergänzen. Alle Funktionen sind in jedem Plan vollständig enthalten.</p>
                     </div>
                 </div>
 
@@ -166,7 +166,7 @@
                         <i data-lucide="chevron-down"></i>
                     </div>
                     <div class="faq-answer">
-                        <p>Die Kündigung läuft direkt über den App Store (iOS) bzw. Google Play Store (Android) – genauso wie bei jeder anderen App. Kein versteckter Kündigungsprozess, keine Mindestlaufzeit.</p>
+                        <p>Die Kündigung läuft direkt über den Google Play Store – genauso wie bei jeder anderen App. Kein versteckter Kündigungsprozess, keine Mindestlaufzeit.</p>
                     </div>
                 </div>
 

@@ -14,10 +14,10 @@
                 <a href="agb.php">AGB's</a>
             </div>
             <div class="footer-download" id="download">
-                <h4>Bald erhältlich</h4>
+                <h4>Jetzt herunterladen</h4>
                 <div class="store-buttons">
                     <div class="store-btn-placeholder"><a href="https://play.google.com/store/apps/details?id=de.nilsdigital.lerndex&hl=de" target="_blank" rel="noopener noreferrer">Google Play</a></div>
-                    <div class="store-btn-placeholder"><a href="#" target="_blank" rel="noopener noreferrer">App Store</a></div>
+                    <div class="store-btn-placeholder is-soon" aria-disabled="true">App Store <span>in Vorbereitung</span></div>
                 </div>
             </div>
         </div>

@@ -7,10 +7,10 @@
 
         <div class="pricing-grid">
 
-            <!-- Single -->
+            <!-- Solo -->
             <div class="pricing-card">
                 <div class="pricing-icon bg-blue"><i data-lucide="user"></i></div>
-                <div class="pricing-name">Single</div>
+                <div class="pricing-name">Solo</div>
                 <div class="pricing-price">
                     <span class="pricing-amount">12,99 €</span>
                     <span class="pricing-period">/ Monat</span>

@@ -4,7 +4,7 @@
     <?php include __DIR__ . '/head_common.php'; ?>
 
     <title>Lerndex – KI-Nachhilfe App für Kinder | Mathe, Deutsch, Englisch lernen</title>
-    <meta name="description" content="Lerndex ist die sichere KI-Lernapp für Schüler der Klassen 1–10. Die KI erklärt statt Lösungen vorzugeben, passt sich Alter & Schulform an und bietet volle Eltern-Transparenz. Ein Bildungsprojekt von Nils-Digital.">
+    <meta name="description" content="Lerndex ist die sichere KI-Lernapp für Schüler der Klassen 1–8. Die KI erklärt statt Lösungen vorzugeben, passt sich Alter & Schulform an und bietet volle Eltern-Transparenz. Ein Bildungsprojekt von Nils-Digital.">
     <meta name="keywords" content="Lern-App Kinder, KI Nachhilfe, sichere Lernapp, Mathe lernen Grundschule, Deutsch lernen App, Englisch Kinder App, Hausaufgaben Hilfe App, KI Tutor Kinder, Lernbegleiter App, Schul-App Deutschland, Lerndex, Nils Digital">
     <link rel="canonical" href="https://lerndex.de/">
 
@@ -56,20 +56,49 @@
       "name": "Lerndex",
       "url": "https://lerndex.de",
       "applicationCategory": "EducationApplication",
-      "operatingSystem": "Android, iOS",
-      "description": "KI-gestützte Lernapp für Schüler der Klassen 1–10 mit personalisiertem Tutor, altersgerechter Sprache, Eltern-Dashboard und Gamification.",
+      "operatingSystem": "Android",
+      "installUrl": "https://play.google.com/store/apps/details?id=de.nilsdigital.lerndex",
+      "description": "KI-gestützte Lernapp für Schüler der Klassen 1–8 mit personalisiertem Tutor, altersgerechter Sprache, Eltern-Dashboard und Gamification.",
       "inLanguage": "de",
       "brand": { "@type": "Brand", "name": "Lerndex" },
       "publisher": { "@type": "Organization", "name": "Nils-Digital", "url": "https://nils-digital.de" },
-      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR", "availability": "https://schema.org/ComingSoon" },
-      "audience": { "@type": "EducationalAudience", "educationalRole": "student", "audienceType": "Kinder im Schulalter (6–16 Jahre)" },
+      "offers": [
+        {
+          "@type": "Offer",
+          "name": "Solo – 1 Kind",
+          "price": "12.99",
+          "priceCurrency": "EUR",
+          "availability": "https://schema.org/InStock",
+          "url": "https://lerndex.de/preise"
+        },
+        {
+          "@type": "Offer",
+          "name": "Duo – 2 Kinder",
+          "price": "24.99",
+          "priceCurrency": "EUR",
+          "availability": "https://schema.org/InStock",
+          "url": "https://lerndex.de/preise"
+        },
+        {
+          "@type": "Offer",
+          "name": "Family – bis zu 4 Kinder",
+          "price": "39.99",
+          "priceCurrency": "EUR",
+          "availability": "https://schema.org/InStock",
+          "url": "https://lerndex.de/preise"
+        }
+      ],
+      "audience": { "@type": "EducationalAudience", "educationalRole": "student", "audienceType": "Kinder im Schulalter (6–14 Jahre, Klasse 1–8)" },
       "featureList": [
         "KI erklärt statt Lösungen vorzugeben",
         "Alters- und schulformgerechte Anpassung",
+        "Early-Learner-Modus mit Vorlesefunktion für Klasse 1–2",
         "5-Schichten-Kinderschutzsystem",
         "PIN-geschütztes Eltern-Dashboard",
-        "Foto-Upload für neue Übungsaufgaben",
-        "XP- und Level-System zur Motivation"
+        "Foto-Upload für neue Übungsaufgaben mit Eltern-Freigabe",
+        "Auswertung der aktiven Lernzeit",
+        "XP-, Level- und Avatar-System zur Motivation",
+        "Frei definierbare Belohnungen durch die Eltern"
       ]
     }
     </script>
