@@ -1,13 +1,17 @@
 <?php
-$page_title = 'Impressum';
-include 'includes/head_legal.php';
-?>
-<body>
-    <?php include 'includes/navbar_legal.php'; ?>
+require_once __DIR__ . '/includes/site.php';
 
-    <main class="legal-page">
+$page_title   = 'Impressum';
+$page_noindex = true;
+$current_page = 'impressum';
+
+include __DIR__ . '/includes/head.php';
+include __DIR__ . '/includes/navbar.php';
+?>
+
+    <main id="main" class="legal-page">
         <div class="container">
-            <a href="index.php" class="back-link">
+            <a href="/" class="back-link">
                 <i data-lucide="arrow-left"></i> Zurück zur Startseite
             </a>
             <div class="legal-content">
@@ -72,7 +76,7 @@ include 'includes/head_legal.php';
                 <p>Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen Urheberrecht. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der Grenzen des Urheberrechts bedürfen der schriftlichen Zustimmung des jeweiligen Autors bzw. Erstellers.</p>
 
                 <div class="info-box">
-                    <p><strong>Datenschutz:</strong> Informationen zum Umgang mit personenbezogenen Daten, insbesondere zum Schutz von Kinderdaten, finden Sie in unserer <a href="datenschutz.html" style="color: var(--secondary);">Datenschutzerklärung</a>.</p>
+                    <p><strong>Datenschutz:</strong> Informationen zum Umgang mit personenbezogenen Daten, insbesondere zum Schutz von Kinderdaten, finden Sie in unserer <a href="/datenschutz" style="color: var(--secondary);">Datenschutzerklärung</a>.</p>
                 </div>
 
                 <hr style="margin: 2.5rem 0; opacity: 0.1;">
@@ -80,9 +84,6 @@ include 'includes/head_legal.php';
             </div>
         </div>
     </main>
-
-    <?php include 'includes/footer_main.php'; ?>
-    <script>lucide.createIcons();</script>
-    <?php include 'includes/cookie_banner.php'; ?>
-</body>
-</html>
+<?php
+include __DIR__ . '/includes/footer.php';
+include __DIR__ . '/includes/foot.php';

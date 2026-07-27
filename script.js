@@ -69,25 +69,92 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   // =========================
-  // Mobile Menu Toggle
+  // Mobiles Menü – Panel von unten
   // =========================
-  var menuToggle = document.querySelector('.menu-toggle');
-  var navLinks = document.querySelector('.nav-links');
-  var navItems = document.querySelectorAll('.nav-links a');
+  var menuToggle = document.getElementById('menu-toggle');
+  var mobileMenu = document.getElementById('mobile-menu');
+  var menuOverlay = document.getElementById('menu-overlay');
+  var menuClose = document.getElementById('menu-close');
 
-  if (menuToggle && navLinks) {
+  if (menuToggle && mobileMenu && menuOverlay) {
+    var lastFocused = null;
+
+    function openMenu() {
+      lastFocused = document.activeElement;
+
+      mobileMenu.hidden = false;
+      menuOverlay.hidden = false;
+      // Reflow erzwingen, damit die Transition greift statt zu springen
+      void mobileMenu.offsetWidth;
+
+      mobileMenu.classList.add('is-open');
+      menuOverlay.classList.add('is-open');
+      menuToggle.classList.add('active');
+      menuToggle.setAttribute('aria-expanded', 'true');
+      menuToggle.setAttribute('aria-label', 'Menü schließen');
+      document.body.classList.add('nav-open');
+
+      var firstLink = mobileMenu.querySelector('a, button');
+      if (firstLink) firstLink.focus();
+    }
+
+    function closeMenu() {
+      mobileMenu.classList.remove('is-open');
+      menuOverlay.classList.remove('is-open');
+      menuToggle.classList.remove('active');
+      menuToggle.setAttribute('aria-expanded', 'false');
+      menuToggle.setAttribute('aria-label', 'Menü öffnen');
+      document.body.classList.remove('nav-open');
+
+      window.setTimeout(function () {
+        if (!mobileMenu.classList.contains('is-open')) {
+          mobileMenu.hidden = true;
+          menuOverlay.hidden = true;
+        }
+      }, 350);
+
+      if (lastFocused) lastFocused.focus();
+    }
+
+    function isOpen() {
+      return mobileMenu.classList.contains('is-open');
+    }
+
     menuToggle.addEventListener('click', function () {
-      menuToggle.classList.toggle('active');
-      navLinks.classList.toggle('active');
-      document.body.classList.toggle('nav-open');
+      isOpen() ? closeMenu() : openMenu();
     });
 
-    navItems.forEach(function (item) {
-      item.addEventListener('click', function () {
-        menuToggle.classList.remove('active');
-        navLinks.classList.remove('active');
-        document.body.classList.remove('nav-open');
-      });
+    if (menuClose) menuClose.addEventListener('click', closeMenu);
+    menuOverlay.addEventListener('click', closeMenu);
+
+    mobileMenu.querySelectorAll('a').forEach(function (link) {
+      link.addEventListener('click', closeMenu);
+    });
+
+    document.addEventListener('keydown', function (e) {
+      if (!isOpen()) return;
+
+      if (e.key === 'Escape') {
+        closeMenu();
+        return;
+      }
+
+      // Fokus im geöffneten Dialog halten
+      if (e.key === 'Tab') {
+        var focusables = mobileMenu.querySelectorAll('a[href], button:not([disabled])');
+        if (!focusables.length) return;
+
+        var first = focusables[0];
+        var last = focusables[focusables.length - 1];
+
+        if (e.shiftKey && document.activeElement === first) {
+          e.preventDefault();
+          last.focus();
+        } else if (!e.shiftKey && document.activeElement === last) {
+          e.preventDefault();
+          first.focus();
+        }
+      }
     });
   }
 
@@ -286,38 +353,5 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    return; // ✅ wichtig: wenn Wizard aktiv ist, brauchen wir das alte contact-form Handling nicht mehr
-  }
-
-  // =========================
-  // Legacy Contact Form (only if exists)
-  // =========================
-  var contactForm = document.getElementById('contact-form');
-  if (contactForm) {
-    contactForm.addEventListener('submit', function (e) {
-      e.preventDefault();
-
-      var submitBtn = contactForm.querySelector('button[type="submit"]');
-      var originalBtnText = submitBtn ? submitBtn.textContent : 'Absenden';
-      if (submitBtn) {
-        submitBtn.textContent = 'Wird gesendet...';
-        submitBtn.disabled = true;
-      }
-
-      setTimeout(function () {
-        contactForm.reset();
-
-        if (submitBtn) {
-          submitBtn.textContent = originalBtnText;
-          submitBtn.disabled = false;
-        }
-
-        setStatus(formStatus, 'success', 'Vielen Dank! Deine Nachricht wurde gesendet.');
-
-        setTimeout(function () {
-          setStatus(formStatus, '', '');
-        }, 5000);
-      }, 1000);
-    });
   }
 });

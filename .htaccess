@@ -1,0 +1,81 @@
+# ═══════════════════════════════════════════
+#  Lerndex – .htaccess
+# ═══════════════════════════════════════════
+
+Options -Indexes
+RewriteEngine On
+
+# ── 1. HTTPS erzwingen ──────────────────────
+RewriteCond %{HTTPS} off
+RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# ── 2. www → non-www ────────────────────────
+# non-www, passend zu den canonical-URLs
+RewriteCond %{HTTP_HOST} ^www\.lerndex\.de [NC]
+RewriteRule ^ https://lerndex.de%{REQUEST_URI} [L,R=301]
+
+# ── 3. Interne Includes nicht direkt ausliefern ──
+# Ohne das liefert z.B. /includes/sections/hero.php ein HTML-Fragment aus,
+# das Google als eigene Seite indexieren koennte.
+RewriteRule ^includes/ - [F,L]
+RewriteRule ^api/.*\.php$ - [L]
+
+<FilesMatch "^(config|config\.example)\.php$">
+    Require all denied
+</FilesMatch>
+
+# ── 4. Alte .php-URLs auf die Clean URL umleiten ──
+# WICHTIG: muss VOR dem internen Rewrite (Punkt 6) stehen.
+# THE_REQUEST enthaelt die urspruengliche Anfragezeile, deshalb loest der
+# interne Rewrite aus Punkt 6 diese Regel nicht erneut aus (keine Endlosschleife).
+RewriteCond %{THE_REQUEST} \s/+index\.php[\s?] [NC]
+RewriteRule ^ / [R=301,L]
+
+RewriteCond %{THE_REQUEST} \s/+([^\s?]+)\.php[\s?] [NC]
+RewriteRule ^ /%1 [R=301,L]
+
+# ── 5. Trailing Slash entfernen (ausser Root) ──
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.+)/$ /$1 [L,R=301]
+
+# ── 6. PHP-Erweiterung verstecken ───────────
+# /funktionen → funktionen.php
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}.php -f
+RewriteRule ^([^\.]+)$ $1.php [NC,L]
+
+# ── 7. Sicherheits-Header ───────────────────
+<IfModule mod_headers.c>
+    Header always set X-Content-Type-Options "nosniff"
+    Header always set X-Frame-Options "SAMEORIGIN"
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+    Header always set Permissions-Policy "geolocation=(), microphone=(), camera=()"
+</IfModule>
+
+# ── 8. Caching statischer Assets ────────────
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresByType image/jpeg        "access plus 1 year"
+    ExpiresByType image/png         "access plus 1 year"
+    ExpiresByType image/webp        "access plus 1 year"
+    ExpiresByType image/svg+xml     "access plus 1 year"
+    ExpiresByType font/woff2        "access plus 1 year"
+    ExpiresByType text/css          "access plus 1 month"
+    ExpiresByType application/javascript "access plus 1 month"
+    ExpiresByType application/json  "access plus 1 day"
+    ExpiresByType text/html         "access plus 0 seconds"
+</IfModule>
+
+# ── 9. Komprimierung ────────────────────────
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html text/plain text/css
+    AddOutputFilterByType DEFLATE application/javascript application/json
+    AddOutputFilterByType DEFLATE image/svg+xml
+</IfModule>
+
+# ── 10. Sonstiges ───────────────────────────
+<Files "sitemap.xml">
+    Header set Content-Type "application/xml"
+</Files>
+
+ErrorDocument 404 /404.php

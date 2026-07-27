@@ -1,13 +1,17 @@
 <?php
-$page_title = 'AGB';
-include 'includes/head_legal.php';
-?>
-<body>
-    <?php include 'includes/navbar_legal.php'; ?>
+require_once __DIR__ . '/includes/site.php';
 
-    <main class="legal-page">
+$page_title   = 'AGB';
+$page_noindex = true;
+$current_page = 'agb';
+
+include __DIR__ . '/includes/head.php';
+include __DIR__ . '/includes/navbar.php';
+?>
+
+    <main id="main" class="legal-page">
         <div class="container">
-            <a href="index.php" class="back-link">
+            <a href="/" class="back-link">
                 <i data-lucide="arrow-left"></i> Zurück zur Startseite
             </a>
             <div class="legal-content">
@@ -267,7 +271,7 @@ include 'includes/head_legal.php';
                 </p>
 
                 <div class="info-box">
-                    <p>Weitere rechtliche Informationen finden Sie in unserer <a href="datenschutz.html" style="color: var(--secondary);">Datenschutzerklärung</a> und im <a href="impressum.html" style="color: var(--secondary);">Impressum</a>.</p>
+                    <p>Weitere rechtliche Informationen finden Sie in unserer <a href="/datenschutz" style="color: var(--secondary);">Datenschutzerklärung</a> und im <a href="/impressum" style="color: var(--secondary);">Impressum</a>.</p>
                 </div>
 
                 <hr style="margin: 2.5rem 0; opacity: 0.1;">
@@ -275,9 +279,7 @@ include 'includes/head_legal.php';
             </div>
         </div>
     </main>
+<?php
+include __DIR__ . '/includes/footer.php';
+include __DIR__ . '/includes/foot.php';
 
-    <?php include 'includes/footer_main.php'; ?>
-    <script>lucide.createIcons();</script>
-    <?php include 'includes/cookie_banner.php'; ?>
-</body>
-</html>

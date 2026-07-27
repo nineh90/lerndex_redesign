@@ -1,13 +1,17 @@
 <?php
-$page_title = 'Datenschutzerklärung';
-include 'includes/head_legal.php';
-?>
-<body>
-    <?php include 'includes/navbar_legal.php'; ?>
+require_once __DIR__ . '/includes/site.php';
 
-    <main class="legal-page">
+$page_title   = 'Datenschutzerklärung';
+$page_noindex = true;
+$current_page = 'datenschutz';
+
+include __DIR__ . '/includes/head.php';
+include __DIR__ . '/includes/navbar.php';
+?>
+
+    <main id="main" class="legal-page">
         <div class="container">
-            <a href="index.php" class="back-link">
+            <a href="/" class="back-link">
                 <i data-lucide="arrow-left"></i> Zurück zur Startseite
             </a>
             <div class="legal-content">
@@ -231,9 +235,6 @@ include 'includes/head_legal.php';
             </div>
         </div>
     </main>
-
-    <?php include 'includes/footer_main.php'; ?>
-    <script>lucide.createIcons();</script>
-    <?php include 'includes/cookie_banner.php'; ?>
-</body>
-</html>
+<?php
+include __DIR__ . '/includes/footer.php';
+include __DIR__ . '/includes/foot.php';

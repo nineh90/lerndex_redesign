@@ -132,7 +132,7 @@
                     <div class="form-group checkbox-group">
                         <label class="checkbox-label" for="beta-privacy">
                             <input type="checkbox" id="beta-privacy" name="privacy" required>
-                            <span>Ich habe die <a href="datenschutz.php" target="_blank" rel="noopener">Datenschutzerklärung</a> gelesen und stimme zu.</span>
+                            <span>Ich habe die <a href="/datenschutz" target="_blank" rel="noopener">Datenschutzerklärung</a> gelesen und stimme zu.</span>
                         </label>
                     </div>
                     <div class="form-actions split">
