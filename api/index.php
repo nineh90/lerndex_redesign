@@ -18,6 +18,16 @@
 
 declare(strict_types=1);
 
+/* Nur auf Vercel arbeiten. Die .htaccess reicht /api/*.php unveraendert
+   durch, diese Datei waere auf dem Apache-Hosting also erreichbar und wuerde
+   unter /api/index.php ein zweites Mal die Startseite ausliefern. Vercel
+   setzt VERCEL in der Laufzeitumgebung; ueberall sonst endet der Aufruf hier.
+   Zum lokalen Testen: VERCEL=1 php -S localhost:8000 router.php */
+if ((getenv('VERCEL') ?: ($_SERVER['VERCEL'] ?? $_ENV['VERCEL'] ?? '')) === '') {
+    http_response_code(404);
+    exit;
+}
+
 $root = dirname(__DIR__);
 
 /* Der angefragte Pfad kommt als Query-Parameter aus den Rewrites in
