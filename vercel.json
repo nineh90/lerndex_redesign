@@ -5,17 +5,6 @@
     "api/*.php": { "runtime": "vercel-php@0.9.0" }
   },
 
-  "//": [
-    "Bewusst routes statt rewrites/redirects/headers: nur hier laesst sich die",
-    "Reihenfolge gegenueber dem Dateisystem selbst bestimmen. Alles vor",
-    "{ handle: filesystem } laeuft davor, alles danach greift erst, wenn keine",
-    "Datei gepasst hat. Noetig, weil Vercel / sonst auf die statische Datei",
-    "index.php aufloest und sie als application/x-httpd-php zum Download gibt,",
-    "statt den Front-Controller aufzurufen.",
-    "routes schliesst rewrites, redirects, headers, cleanUrls und trailingSlash",
-    "aus - das steckt deshalb alles hier drin."
-  ],
-
   "routes": [
     {
       "src": "/(.*)",
