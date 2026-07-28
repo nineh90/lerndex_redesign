@@ -4,7 +4,6 @@
   "trailingSlash": false,
 
   "functions": {
-    "*.php": { "runtime": "vercel-php@0.9.0" },
     "api/*.php": { "runtime": "vercel-php@0.9.0" }
   },
 
@@ -18,12 +17,18 @@
       "source": "/index.php",
       "destination": "/",
       "permanent": true
+    },
+    {
+      "source": "/:page.php",
+      "destination": "/:page",
+      "permanent": true
     }
   ],
 
   "rewrites": [
-    { "source": "/404", "destination": "/404.php" },
-    { "source": "/:page", "destination": "/:page.php" }
+    { "source": "/", "destination": "/api/index.php?page=index" },
+    { "source": "/:page", "destination": "/api/index.php?page=:page" },
+    { "source": "/(.*)", "destination": "/api/index.php?page=404" }
   ],
 
   "headers": [
