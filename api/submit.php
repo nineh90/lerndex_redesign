@@ -68,12 +68,19 @@ if ($mail !== '' && !filter_var($mail, FILTER_VALIDATE_EMAIL)) {
 }
 
 // ── Konfiguration ──
+// config.php hat Vorrang. Fehlt sie, greifen Umgebungsvariablen: auf
+// Serverless-Plattformen (Vercel) gibt es keine dauerhafte Datei neben dem
+// Code, die Webhooks kommen dort aus der Projektumgebung. Auf dem
+// Apache-Hosting bleibt config.php der Weg – dort ist nichts gesetzt.
 $configFile = __DIR__ . '/../config.php';
-if (!is_file($configFile)) {
-    fail('Das Formular ist noch nicht mit n8n verbunden. Bitte schreib uns direkt an info@lerndex.de.', 503);
+$config     = is_file($configFile) ? (array) require $configFile : [];
+
+foreach (['n8n_contact' => 'N8N_CONTACT', 'n8n_support' => 'N8N_SUPPORT', 'n8n_token' => 'N8N_TOKEN'] as $key => $envVar) {
+    if (empty($config[$key])) {
+        $config[$key] = (string) (getenv($envVar) ?: '');
+    }
 }
 
-$config = require $configFile;
 $target = $form === 'support' && !empty($config['n8n_support'])
     ? $config['n8n_support']
     : ($config['n8n_contact'] ?? '');

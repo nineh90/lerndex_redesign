@@ -1,0 +1,16 @@
+# Was Vercel gar nicht erst hochladen soll.
+# Wirkt ausschliesslich auf Vercel – der Apache-Deploy sieht diese Datei nie.
+
+# Nur fuer den lokalen Dev-Server; auf Vercel uebernimmt vercel.json das Routing
+router.php
+
+# Vorlage mit leeren Webhook-Feldern – wuerde sonst als Quelltext ausgeliefert
+config.example.php
+
+# Apache-Konfiguration, auf Vercel wirkungslos
+.htaccess
+
+# Arbeitsmaterial, nicht Teil der Seite
+neue_screenshots/
+CLAUDE.md
+.dims.json
