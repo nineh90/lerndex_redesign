@@ -1,5 +1,6 @@
 <?php
 require_once __DIR__ . '/site.php';
+require_once __DIR__ . '/icons.php';
 ?>
 <footer class="footer">
     <div class="container">
@@ -14,7 +15,10 @@ require_once __DIR__ . '/site.php';
                     <span class="logo-word">Lerndex</span>
                 </div>
                 <p>Ein Bildungsprojekt von <a href="https://nils-digital.de" target="_blank" rel="noopener" class="brand-link">Nils-Digital</a></p>
-                <p class="footer-tagline">Der sichere Lernbegleiter für Ihr Kind.</p>
+                <?php /* Ansprache je Modus – „Ihr Kind" waere im Kinder-Modus falsch. */ ?>
+                <p class="footer-tagline">
+                    <?php dual('Der sichere Lernbegleiter für Ihr Kind.', 'Dein Lernbegleiter – mit Lexi an deiner Seite.'); ?>
+                </p>
             </div>
 
             <div class="footer-col">
@@ -48,9 +52,13 @@ require_once __DIR__ . '/site.php';
             <div class="footer-col footer-download" id="download">
                 <h4>Jetzt herunterladen</h4>
                 <div class="store-buttons">
-                    <a href="<?= e(PLAY_STORE_URL) ?>" target="_blank" rel="noopener noreferrer" class="store-btn-placeholder">Google Play</a>
+                    <a href="<?= e(PLAY_STORE_URL) ?>" target="_blank" rel="noopener noreferrer" class="store-btn-placeholder">
+                        <?php icon('smartphone', 'icon-sm'); ?> Google Play
+                    </a>
                     <?php if (IOS_AVAILABLE): ?>
-                        <a href="<?= e(APP_STORE_URL) ?>" target="_blank" rel="noopener noreferrer" class="store-btn-placeholder">App Store</a>
+                        <a href="<?= e(APP_STORE_URL) ?>" target="_blank" rel="noopener noreferrer" class="store-btn-placeholder">
+                            <?php icon('smartphone', 'icon-sm'); ?> App Store
+                        </a>
                     <?php else: ?>
                         <span class="store-btn-placeholder is-soon" aria-disabled="true">App Store <span>in Vorbereitung</span></span>
                     <?php endif; ?>

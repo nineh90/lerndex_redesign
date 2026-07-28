@@ -4,6 +4,7 @@
  * Erwartet $current_page (Schlüssel aus NAV_MAIN / NAV_SUPPORT / NAV_LEGAL).
  */
 require_once __DIR__ . '/site.php';
+require_once __DIR__ . '/icons.php';
 $current_page = $current_page ?? '';
 ?>
 <a class="skip-link" href="#main">Zum Inhalt springen</a>
@@ -22,7 +23,9 @@ $current_page = $current_page ?? '';
             <?php foreach (NAV_MAIN as $key => [$label, $url]): ?>
                 <a href="<?= e($url) ?>"<?= $current_page === $key ? ' class="is-active" aria-current="page"' : '' ?>><?= e($label) ?></a>
             <?php endforeach; ?>
-            <a href="<?= e(PLAY_STORE_URL) ?>" target="_blank" rel="noopener noreferrer" class="btn btn-primary nav-cta">App holen</a>
+            <a href="<?= e(PLAY_STORE_URL) ?>" target="_blank" rel="noopener noreferrer" class="btn btn-primary nav-cta">
+                <?php icon('smartphone'); ?> App holen
+            </a>
         </div>
 
         <button class="menu-toggle" id="menu-toggle" aria-expanded="false" aria-controls="mobile-menu" aria-label="Menü öffnen">
@@ -57,5 +60,7 @@ $current_page = $current_page ?? '';
         <?php endforeach; ?>
     </nav>
 
-    <a href="<?= e(PLAY_STORE_URL) ?>" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-block">App herunterladen</a>
+    <a href="<?= e(PLAY_STORE_URL) ?>" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-block">
+        <?php icon('smartphone'); ?> App herunterladen
+    </a>
 </div>

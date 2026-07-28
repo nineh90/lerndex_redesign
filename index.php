@@ -75,6 +75,9 @@ include __DIR__ . '/includes/navbar.php';
         <?php include __DIR__ . '/includes/sections/hero.php'; ?>
         <?php include __DIR__ . '/includes/sections/demo_quiz.php'; ?>
         <?php include __DIR__ . '/includes/sections/benefits.php'; ?>
+        <?php /* Ansprache-Wechsel direkt vor dem Block, der sich am staerksten
+                 unterscheidet – wer auf Kinderansicht schaltet, landet sofort in "Deine Welt" */ ?>
+        <?php include __DIR__ . '/includes/sections/audience_invite.php'; ?>
         <?php include __DIR__ . '/includes/sections/audience_deep.php'; ?>
         <?php include __DIR__ . '/includes/sections/dashboard_slider.php'; ?>
         <?php include __DIR__ . '/includes/sections/features.php'; ?>
@@ -84,9 +87,7 @@ include __DIR__ . '/includes/navbar.php';
         <?php include __DIR__ . '/includes/sections/target_group.php'; ?>
         <?php include __DIR__ . '/includes/sections/pricing.php'; ?>
         <?php include __DIR__ . '/includes/sections/faq.php'; ?>
-        <?php /* testuser + contact: Beta-Wizard, wird in Phase 5 durch /kontakt und /support ersetzt */ ?>
-        <?php include __DIR__ . '/includes/sections/testuser.php'; ?>
-        <?php include __DIR__ . '/includes/sections/contact.php'; ?>
+        <?php include __DIR__ . '/includes/sections/cta_download.php'; ?>
     </main>
 
 <?php

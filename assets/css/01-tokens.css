@@ -55,6 +55,7 @@
     --sky:     #3B82F6;
     --sky-light: #DBEAFE;
     --teal:    #14B8A6;
+    --teal-deep: #0F766E;   /* traegt weisse Schrift (4.9:1) – das helle Teal nicht */
     --teal-light: #CCFBF1;
     --rose:    #F43F5E;
     --rose-light: #FFE4E6;
@@ -127,6 +128,9 @@ body.mode-parents {
     --accent-strong: var(--brand-800);
     --accent-soft:   var(--brand-100);
     --accent-contrast: var(--white);
+    /* Nur fuer Flaechen und Deko. Alles, was Text traegt oder selbst Text
+       ist, nimmt --accent – das ist in beiden Modi kontraststark genug. */
+    --accent-bright: var(--brand-600);
 
     --surface:     var(--white);
     --surface-alt: var(--brand-50);
@@ -139,6 +143,25 @@ body.mode-parents {
 
     --border: rgba(74, 29, 150, 0.1);
 
+    /* ── Navigation ──────────────────────────────────────────
+       Eigene Tokens, damit die Leiste im Kinder-Modus waermer
+       wird, ohne dass 04-layout.css davon etwas wissen muss. */
+    --nav-bg:          rgba(255, 255, 255, 0.72);
+    --nav-bg-scrolled: rgba(255, 255, 255, 0.92);
+    --nav-border:      rgba(74, 29, 150, 0.08);
+    --nav-shadow:      0 8px 30px rgba(74, 29, 150, 0.10);
+    --nav-link:        var(--gray-800);
+
+    /* ── Footer: durchgehend dunkel ──────────────────────────*/
+    --footer-bg:     linear-gradient(170deg, var(--brand-950), var(--brand-900));
+    --footer-text:   var(--white);
+    --footer-muted:  rgba(255, 255, 255, 0.68);
+    --footer-border: rgba(255, 255, 255, 0.12);
+    --footer-line:   rgba(255, 255, 255, 0.30);   /* sichtbare Kante, nicht nur Ahnung */
+    --footer-fill:   rgba(255, 255, 255, 0.10);   /* leichte Flaeche auf dunklem Grund */
+    --footer-fill-strong: rgba(255, 255, 255, 0.16);
+    --footer-accent: var(--brand-300);
+
     --radius-sm:   10px;
     --radius:      20px;
     --radius-lg:   24px;
@@ -148,6 +171,8 @@ body.mode-parents {
     --shadow:       0 4px 20px rgba(74, 29, 150, 0.08);
     --shadow-hover: 0 10px 30px rgba(74, 29, 150, 0.15);
     --shadow-lift:  0 20px 50px rgba(74, 29, 150, 0.18);
+    --shadow-cta:       0 4px 16px rgba(124, 58, 237, 0.32);
+    --shadow-cta-hover: 0 10px 28px rgba(124, 58, 237, 0.42);
 
     --gradient: linear-gradient(135deg, var(--brand-800), var(--brand-600));
 
@@ -162,10 +187,14 @@ body.mode-parents {
    Das Lila bleibt als Markenanker, dazu kommen Sonnenfarben.
    ═══════════════════════════════════════════════════════════════ */
 body.mode-kids {
-    --accent:        var(--teal);
+    /* Bewusst das dunkle Teal: das helle #14B8A6 kam als Linkfarbe und unter
+       weisser Schrift auf ~2.4:1 – auf Buttons war die Beschriftung damit
+       kaum zu lesen. Die spielerische Variante lebt in --accent-bright weiter. */
+    --accent:        var(--teal-deep);
     --accent-strong: var(--brand-700);
     --accent-soft:   var(--teal-light);
     --accent-contrast: var(--white);
+    --accent-bright: var(--teal);
 
     --surface:     var(--white);
     --surface-alt: #FFF9F0;
@@ -175,7 +204,15 @@ body.mode-kids {
     --text-muted:  #7A6E86;
     --heading-color: var(--brand-700);
 
-    --border: rgba(20, 184, 166, 0.18);
+    --border: rgba(15, 118, 110, 0.18);
+
+    --nav-bg:          rgba(255, 252, 246, 0.75);
+    --nav-bg-scrolled: rgba(255, 252, 246, 0.94);
+    --nav-border:      rgba(15, 118, 110, 0.14);
+    --nav-shadow:      0 8px 30px rgba(124, 58, 237, 0.14);
+
+    --footer-bg:     linear-gradient(170deg, var(--brand-900), var(--brand-800));
+    --footer-accent: var(--teal-light);
 
     /* Deutlich rundere Formen – der schnellste optische Unterschied */
     --radius-sm:   14px;
@@ -185,8 +222,10 @@ body.mode-kids {
     --shadow:       0 6px 24px rgba(124, 58, 237, 0.12);
     --shadow-hover: 0 14px 36px rgba(245, 158, 11, 0.22);
     --shadow-lift:  0 24px 56px rgba(124, 58, 237, 0.22);
+    --shadow-cta:       0 4px 16px rgba(15, 118, 110, 0.32);
+    --shadow-cta-hover: 0 10px 28px rgba(15, 118, 110, 0.42);
 
-    --gradient: linear-gradient(135deg, var(--brand-600), var(--teal));
+    --gradient: linear-gradient(135deg, var(--brand-600), var(--teal-deep));
 
     --lift: -8px;
 }

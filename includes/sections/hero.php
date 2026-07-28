@@ -9,14 +9,9 @@
     <div class="container hero-content">
         <div class="hero-text">
 
-            <div class="audience-switch" role="group" aria-label="Für wen ist diese Seite?">
-                <button type="button" data-audience="parents" aria-pressed="true">
-                    <?php icon('users', 'icon-sm'); ?> Für Eltern
-                </button>
-                <button type="button" data-audience="kids" aria-pressed="false">
-                    <?php icon('sparkles', 'icon-sm'); ?> Für Kinder
-                </button>
-            </div>
+            <?php /* Kein Ansprache-Umschalter mehr an dieser Stelle: die Labels waren
+                     mit den Navbar-Links wortgleich und sahen aus wie Navigation.
+                     Der Wechsel sitzt jetzt erklaert in sections/audience_invite.php. */ ?>
 
             <p class="hero-eyebrow">
                 <?php icon('check-circle', 'icon-sm'); ?>
@@ -25,8 +20,8 @@
 
             <h1>
                 <span class="for-parents">
-                    Lernen, das Kinder lieben.<br>
-                    <span class="text-gradient">Kontrolle, die Sie brauchen.</span>
+                    Lerndex: KI-Nachhilfe, die erklärt –<br>
+                    <span class="text-gradient">statt die Hausaufgaben zu machen.</span>
                 </span>
                 <span class="for-kids">
                     Lernen, das sich<br>
@@ -34,25 +29,40 @@
                 </span>
             </h1>
 
+            <?php /* Der Markenslogan steht jetzt hier statt in der H1 – die H1 muss
+                     zuerst sagen, was Lerndex ist. Wortlaut identisch mit dem
+                     Brand-slogan im JSON-LD (index.php). */ ?>
             <p class="hero-sub for-parents">
-                Lerndex erklärt Ihrem Kind den Schulstoff, statt Lösungen vorzusagen.
-                Sie sehen jederzeit, was gelernt wurde – und worüber gesprochen wurde.
+                Lernen, das Kinder lieben. Kontrolle, die Sie brauchen. Die App begleitet
+                Ihr Kind durch den Schulstoff und zeigt Ihnen jederzeit, was gelernt wurde
+                – und worüber gesprochen wurde.
             </p>
             <p class="hero-sub for-kids">
                 Lexi erklärt dir alles, was du in der Schule brauchst – geduldig und
                 so oft du willst. Sammle XP, halte deine Streak und schalte Avatare frei.
             </p>
 
+            <?php /* Zwei komplette Button-Paare statt vertauschter Beschriftungen:
+                     Kinder koennen kein Abo abschliessen, ihr Hauptweg ist das Demo-Quiz.
+                     Ein href laesst sich nicht per CSS umschalten, also je Modus eine Gruppe. */ ?>
             <div class="hero-cta">
-                <a href="<?= e(PLAY_STORE_URL) ?>" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-lg">
-                    <?php icon('sparkles'); ?>
-                    <span class="for-parents">Kostenlos testen</span>
-                    <span class="for-kids">Lexi kennenlernen</span>
-                </a>
-                <a href="#demo-quiz-section" class="btn btn-secondary btn-lg">
-                    <span class="for-parents">Erst ansehen</span>
-                    <span class="for-kids">Quiz ausprobieren</span>
-                </a>
+                <div class="hero-cta-group for-parents">
+                    <a href="<?= e(PLAY_STORE_URL) ?>" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-lg">
+                        <?php icon('smartphone'); ?> Gratis testen – bei Google Play
+                    </a>
+                    <a href="#demo-quiz-section" class="btn btn-secondary btn-lg">
+                        <?php icon('target'); ?> Erst das Demo-Quiz
+                    </a>
+                </div>
+
+                <div class="hero-cta-group for-kids">
+                    <a href="#demo-quiz-section" class="btn btn-primary btn-lg">
+                        <?php icon('target'); ?> Quiz ausprobieren
+                    </a>
+                    <a href="#ansicht-wechseln" class="btn btn-secondary btn-lg">
+                        <?php icon('users'); ?> Zeig es deinen Eltern
+                    </a>
+                </div>
             </div>
 
             <ul class="hero-trust">
