@@ -33,24 +33,34 @@ $compare = [
                Genau das ist das Problem.</p>
         </div>
 
+        <?php /* Die Spaltenkoepfe sind reine Optik: sie erscheinen erst ab 800px,
+                 wenn es tatsaechlich zwei Spalten gibt. Darunter tragen die Zellen
+                 ihre Beschriftung selbst (.compare-tag). Fuer Screenreader ist
+                 immer der Tag die Quelle – deshalb hier aria-hidden. */ ?>
+        <div class="compare-head" aria-hidden="true">
+            <span class="compare-label compare-label--bad">Beliebiger KI-Chat</span>
+            <span class="compare-label compare-label--good">Lerndex</span>
+        </div>
+
         <div class="compare-grid reveal-stagger">
-            <?php foreach ($compare as $i => [$bad, $good]): ?>
+            <?php foreach ($compare as [$bad, $good]): ?>
                 <div class="compare-row">
                     <div class="compare-cell compare-cell--bad">
-                        <?php icon('circle-x', 'icon-sm'); ?>
-                        <span><?= e($bad) ?></span>
+                        <span class="compare-tag">Beliebiger KI-Chat</span>
+                        <span class="compare-claim">
+                            <?php icon('circle-x', 'icon-sm'); ?>
+                            <span><?= e($bad) ?></span>
+                        </span>
                     </div>
                     <div class="compare-cell compare-cell--good">
-                        <?php icon('check-circle', 'icon-sm'); ?>
-                        <span><?= e($good) ?></span>
+                        <span class="compare-tag">Lerndex</span>
+                        <span class="compare-claim">
+                            <?php icon('check-circle', 'icon-sm'); ?>
+                            <span><?= e($good) ?></span>
+                        </span>
                     </div>
                 </div>
             <?php endforeach; ?>
-        </div>
-
-        <div class="compare-foot">
-            <span class="compare-label compare-label--bad">Beliebiger KI-Chat</span>
-            <span class="compare-label compare-label--good">Lerndex</span>
         </div>
     </div>
 </section>
@@ -74,8 +84,14 @@ $compare = [
                 </div>
             <?php endforeach; ?>
         </div>
+        <?php /* Genau so steht es in subject_config.dart der App: Klasse 3–4 hat
+                 Sachkunde, ab Klasse 5 treten Biologie, Chemie, Physik und
+                 Geschichte an dessen Stelle. Sachkunde kommt nicht dazu, es faellt
+                 weg – acht Faecher gibt es also insgesamt, nie gleichzeitig. */ ?>
         <p class="subject-note">
-            In der Grundschule lernst du die ersten vier. Ab Klasse 5 kommen die anderen dazu.
+            In der Grundschule lernst du Mathe, Deutsch, Englisch und Sachkunde.
+            Ab Klasse 5 kommen Biologie, Chemie, Physik und Geschichte dazu –
+            Sachkunde brauchst du dann nicht mehr.
         </p>
 
         <div class="lexi-intro reveal">

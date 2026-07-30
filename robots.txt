@@ -1,6 +1,8 @@
 User-agent: *
 Allow: /
 
+# Interne Bausteine und der Formular-Proxy sind keine Seiten.
 Disallow: /includes/
+Disallow: /api/
 
 Sitemap: https://lerndex.de/sitemap.xml

@@ -16,7 +16,7 @@ include __DIR__ . '/includes/navbar.php';
             </a>
             <div class="legal-content">
                 <h1>Datenschutzerklärung</h1>
-                <p class="subtitle">Stand: März 2026 &nbsp;·&nbsp; Lerndex ist eine App für Kinder und Jugendliche. Wir nehmen den Schutz ihrer Daten besonders ernst.</p>
+                <p class="subtitle">Stand: Juli 2026 &nbsp;·&nbsp; Lerndex ist eine App für Kinder und Jugendliche. Wir nehmen den Schutz ihrer Daten besonders ernst.</p>
 
                 <div class="children-box">
                     <div class="box-title">
@@ -35,6 +35,7 @@ include __DIR__ . '/includes/navbar.php';
                         <li><a href="#zweck">Zweck der Datenverarbeitung</a></li>
                         <li><a href="#firebase">Firebase & Google-Dienste</a></li>
                         <li><a href="#ki-tutor">KI-Tutor & Gemini</a></li>
+                        <li><a href="#hosting">Hosting der Website</a></li>
                         <li><a href="#analytics">Google Analytics (Website)</a></li>
                         <li><a href="#formulare">Kontakt- und Supportformular</a></li>
                         <li><a href="#eltern">Eltern-Dashboard & Aufsicht</a></li>
@@ -153,16 +154,39 @@ include __DIR__ . '/includes/navbar.php';
                     <li>Eltern können jederzeit einzelne oder alle Gespräche über das Eltern-Dashboard löschen.</li>
                 </ul>
 
+                <!-- 6a -->
+                <h2 id="hosting">6a. Hosting der Website (lerndex.de)</h2>
+                <p>Die Website lerndex.de wird bei einem externen Anbieter gehostet. Bei jedem Aufruf einer Seite werden vom Webserver automatisch Zugriffsdaten in einer Protokolldatei (Server-Logfile) erfasst. Das ist technisch notwendig, um die Seite ausliefern zu können, und geschieht unabhängig von Ihrer Cookie-Entscheidung.</p>
+                <ul>
+                    <li>IP-Adresse des anfragenden Geräts</li>
+                    <li>Datum und Uhrzeit des Zugriffs</li>
+                    <li>Name und URL der abgerufenen Datei</li>
+                    <li>Übertragene Datenmenge und Meldung über den Erfolg des Abrufs</li>
+                    <li>Browserkennung (User-Agent) und Betriebssystem</li>
+                    <li>Zuvor besuchte Seite (Referrer), sofern übermittelt</li>
+                </ul>
+                <p><strong>Zweck und Rechtsgrundlage:</strong> Die Verarbeitung dient dem technischen Betrieb, der Stabilität und der Sicherheit der Website (Abwehr von Angriffen, Fehleranalyse). Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO; unser berechtigtes Interesse liegt in einem störungsfreien und sicheren Betrieb der Website.</p>
+                <p><strong>Speicherdauer:</strong> Die Logfiles werden vom Hoster nach spätestens sieben Tagen gelöscht oder gekürzt. Eine Zusammenführung dieser Daten mit anderen Datenquellen findet nicht statt.</p>
+                <p>Mit dem Hosting-Anbieter besteht ein Auftragsverarbeitungsvertrag gemäß Art. 28 DSGVO. Der Server steht in Deutschland.</p>
+
+                <div class="info-box">
+                    <p><span class="placeholder">Zu ergänzen</span> Name und Anschrift des Hosting-Anbieters sowie die tatsächliche Speicherdauer der Logfiles laut Vertrag.</p>
+                </div>
+
+                <p><strong>Keine externen Ressourcen:</strong> Schriften, Bilder, Symbole und Skripte der Website werden ausschließlich von unserem eigenen Server geladen. Es findet insbesondere keine Einbindung von Google Fonts, keine Einbindung eines Content-Delivery-Networks und kein Nachladen externer Bibliotheken statt. Ohne Ihre Einwilligung baut Ihr Browser daher keine Verbindung zu Dritt-Servern auf.</p>
+
                 <!-- 7 -->
                 <h2 id="analytics">7. Google Analytics (Website lerndex.de)</h2>
-                <p>Die <strong>Website lerndex.de</strong> (nicht die App) verwendet Google Analytics zur Analyse des Nutzerverhaltens auf der Webseite. Folgendes gilt:</p>
+                <p>Die <strong>Website lerndex.de</strong> (nicht die App) verwendet Google Analytics 4 zur Analyse des Nutzerverhaltens auf der Webseite. Folgendes gilt:</p>
                 <ul>
-                    <li>Google Analytics wird nur nach Ihrer <strong>ausdrücklichen Einwilligung</strong> über das Cookie-Banner aktiviert (Art. 6 Abs. 1 lit. a DSGVO).</li>
-                    <li>IP-Adressen werden anonymisiert übertragen (<code>anonymize_ip: true</code>).</li>
+                    <li>Google Analytics wird <strong>erst nach Ihrer ausdrücklichen Einwilligung</strong> über das Cookie-Banner geladen. Lehnen Sie ab oder treffen Sie keine Entscheidung, wird das Google-Skript nicht nachgeladen und es geht keine Anfrage an Google.</li>
+                    <li>Rechtsgrundlage für das Speichern und Auslesen der Cookies ist § 25 Abs. 1 TDDDG, für die anschließende Verarbeitung Art. 6 Abs. 1 lit. a DSGVO.</li>
+                    <li>Google Analytics 4 speichert die IP-Adresse nicht dauerhaft; sie wird zur Grobverortung genutzt und dabei gekürzt. Werbebezogene Signale (<code>ad_storage</code>, <code>ad_user_data</code>, <code>ad_personalization</code>) sind dauerhaft deaktiviert, eine Zusammenführung mit Werbenetzwerken findet nicht statt.</li>
                     <li>Es werden keine personenbezogenen Daten von App-Nutzern (Kindern) an Google Analytics übertragen.</li>
-                    <li>Ihre Einwilligung können Sie jederzeit widerrufen, indem Sie Cookies in Ihrem Browser löschen.</li>
+                    <li>Ihre Einwilligung können Sie jederzeit widerrufen, indem Sie die Website-Daten für lerndex.de in Ihrem Browser löschen. Der Banner erscheint dann erneut.</li>
                 </ul>
-                <p>Google Analytics ist ein Dienst der Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Irland. Weitere Informationen: <a href="https://policies.google.com/privacy" target="_blank">Google Datenschutzrichtlinie</a>.</p>
+                <p>Eine Übermittlung in die USA ist nicht ausgeschlossen. Google ist unter dem EU-US Data Privacy Framework zertifiziert; zusätzlich bestehen Standarddatenschutzklauseln.</p>
+                <p>Google Analytics ist ein Dienst der Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Irland. Weitere Informationen: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google Datenschutzrichtlinie</a>.</p>
 
                 <!-- 7a -->
                 <h2 id="formulare">7a. Kontakt- und Supportformular</h2>
@@ -256,7 +280,7 @@ include __DIR__ . '/includes/navbar.php';
                 <p>Wir antworten auf datenschutzbezogene Anfragen innerhalb von <strong>72 Stunden</strong>.</p>
 
                 <hr style="margin: 2.5rem 0; opacity: 0.1;">
-                <p><small>Diese Datenschutzerklärung kann bei wesentlichen Änderungen der App oder der Rechtslage aktualisiert werden. Über wesentliche Änderungen informieren wir Eltern per E-Mail. Stand: März 2026.</small></p>
+                <p><small>Diese Datenschutzerklärung kann bei wesentlichen Änderungen der App oder der Rechtslage aktualisiert werden. Über wesentliche Änderungen informieren wir Eltern per E-Mail. Stand: Juli 2026.</small></p>
             </div>
         </div>
     </main>

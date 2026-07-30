@@ -16,7 +16,7 @@ include __DIR__ . '/includes/navbar.php';
             </a>
             <div class="legal-content">
                 <h1>Impressum</h1>
-                <p class="subtitle">Angaben gemäß § 5 TMG</p>
+                <p class="subtitle">Angaben gemäß § 5 DDG</p>
 
                 <h2>Anbieter & Betreiber</h2>
                 <p>
@@ -66,7 +66,7 @@ include __DIR__ . '/includes/navbar.php';
                 <p>Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.</p>
 
                 <h2>Haftung für Inhalte</h2>
-                <p>Als Diensteanbieter sind wir gemäß § 7 Abs. 1 TMG für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich. Nach §§ 8 bis 10 TMG sind wir als Diensteanbieter jedoch nicht verpflichtet, übermittelte oder gespeicherte fremde Informationen zu überwachen oder nach Umständen zu forschen, die auf eine rechtswidrige Tätigkeit hinweisen.</p>
+                <p>Als Diensteanbieter sind wir gemäß § 7 Abs. 1 DDG für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich. Nach §§ 8 bis 10 DDG sind wir als Diensteanbieter jedoch nicht verpflichtet, übermittelte oder gespeicherte fremde Informationen zu überwachen oder nach Umständen zu forschen, die auf eine rechtswidrige Tätigkeit hinweisen.</p>
                 <p>Verpflichtungen zur Entfernung oder Sperrung der Nutzung von Informationen nach den allgemeinen Gesetzen bleiben hiervon unberührt. Eine diesbezügliche Haftung ist jedoch erst ab dem Zeitpunkt der Kenntnis einer konkreten Rechtsverletzung möglich.</p>
 
                 <h2>Haftung für Links</h2>
@@ -80,7 +80,7 @@ include __DIR__ . '/includes/navbar.php';
                 </div>
 
                 <hr style="margin: 2.5rem 0; opacity: 0.1;">
-                <p><small>Stand: März 2026</small></p>
+                <p><small>Stand: Juli 2026</small></p>
             </div>
         </div>
     </main>

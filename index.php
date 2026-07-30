@@ -6,6 +6,7 @@ $page_description = 'Lerndex ist die sichere KI-Lernapp für Schüler der Klasse
 $canonical        = SITE_URL . '/';
 $current_page     = 'home';
 $needs_quiz       = true;
+$needs_chat       = true;
 $feature_limit    = 3;      // Rest steht auf /funktionen
 $faq_teaser       = true;   // alle Fragen auf /faq
 
@@ -74,6 +75,9 @@ include __DIR__ . '/includes/navbar.php';
     <main id="main">
         <?php include __DIR__ . '/includes/sections/hero.php'; ?>
         <?php include __DIR__ . '/includes/sections/demo_quiz.php'; ?>
+        <?php /* Direkt nach dem Quiz: dort hat man gerade eine Erklaerung gelesen,
+                 hier sieht man, wie sie zustande kommt. */ ?>
+        <?php include __DIR__ . '/includes/sections/demo_chat.php'; ?>
         <?php include __DIR__ . '/includes/sections/benefits.php'; ?>
         <?php /* Ansprache-Wechsel direkt vor dem Block, der sich am staerksten
                  unterscheidet – wer auf Kinderansicht schaltet, landet sofort in "Deine Welt" */ ?>

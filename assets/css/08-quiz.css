@@ -216,3 +216,248 @@
 @media (min-width: 560px) {
     .quiz-result-cta { flex-direction: row; justify-content: center; }
 }
+
+
+/* ═══════════════════════════════════════════════════════════════
+   LEXI-CHAT-DEMO
+   Markup in includes/sections/demo_chat.php, Ablauf in chat-demo.js.
+
+   Der Verlauf scrollt NICHT in sich. Ein scrollender Kasten mitten in
+   der Seite faengt Mausrad und Wischgeste ab – man kommt dann nicht mehr
+   weiter, ohne daneben zu zielen. Stattdessen reserviert chat-demo.js die
+   volle Hoehe per min-height, bevor es die Nachrichten ausblendet: der
+   Kasten steht von Anfang an in seiner Endgroesse da, es verschiebt sich
+   nichts, und alles bleibt lesbar.
+   ═══════════════════════════════════════════════════════════════ */
+.demochat { background: var(--surface); }
+
+.chat-card {
+    max-width: 640px;
+    margin-inline: auto;
+    border-radius: var(--radius-lg);
+    background: var(--surface);
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow-lift);
+    overflow: hidden;
+}
+
+/* ── Kopfzeile ───────────────────────────────────────────────── */
+.chat-head {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    padding: var(--space-4) var(--space-5);
+    background: var(--gradient);
+    color: var(--text-invert);
+}
+
+.chat-avatar {
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    flex-shrink: 0;
+    border-radius: var(--radius-pill);
+    background: var(--accent-contrast);
+}
+
+.chat-avatar img {
+    width: 26px;
+    height: auto;
+}
+
+.chat-who {
+    display: flex;
+    flex-direction: column;
+    line-height: var(--leading-tight);
+    flex: 1;
+}
+
+.chat-who strong { font-size: var(--text-base); font-weight: 700; }
+.chat-who span   { font-size: var(--text-xs); opacity: 0.8; }
+
+/* Sagt vor der ersten Nachricht, was das hier ist. */
+.chat-tag {
+    padding: 0.2rem 0.6rem;
+    border-radius: var(--radius-pill);
+    background: var(--accent-contrast);
+    color: var(--accent-strong);
+    font-size: var(--text-xs);
+    font-weight: 700;
+    letter-spacing: var(--tracking-wide);
+    text-transform: uppercase;
+}
+
+/* ── Verlauf ─────────────────────────────────────────────────── */
+.chat-log {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    margin: 0;
+    padding: var(--space-5);
+    list-style: none;
+    background: var(--surface-alt);
+}
+
+.chat-msg {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    max-width: 88%;
+}
+
+.chat-msg[hidden] { display: none; }
+
+.chat-bubble {
+    padding: var(--space-3) var(--space-4);
+    font-size: var(--text-sm);
+    line-height: var(--leading-snug);
+}
+
+.chat-msg--lexi {
+    align-self: flex-start;
+    align-items: flex-start;
+}
+
+.chat-msg--lexi .chat-bubble {
+    border-radius: var(--radius) var(--radius) var(--radius) var(--radius-sm);
+    background: var(--surface);
+    color: var(--text);
+    box-shadow: var(--shadow-sm);
+}
+
+.chat-msg--kind {
+    align-self: flex-end;
+    align-items: flex-end;
+}
+
+.chat-msg--kind .chat-bubble {
+    border-radius: var(--radius) var(--radius) var(--radius-sm) var(--radius);
+    background: var(--gradient);
+    color: var(--text-invert);
+    font-weight: 600;
+}
+
+.chat-note {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    color: var(--text-muted);
+    font-size: var(--text-xs);
+}
+
+.chat-note .icon { flex-shrink: 0; color: var(--accent); }
+
+/* ── Tippindikator ───────────────────────────────────────────── */
+.chat-typing .chat-bubble {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: var(--space-4);
+}
+
+.chat-typing .chat-bubble span {
+    width: 7px;
+    height: 7px;
+    border-radius: var(--radius-pill);
+    background: var(--text-muted);
+    opacity: 0.4;
+}
+
+/* ── Attrappe der Eingabezeile ───────────────────────────────── */
+.chat-input {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    padding: var(--space-4) var(--space-5);
+    border-top: 1px solid var(--border);
+    background: var(--surface);
+}
+
+.chat-input-field {
+    flex: 1;
+    padding: var(--space-3) var(--space-4);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-pill);
+    color: var(--text-muted);
+    font-size: var(--text-sm);
+}
+
+.chat-send {
+    display: grid;
+    place-items: center;
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
+    border: 0;
+    border-radius: var(--radius-pill);
+    background: var(--accent-soft);
+    color: var(--accent);
+    /* Nicht bedienbar und sieht auch so aus – hier laeuft kein echter Chat. */
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+.chat-disclaimer {
+    margin: 0;
+    padding: 0 var(--space-5) var(--space-4);
+    background: var(--surface);
+    color: var(--text-muted);
+    font-size: var(--text-xs);
+    line-height: var(--leading-snug);
+}
+
+.chat-actions {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    padding: 0 var(--space-5) var(--space-5);
+    background: var(--surface);
+}
+
+.chat-actions .btn { justify-content: center; }
+
+@media (min-width: 560px) {
+    .chat-msg { max-width: 78%; }
+    .chat-actions { flex-direction: row; justify-content: flex-end; }
+}
+
+/* Bewegung nur, wenn sie erwuenscht ist. Ohne diesen Block bleiben die
+   Blasen einfach ohne Einflug stehen und die Punkte pulsieren nicht –
+   chat-demo.js laeuft bei reduce ohnehin nicht an.
+
+   Zwei Entscheidungen, die beide aus einem Fehler stammen:
+
+   1. Der Einflug haengt an .is-in, nicht an .chat-msg selbst. Eine Animation
+      direkt auf der Blase startet schon beim Laden und laeuft ab, bevor die
+      Blase ueberhaupt eingeblendet wird – dann passiert spaeter nichts mehr.
+      Die Klasse setzt chat-demo.js in dem Moment, in dem die Blase erscheint.
+
+   2. Animiert wird ausschliesslich transform, ausdruecklich NICHT opacity.
+      Der Browser haelt Animationen in einem Tab an, der nicht gerendert wird,
+      die setTimeout-Kette in chat-demo.js laeuft aber weiter. Wer waehrend des
+      Ablaufs den Tab wechselt, kaeme sonst zu Blasen zurueck, die bei
+      opacity 0 stehengeblieben sind. Bleibt eine transform-Animation hier
+      haengen, sitzt die Blase 8px zu tief – lesbar ist sie immer. */
+@media (prefers-reduced-motion: no-preference) {
+    .chat-msg.is-in {
+        animation: chat-in var(--duration) var(--ease-out);
+    }
+
+    .chat-typing .chat-bubble span {
+        animation: chat-dot 1.2s ease-in-out infinite;
+    }
+
+    .chat-typing .chat-bubble span:nth-child(2) { animation-delay: 0.18s; }
+    .chat-typing .chat-bubble span:nth-child(3) { animation-delay: 0.36s; }
+
+    @keyframes chat-in {
+        from { transform: translateY(8px); }
+        to   { transform: none; }
+    }
+
+    @keyframes chat-dot {
+        0%, 100% { opacity: 0.3; transform: translateY(0); }
+        50%      { opacity: 1;   transform: translateY(-3px); }
+    }
+}

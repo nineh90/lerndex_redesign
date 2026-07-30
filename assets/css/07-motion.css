@@ -73,56 +73,62 @@
 
 /* ═══════════════════════════════════════════════════════════════
    VERGLEICH (nur Eltern)
+
+   Ein Markup, zwei Layouts – der Umbruch liegt bei 800px, weil die
+   Aussagen darunter zu lang fuer zwei Spalten werden.
+
+   Schmal   Jedes Paar ist eine Karte: die Chatbot-Aussage oben, die
+            Lerndex-Antwort direkt darunter. Ohne Spalten gibt es keine
+            Kopfzeile, deshalb beschriftet sich jede Zelle selbst.
+   Breit    Klassische Gegenueberstellung in zwei Spalten mit Kopfzeile
+            darueber. Die Beschriftung in den Zellen bleibt bestehen,
+            aber nur noch fuer Screenreader.
    ═══════════════════════════════════════════════════════════════ */
 .compare { background: var(--surface-alt); }
+
+/* Spaltenkoepfe gehoeren zum Zweispalter und tauchen erst dort auf. */
+.compare-head { display: none; }
 
 .compare-grid {
     display: flex;
     flex-direction: column;
-    gap: var(--space-3);
+    gap: var(--space-4);
 }
 
+/* Die Karte haelt das Paar zusammen. Die 1px-Luecke ist die Trennlinie:
+   der Kartenhintergrund scheint zwischen den beiden Zellen durch, damit
+   braucht keine der Zellen eine eigene Kante. */
 .compare-row {
     display: grid;
-    gap: var(--space-3);
+    gap: 1px;
+    background: var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
 }
 
 .compare-cell {
     display: flex;
-    align-items: flex-start;
-    gap: var(--space-3);
+    flex-direction: column;
+    gap: var(--space-2);
     padding: var(--space-4) var(--space-5);
-    border-radius: var(--radius-sm);
     font-size: var(--text-sm);
     line-height: var(--leading-snug);
 }
 
-.compare-cell .icon { margin-top: 2px; }
-
-.compare-cell--bad {
-    background: var(--surface);
-    color: var(--text-muted);
-    border: 1px solid var(--border);
-}
-
-.compare-cell--bad .icon { color: var(--rose); }
-
-.compare-cell--good {
-    background: var(--gradient);
-    color: var(--white);
-    font-weight: 600;
-    box-shadow: var(--shadow);
-}
-
-.compare-cell--good .icon { color: #fff; }
-
-.compare-foot {
-    display: grid;
+.compare-claim {
+    display: flex;
+    align-items: flex-start;
     gap: var(--space-3);
-    margin-top: var(--space-4);
-    text-align: center;
 }
 
+/* Ohne flex-shrink quetscht ein langer Satz das Icon schmal. */
+.compare-claim .icon {
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+.compare-tag,
 .compare-label {
     font-size: var(--text-xs);
     font-weight: 700;
@@ -130,12 +136,66 @@
     text-transform: uppercase;
 }
 
+.compare-cell--bad {
+    background: var(--surface);
+    color: var(--text-muted);
+}
+
+.compare-cell--bad .icon { color: var(--rose); }
+
+.compare-cell--good {
+    background: var(--gradient);
+    color: var(--text-invert);
+    font-weight: 600;
+}
+
+.compare-cell--good .icon,
+.compare-cell--good .compare-tag { color: var(--accent-contrast); }
+
 .compare-label--bad  { color: var(--text-muted); }
 .compare-label--good { color: var(--accent-strong); }
 
-@media (min-width: 768px) {
-    .compare-row,
-    .compare-foot { grid-template-columns: 1fr 1fr; }
+@media (min-width: 800px) {
+    .compare-grid { gap: var(--space-3); }
+
+    .compare-head {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: var(--space-3);
+        margin-bottom: var(--space-4);
+        text-align: center;
+    }
+
+    /* Die Karte loest sich auf: die Zellen stehen wieder frei nebeneinander. */
+    .compare-row {
+        grid-template-columns: 1fr 1fr;
+        gap: var(--space-3);
+        background: none;
+        border-radius: 0;
+        overflow: visible;
+        box-shadow: none;
+    }
+
+    .compare-cell {
+        justify-content: center;
+        border-radius: var(--radius-sm);
+    }
+
+    .compare-cell--bad  { border: 1px solid var(--border); }
+    .compare-cell--good { box-shadow: var(--shadow); }
+
+    /* Jetzt beschriften die Spaltenkoepfe. Der Tag verschwindet nur optisch
+       (wie .sr-only), damit jede Aussage vorgelesen zugeordnet bleibt. */
+    .compare-tag {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0 0 0 0);
+        white-space: nowrap;
+    }
 }
 
 

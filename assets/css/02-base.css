@@ -21,6 +21,18 @@ html {
 html,
 body {
     width: 100%;
+}
+
+/* Waagerechtes Scrollen abfangen – die Deko-Blobs im Hero ragen bewusst
+   ueber den Rand hinaus.
+
+   Bewusst NUR am <html> und nicht zusaetzlich am <body>: sobald eine Achse
+   nicht mehr "visible" ist, rechnet der Browser die andere auf "auto". Am
+   <body> wird dieser damit selbst zum Scroll-Container, und die Navbar mit
+   position: sticky klebt dann am Body-Kasten statt am Viewport – sie scrollt
+   also nach oben weg. Am <html> ist der Scroll-Container ohnehin der
+   Viewport, sticky funktioniert dort wie erwartet. */
+html {
     overflow-x: hidden;
 }
 

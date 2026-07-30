@@ -1,28 +1,27 @@
-<!-- Google Analytics – Consent Mode v2 -->
+<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Google Analytics – Consent Mode v2.
+         Hier steht bewusst NUR der Stub. gtag/js wird erst von
+         assets/js/consent.js nachgeladen, nachdem jemand zugestimmt hat –
+         vorher geht kein Request an Google, auch kein cookieloser.
+         Die Aufrufe unten warten bis dahin in dataLayer. -->
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
-        // Consent Mode v2 – im EWR sind alle vier Signale erforderlich.
-        // Lerndex schaltet nur analytics_storage frei (siehe cookie_banner.php),
-        // die Werbe-Signale bleiben dauerhaft auf denied.
+        // Im EWR sind alle vier Signale erforderlich. Lerndex schaltet nur
+        // analytics_storage frei, die Werbe-Signale bleiben dauerhaft denied.
         gtag('consent', 'default', {
             'analytics_storage': 'denied',
             'ad_storage': 'denied',
             'ad_user_data': 'denied',
             'ad_personalization': 'denied'
         });
-    </script>
-
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-ENLVJT389T"></script>
-    <script>
         gtag('js', new Date());
-        gtag('config', 'G-ENLVJT389T', {
-            'anonymize_ip': true
-        });
+        // Kein anonymize_ip: der Parameter stammt aus Universal Analytics und
+        // wird von GA4 ignoriert. GA4 kuerzt die IP ohnehin selbst.
+        gtag('config', 'G-ENLVJT389T');
     </script>
-
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- Schrift wird selbst gehostet: kein Verbindungsaufbau zu Google Fonts -->
     <link rel="preload" href="/assets/fonts/plus-jakarta-sans-latin.woff2" as="font" type="font/woff2" crossorigin>

@@ -16,7 +16,7 @@ include __DIR__ . '/includes/navbar.php';
             </a>
             <div class="legal-content">
                 <h1>Allgemeine Geschäftsbedingungen</h1>
-                <p class="subtitle">Stand: März 2026 &nbsp;·&nbsp; Diese AGB gelten für die Nutzung der Lerndex-App und der Website lerndex.de</p>
+                <p class="subtitle">Stand: Juli 2026 &nbsp;·&nbsp; Diese AGB gelten für die Nutzung der Lerndex-App und der Website lerndex.de</p>
 
                 <div class="highlight-box">
                     <div class="box-title">
@@ -275,7 +275,7 @@ include __DIR__ . '/includes/navbar.php';
                 </div>
 
                 <hr style="margin: 2.5rem 0; opacity: 0.1;">
-                <p><small>Diese AGB wurden nach bestem Wissen und Gewissen erstellt, ersetzen jedoch keine individuelle Rechtsberatung. Stand: März 2026.</small></p>
+                <p><small>Diese AGB wurden nach bestem Wissen und Gewissen erstellt, ersetzen jedoch keine individuelle Rechtsberatung. Stand: Juli 2026.</small></p>
             </div>
         </div>
     </main>

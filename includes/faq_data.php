@@ -29,9 +29,10 @@ function faq_groups(): array
                 [
                     'q' => 'Welche Fächer deckt Lerndex ab?',
                     'a' => 'In der Grundschule sind es Mathe, Deutsch, Englisch und Sachkunde. Ab der weiterführenden '
-                         . 'Schule kommen Biologie, Chemie, Physik und Geschichte dazu – insgesamt sieben Fächer. Im '
-                         . 'Elternbereich lassen sich einzelne Fächer ausblenden, wenn dein Kind sich auf bestimmte '
-                         . 'Bereiche konzentrieren soll.',
+                         . 'Schule treten Biologie, Chemie, Physik und Geschichte an die Stelle von Sachkunde – dann '
+                         . 'sind es sieben Fächer. In Klasse 1 und 2 lernt dein Kind stattdessen im Early-Learner-Modus '
+                         . 'mit Zahlen und Buchstaben. Im Elternbereich lassen sich einzelne Fächer ausblenden, wenn '
+                         . 'dein Kind sich auf bestimmte Bereiche konzentrieren soll.',
                     'teaser' => true,
                 ],
                 [
