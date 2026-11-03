@@ -36,6 +36,14 @@ html {
     overflow-x: hidden;
 }
 
+/* clip statt hidden, wo es geht: hidden macht <html> auf Handys zu einem
+   eigenen Scrollbereich – dann erscheint ein sichtbarer senkrechter
+   Scrollbalken statt des unauffaelligen Overlays (04.11.2026). clip
+   schneidet genauso ab, ohne einen Scrollbereich zu erzeugen. */
+@supports (overflow-x: clip) {
+    html { overflow-x: clip; }
+}
+
 body {
     font-family: var(--font-main);
     font-size: var(--text-base);
@@ -216,6 +224,14 @@ img, picture, svg, video {
 /* Varianten */
 .js-anim .reveal--left  { transform: translateX(-28px); }
 .js-anim .reveal--right { transform: translateX(28px); }
+
+/* Am Handy von unten statt von der Seite: seitlich verschobene Elemente
+   ragten vor dem Einblenden ueber den Rand und machten die Seite breiter
+   als den Bildschirm. */
+@media (max-width: 767px) {
+    .js-anim .reveal--left,
+    .js-anim .reveal--right { transform: translateY(24px); }
+}
 .js-anim .reveal--scale { transform: scale(0.94); }
 
 .js-anim .reveal--left.is-visible,
