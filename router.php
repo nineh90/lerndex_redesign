@@ -22,6 +22,12 @@ if (preg_match('#^/api/[\w-]+\.php$#', $uri) && is_file($file)) {
     exit;
 }
 
+// ── Altes Vorschaubild (wie .htaccess Punkt 4) ──
+if ($uri === '/og-image.png') {
+    header('Location: /assets/images/og-image.png', true, 301);
+    exit;
+}
+
 // ── .php-URLs auf die Clean URL umleiten (wie .htaccess Punkt 4) ──
 if (preg_match('#^(.*)\.php$#', $uri, $m)) {
     $target = ($m[1] === '/index') ? '/' : $m[1];

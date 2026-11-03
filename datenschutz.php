@@ -16,7 +16,7 @@ include __DIR__ . '/includes/navbar.php';
             </a>
             <div class="legal-content">
                 <h1>Datenschutzerklärung</h1>
-                <p class="subtitle">Stand: Juli 2026 &nbsp;·&nbsp; Lerndex ist eine App für Kinder und Jugendliche. Wir nehmen den Schutz ihrer Daten besonders ernst.</p>
+                <p class="subtitle">Stand: November 2026 &nbsp;·&nbsp; Lerndex ist eine App für Kinder und Jugendliche. Wir nehmen den Schutz ihrer Daten besonders ernst.</p>
 
                 <div class="children-box">
                     <div class="box-title">
@@ -37,7 +37,7 @@ include __DIR__ . '/includes/navbar.php';
                         <li><a href="#ki-tutor">KI-Tutor & Gemini</a></li>
                         <li><a href="#hosting">Hosting der Website</a></li>
                         <li><a href="#analytics">Google Analytics (Website)</a></li>
-                        <li><a href="#formulare">Kontakt- und Supportformular</a></li>
+                        <li><a href="#formulare">Kontakt per E-Mail</a></li>
                         <li><a href="#eltern">Eltern-Dashboard & Aufsicht</a></li>
                         <li><a href="#abonnement">Abonnement & Zahlung</a></li>
                         <li><a href="#speicherung">Speicherung & Löschung</a></li>
@@ -54,7 +54,6 @@ include __DIR__ . '/includes/navbar.php';
                     Permer Stollen 6<br>
                     49479 Ibbenbüren<br>
                     E-Mail: <a href="mailto:datenschutz@lerndex.de">datenschutz@lerndex.de</a><br>
-                    Telefon: [Telefonnummer]
                 </p>
                 <p>Bei allen datenschutzbezogenen Fragen können Sie uns jederzeit unter der oben genannten E-Mail-Adresse erreichen.</p>
 
@@ -156,7 +155,7 @@ include __DIR__ . '/includes/navbar.php';
 
                 <!-- 6a -->
                 <h2 id="hosting">6a. Hosting der Website (lerndex.de)</h2>
-                <p>Die Website lerndex.de wird bei einem externen Anbieter gehostet. Bei jedem Aufruf einer Seite werden vom Webserver automatisch Zugriffsdaten in einer Protokolldatei (Server-Logfile) erfasst. Das ist technisch notwendig, um die Seite ausliefern zu können, und geschieht unabhängig von Ihrer Cookie-Entscheidung.</p>
+                <p>Die Website lerndex.de wird bei einem externen Anbieter gehostet. Bei jedem Aufruf einer Seite verarbeitet der Webserver automatisch die folgenden Zugriffsdaten. Das ist technisch notwendig, um die Seite ausliefern zu können, und geschieht unabhängig von Ihrer Cookie-Entscheidung.</p>
                 <ul>
                     <li>IP-Adresse des anfragenden Geräts</li>
                     <li>Datum und Uhrzeit des Zugriffs</li>
@@ -166,12 +165,8 @@ include __DIR__ . '/includes/navbar.php';
                     <li>Zuvor besuchte Seite (Referrer), sofern übermittelt</li>
                 </ul>
                 <p><strong>Zweck und Rechtsgrundlage:</strong> Die Verarbeitung dient dem technischen Betrieb, der Stabilität und der Sicherheit der Website (Abwehr von Angriffen, Fehleranalyse). Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO; unser berechtigtes Interesse liegt in einem störungsfreien und sicheren Betrieb der Website.</p>
-                <p><strong>Speicherdauer:</strong> Die Logfiles werden vom Hoster nach spätestens sieben Tagen gelöscht oder gekürzt. Eine Zusammenführung dieser Daten mit anderen Datenquellen findet nicht statt.</p>
-                <p>Mit dem Hosting-Anbieter besteht ein Auftragsverarbeitungsvertrag gemäß Art. 28 DSGVO. Der Server steht in Deutschland.</p>
-
-                <div class="info-box">
-                    <p><span class="placeholder">Zu ergänzen</span> Name und Anschrift des Hosting-Anbieters sowie die tatsächliche Speicherdauer der Logfiles laut Vertrag.</p>
-                </div>
+                <p><strong>Speicherdauer:</strong> Einzelne Seitenaufrufe werden nicht in Protokolldateien gespeichert; die Zugriffsdaten werden nur für die Dauer der Auslieferung verarbeitet. Lediglich Fehlermeldungen des Webservers, die eine IP-Adresse enthalten können, werden zur Fehleranalyse in einem größenbegrenzten Speicher vorgehalten, der laufend überschrieben und bei jeder Aktualisierung der Website geleert wird. Eine Zusammenführung mit anderen Datenquellen findet nicht statt.</p>
+                <p><strong>Hosting-Anbieter:</strong> Hostinger International Ltd., 61 Lordou Vironos Street, 6023 Larnaca, Zypern. Die Website läuft auf einem von uns betriebenen Server in einem Rechenzentrum in Frankfurt am Main. Mit dem Anbieter besteht ein Auftragsverarbeitungsvertrag gemäß Art. 28 DSGVO.</p>
 
                 <p><strong>Keine externen Ressourcen:</strong> Schriften, Bilder, Symbole und Skripte der Website werden ausschließlich von unserem eigenen Server geladen. Es findet insbesondere keine Einbindung von Google Fonts, keine Einbindung eines Content-Delivery-Networks und kein Nachladen externer Bibliotheken statt. Ohne Ihre Einwilligung baut Ihr Browser daher keine Verbindung zu Dritt-Servern auf.</p>
 
@@ -189,28 +184,16 @@ include __DIR__ . '/includes/navbar.php';
                 <p>Google Analytics ist ein Dienst der Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Irland. Weitere Informationen: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google Datenschutzrichtlinie</a>.</p>
 
                 <!-- 7a -->
-                <h2 id="formulare">7a. Kontakt- und Supportformular</h2>
-                <p>Auf den Seiten <a href="/kontakt">Kontakt</a> und <a href="/support">Support</a> können Sie uns über ein Formular erreichen. Dabei werden ausschließlich die von Ihnen eingegebenen Angaben verarbeitet.</p>
-                <ul>
-                    <li><strong>Kontaktformular:</strong> Name, E-Mail-Adresse, gewähltes Thema und Ihre Nachricht.</li>
-                    <li><strong>Supportformular:</strong> Gerät, Betriebssystem, App-Version, Fehlerbeschreibung, Reproduktionsschritte, Dringlichkeit sowie – freiwillig – Name und E-Mail-Adresse für Rückfragen.</li>
-                    <li><strong>Technisch mitgesendet:</strong> Zeitpunkt des Absendens, Browserkennung (User-Agent) und die zuvor besuchte Seite. Diese Angaben dienen der Missbrauchserkennung.</li>
-                </ul>
+                <h2 id="formulare">7a. Kontakt per E-Mail</h2>
+                <p>Wenn Sie uns per E-Mail schreiben (etwa über die Seiten <a href="/kontakt">Kontakt</a> oder <a href="/support">Support</a>), verarbeiten wir Ihre E-Mail-Adresse, Ihren Namen, sofern angegeben, und den Inhalt Ihrer Nachricht ausschließlich, um Ihre Anfrage zu beantworten.</p>
 
                 <div class="info-box">
-                    <p><strong>Bitte keine Kinderdaten:</strong> Geben Sie in den Formularen keine personenbezogenen Daten Ihres Kindes an. Für Anliegen, die ein konkretes Kindprofil betreffen, nutzen Sie bitte den Elternbereich in der App.</p>
+                    <p><strong>Bitte keine Kinderdaten:</strong> Schicken Sie uns keine personenbezogenen Daten Ihres Kindes, die für Ihr Anliegen nicht nötig sind. Für Fragen zu einem bestimmten Kinderprofil genügt der Vorname.</p>
                 </div>
 
-                <h3>Verarbeitung über n8n</h3>
-                <p>Die Formularinhalte werden von unserem Webserver an eine Automatisierungsplattform (<strong>n8n</strong>) übermittelt, über die wir Anfragen entgegennehmen und bearbeiten. Die Webhook-Adresse ist serverseitig hinterlegt und im Quelltext der Seite nicht sichtbar. Mit dem Betreiber der Instanz besteht ein Auftragsverarbeitungsvertrag.</p>
-
-                <div class="info-box">
-                    <p><span class="placeholder">Zu ergänzen</span> Betreiber und Serverstandort der n8n-Instanz sowie Speicherdauer der eingegangenen Anfragen.</p>
-                </div>
-
-                <p><strong>Rechtsgrundlage:</strong> Art. 6 Abs. 1 lit. a DSGVO (Ihre Einwilligung über die Checkbox) sowie Art. 6 Abs. 1 lit. b und f DSGVO (Bearbeitung Ihrer Anfrage und berechtigtes Interesse an funktionierendem Support).</p>
-                <p><strong>Speicherdauer:</strong> Wir bewahren Anfragen so lange auf, wie es zur Bearbeitung erforderlich ist, und löschen sie anschließend, sofern keine gesetzlichen Aufbewahrungsfristen entgegenstehen.</p>
-                <p><strong>Spamschutz:</strong> Die Formulare enthalten ein für Sie unsichtbares Zusatzfeld (Honeypot) und eine Begrenzung der Absendungen pro IP-Adresse und Stunde. Es werden dabei keine Cookies gesetzt und keine externen Dienste eingebunden.</p>
+                <p>Unser E-Mail-Postfach wird von Google Workspace bereitgestellt (Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Irland). Mit Google besteht ein Auftragsverarbeitungsvertrag; eine Übermittlung in die USA ist nicht ausgeschlossen, Google ist unter dem EU-US Data Privacy Framework zertifiziert.</p>
+                <p><strong>Rechtsgrundlage:</strong> Art. 6 Abs. 1 lit. b DSGVO, soweit Ihre Anfrage einen bestehenden oder geplanten Vertrag (z. B. Ihr Abo) betrifft, im Übrigen Art. 6 Abs. 1 lit. f DSGVO – unser berechtigtes Interesse liegt in der Beantwortung Ihrer Anfrage.</p>
+                <p><strong>Speicherdauer:</strong> Wir bewahren Ihre E-Mail so lange auf, wie es zur Bearbeitung erforderlich ist, und löschen sie anschließend, sofern keine gesetzlichen Aufbewahrungsfristen entgegenstehen.</p>
 
                 <!-- 8 -->
                 <h2 id="eltern">8. Eltern-Dashboard & Aufsicht</h2>
@@ -280,7 +263,7 @@ include __DIR__ . '/includes/navbar.php';
                 <p>Wir antworten auf datenschutzbezogene Anfragen innerhalb von <strong>72 Stunden</strong>.</p>
 
                 <hr style="margin: 2.5rem 0; opacity: 0.1;">
-                <p><small>Diese Datenschutzerklärung kann bei wesentlichen Änderungen der App oder der Rechtslage aktualisiert werden. Über wesentliche Änderungen informieren wir Eltern per E-Mail. Stand: Juli 2026.</small></p>
+                <p><small>Diese Datenschutzerklärung kann bei wesentlichen Änderungen der App oder der Rechtslage aktualisiert werden. Über wesentliche Änderungen informieren wir Eltern per E-Mail. Stand: November 2026.</small></p>
             </div>
         </div>
     </main>

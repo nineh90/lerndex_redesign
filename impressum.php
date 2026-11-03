@@ -28,7 +28,6 @@ include __DIR__ . '/includes/navbar.php';
 
                 <h2>Kontakt</h2>
                 <p>
-                    Telefon: [Telefonnummer]<br>
                     E-Mail: <a href="mailto:info@lerndex.de">info@lerndex.de</a><br>
                     Website: <a href="https://lerndex.de">https://lerndex.de</a>
                 </p>
@@ -48,19 +47,13 @@ include __DIR__ . '/includes/navbar.php';
 
                 <h2>Umsatzsteuer</h2>
                 <p>
-                    Umsatzsteuer-Identifikationsnummer gemäß § 27a UStG:<br>
-                    [USt-IdNr. eintragen oder: „Kleinunternehmer gemäß § 19 UStG – keine USt-IdNr. erforderlich"]
+                    Kleinunternehmer im Sinne von § 19 UStG. Es wird keine Umsatzsteuer berechnet und ausgewiesen.
                 </p>
 
                 <h2>Berufsrechtliche Regelungen</h2>
                 <p>Nils-Digital ist ein gewerblicher Einzelunternehmer im Bereich Softwareentwicklung und digitale Dienstleistungen. Es unterliegen keine besonderen berufsrechtlichen Regelungen.</p>
 
                 <h2>Streitschlichtung</h2>
-
-                <h3>EU-Streitschlichtung</h3>
-                <p>Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit:<br>
-                <a href="https://ec.europa.eu/consumers/odr/" target="_blank">https://ec.europa.eu/consumers/odr/</a><br>
-                Unsere E-Mail-Adresse finden Sie oben im Impressum.</p>
 
                 <h3>Verbraucherstreitbeilegung</h3>
                 <p>Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.</p>
@@ -80,7 +73,7 @@ include __DIR__ . '/includes/navbar.php';
                 </div>
 
                 <hr style="margin: 2.5rem 0; opacity: 0.1;">
-                <p><small>Stand: Juli 2026</small></p>
+                <p><small>Stand: November 2026</small></p>
             </div>
         </div>
     </main>

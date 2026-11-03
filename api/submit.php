@@ -43,7 +43,7 @@ $hits   = is_file($bucket) ? array_filter((array) json_decode((string) file_get_
                                           static fn($t) => $t > $now - 3600) : [];
 
 if (count($hits) >= 5) {
-    fail('Zu viele Anfragen. Bitte versuch es später noch einmal.', 429);
+    fail('Zu viele Anfragen. Bitte versuchen Sie es später noch einmal.', 429);
 }
 
 // ── Pflichtfelder je Formular ──
@@ -54,7 +54,7 @@ $needed = $form === 'support'
 
 foreach ($needed as $field) {
     if (trim((string) ($payload[$field] ?? '')) === '') {
-        fail('Bitte fülle alle Pflichtfelder aus.');
+        fail('Bitte füllen Sie alle Pflichtfelder aus.');
     }
 }
 
@@ -64,7 +64,7 @@ if (empty($payload['privacy'])) {
 
 $mail = trim((string) ($payload['email'] ?? ''));
 if ($mail !== '' && !filter_var($mail, FILTER_VALIDATE_EMAIL)) {
-    fail('Bitte gib eine gültige E-Mail-Adresse an.');
+    fail('Bitte geben Sie eine gültige E-Mail-Adresse an.');
 }
 
 // ── Konfiguration ──
@@ -86,7 +86,7 @@ $target = $form === 'support' && !empty($config['n8n_support'])
     : ($config['n8n_contact'] ?? '');
 
 if ($target === '') {
-    fail('Das Formular ist noch nicht mit n8n verbunden. Bitte schreib uns direkt an info@lerndex.de.', 503);
+    fail('Das Formular ist noch nicht mit n8n verbunden. Bitte schreiben Sie uns direkt an info@lerndex.de.', 503);
 }
 
 // ── Weiterreichen ──
@@ -121,7 +121,7 @@ curl_close($ch);
 
 if ($response === false || $status >= 400) {
     error_log('n8n-Weiterleitung fehlgeschlagen: ' . ($error ?: 'HTTP ' . $status));
-    fail('Das hat gerade nicht geklappt. Bitte versuch es später oder schreib an info@lerndex.de.', 502);
+    fail('Das hat gerade nicht geklappt. Bitte versuchen Sie es später oder schreiben Sie an info@lerndex.de.', 502);
 }
 
 $hits[] = $now;

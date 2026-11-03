@@ -1,0 +1,75 @@
+# lerndex.de
+#
+# Haengt sich an den vorhandenen Traefik des n8n-Stacks (Netz n8n_default) –
+# genauso wie nils-digital-web, ticketsystem und adventsaktion. Es wird KEIN
+# Port veroeffentlicht, Traefik ist der einzige Weg hinein.
+#
+# Die Seite laeuft direkt unter lerndex.de (www → 301 auf lerndex.de, das
+# macht die .htaccess). Getestet wird vorher lokal, siehe deploy/README.md.
+#
+# Optional laesst sich ueber deploy/.env eine Testadresse mit noindex
+# betreiben (LERNDEX_REGEL / LERNDEX_MIDDLEWARES / LERNDEX_MODUS=vorschau).
+#
+# Hier darf in LERNDEX_REGEL nur stehen, was im DNS auch auf diesen Server
+# zeigt. Traefik fordert fuer jeden Namen sofort ein Zertifikat an; zeigt der
+# Name noch zu Strato, scheitert die Validierung – und nach fuenf
+# Fehlversuchen sperrt Let's Encrypt den Namen fuer eine Stunde.
+#
+# Aufruf auf dem Server (aus /docker/lerndex/deploy):
+#   docker compose up -d --build
+name: lerndex
+
+services:
+  app:
+    build:
+      context: ..
+      dockerfile: deploy/Dockerfile
+    image: lerndex:aktuell
+    container_name: lerndex
+    restart: unless-stopped
+
+    environment:
+      TZ: Europe/Berlin
+      # Fuer die Pruefung am Ende von deploy.sh: unter welchem Namen die Seite
+      # gerade laeuft und ob sie noindex tragen MUSS.
+      LERNDEX_PRUEFHOST: ${LERNDEX_PRUEFHOST:-lerndex.de}
+      LERNDEX_MODUS: ${LERNDEX_MODUS:-produktion}
+
+      # Formulare → n8n. api/submit.php liest diese Variablen, wenn keine
+      # config.php existiert (im Abbild gibt es keine). Interne Adresse im
+      # Docker-Netz verwenden, siehe n8n/README.md.
+      N8N_CONTACT: ${N8N_CONTACT:-}
+      N8N_SUPPORT: ${N8N_SUPPORT:-}
+      N8N_TOKEN: ${N8N_TOKEN:-}
+
+    networks:
+      - n8n_default
+
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=n8n_default"
+      - "traefik.http.services.lerndex.loadbalancer.server.port=80"
+
+      - "traefik.http.routers.lerndex.rule=${LERNDEX_REGEL:-Host(`lerndex.de`) || Host(`www.lerndex.de`)}"
+      - "traefik.http.routers.lerndex.entrypoints=web,websecure"
+      - "traefik.http.routers.lerndex.tls=true"
+      - "traefik.http.routers.lerndex.tls.certresolver=mytlschallenge"
+      - "traefik.http.routers.lerndex.service=lerndex"
+      - "traefik.http.routers.lerndex.middlewares=${LERNDEX_MIDDLEWARES:-lerndex-offen@docker}"
+
+      # Nur fuer eine optionale Testadresse: haelt sie aus dem Suchindex.
+      # Haengt dieser Header je an lerndex.de, ist die Seite fuer Google
+      # unsichtbar – deploy.sh schlaegt dann Alarm.
+      - "traefik.http.middlewares.lerndex-vorschau.headers.customresponseheaders.X-Robots-Tag=noindex, nofollow"
+
+      # Produktion: HSTS. Browser merken sich ein Jahr lang, dass lerndex.de
+      # nur ueber HTTPS erreichbar ist.
+      - "traefik.http.middlewares.lerndex-offen.headers.stsSeconds=31536000"
+
+      # Den www→non-www-Sprung und alle URL-Regeln macht die .htaccess im
+      # Container, nicht Traefik – so gilt lokal, auf der Vorschau und live
+      # dieselbe Logik.
+
+networks:
+  n8n_default:
+    external: true

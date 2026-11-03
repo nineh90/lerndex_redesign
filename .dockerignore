@@ -1,0 +1,28 @@
+# Alles hier landet NICHT im Abbild – und ist damit auch nicht ueber die
+# Webseite abrufbar. Der Dokumentenstamm ist das Repository-Wurzelverzeichnis.
+
+.git
+.github
+.gitignore
+.dockerignore
+
+# Betrieb und Geheimnisse (deploy/.env liegt nur auf dem Server). Nur die
+# Konfigurationsdateien, die das Dockerfile braucht, kommen mit.
+deploy/*
+!deploy/php.ini
+!deploy/apache-*.conf
+config.php
+.env
+.env.*
+
+# Entwicklung und Doku
+router.php
+CLAUDE.md
+**/*.md
+n8n
+neue_screenshots
+.dims.json
+
+# Vercel-Vorschau – auf dem VPS bedeutungslos
+vercel.json
+.vercelignore

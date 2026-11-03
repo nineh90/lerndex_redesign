@@ -6,13 +6,19 @@ Options -Indexes
 RewriteEngine On
 
 # ── 1. HTTPS erzwingen ──────────────────────
-RewriteCond %{HTTPS} off
+# X-Forwarded-Proto muss mitgeprueft werden: sitzt beim Hoster ein Proxy vor
+# dem Apache, ist %{HTTPS} auch bei einer HTTPS-Anfrage "off" – die Regel
+# wuerde dann endlos auf sich selbst umleiten und die Seite waere tot.
+RewriteCond %{HTTPS} !=on
+RewriteCond %{HTTP:X-Forwarded-Proto} !=https
 RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
 # ── 2. www → non-www ────────────────────────
-# non-www, passend zu den canonical-URLs
-RewriteCond %{HTTP_HOST} ^www\.lerndex\.de [NC]
-RewriteRule ^ https://lerndex.de%{REQUEST_URI} [L,R=301]
+# non-www, passend zu den canonical-URLs. Der Host kommt aus der Anfrage und
+# steht bewusst nicht fest im Text: so funktioniert die Regel auch auf einer
+# Testdomain, ohne von dort auf die Live-Domain zu werfen.
+RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
+RewriteRule ^ https://%1%{REQUEST_URI} [L,R=301]
 
 # ── 3. Interne Includes nicht direkt ausliefern ──
 # Ohne das liefert z.B. /includes/sections/hero.php ein HTML-Fragment aus,
@@ -24,19 +30,27 @@ RewriteRule ^api/.*\.php$ - [L]
     Require all denied
 </FilesMatch>
 
+# Alle Umleitungsziele stehen absolut mit https://. Relativ gebaut setzt
+# Apache hinter dem Proxy (Traefik) http:// davor – jede 301 kostete dann
+# einen zweiten Sprung ueber Traefiks HTTPS-Umleitung.
+
 # ── 4. Alte .php-URLs auf die Clean URL umleiten ──
 # WICHTIG: muss VOR dem internen Rewrite (Punkt 6) stehen.
 # THE_REQUEST enthaelt die urspruengliche Anfragezeile, deshalb loest der
 # interne Rewrite aus Punkt 6 diese Regel nicht erneut aus (keine Endlosschleife).
 RewriteCond %{THE_REQUEST} \s/+index\.php[\s?] [NC]
-RewriteRule ^ / [R=301,L]
+RewriteRule ^ https://%{HTTP_HOST}/ [R=301,L]
 
 RewriteCond %{THE_REQUEST} \s/+([^\s?]+)\.php[\s?] [NC]
-RewriteRule ^ /%1 [R=301,L]
+RewriteRule ^ https://%{HTTP_HOST}/%1 [R=301,L]
+
+# Alte Adresse des Vorschaubilds der frueheren Seite. Steht in geteilten
+# Links und Social-Media-Vorschauen, deshalb dauerhaft umleiten.
+RewriteRule ^og-image\.png$ https://%{HTTP_HOST}/assets/images/og-image.png [R=301,L]
 
 # ── 5. Trailing Slash entfernen (ausser Root) ──
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^(.+)/$ /$1 [L,R=301]
+RewriteRule ^(.+)/$ https://%{HTTP_HOST}/$1 [L,R=301]
 
 # ── 6. PHP-Erweiterung verstecken ───────────
 # /funktionen → funktionen.php
@@ -74,8 +88,12 @@ RewriteRule ^([^\.]+)$ $1.php [NC,L]
 </IfModule>
 
 # ── 10. Sonstiges ───────────────────────────
-<Files "sitemap.xml">
-    Header set Content-Type "application/xml"
-</Files>
+# Ohne IfModule steigt Apache mit 500 aus, wenn mod_headers nicht geladen ist –
+# und dann ist die ganze Seite weg, nicht nur der Content-Type.
+<IfModule mod_headers.c>
+    <Files "sitemap.xml">
+        Header set Content-Type "application/xml"
+    </Files>
+</IfModule>
 
 ErrorDocument 404 /404.php

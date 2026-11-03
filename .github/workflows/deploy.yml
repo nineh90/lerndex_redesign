@@ -1,0 +1,85 @@
+# Deploy von lerndex.de
+#
+# Jeder Push auf main geht sofort live: Erst wird geprueft, dann stoesst die
+# Action ueber SSH /docker/lerndex/deploy/deploy.sh auf dem VPS an. Der
+# Schluessel ist dort per erzwungenem Kommando auf genau dieses Skript
+# festgenagelt. Einrichtung: deploy/README.md.
+#
+# Benoetigte Repository-Secrets: VPS_HOST, VPS_SSH_KEY
+name: Deploy
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+# Zwei gleichzeitige Deploys wuerden sich beim Bauen in die Quere kommen.
+concurrency:
+  group: lerndex-deploy
+  cancel-in-progress: false
+
+jobs:
+  pruefen:
+    name: Pruefen
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.4'
+          coverage: none
+
+      - name: Syntax aller PHP-Dateien
+        run: |
+          for f in *.php includes/*.php includes/sections/*.php api/*.php; do
+            php -l "$f" >/dev/null || { php -l "$f"; exit 1; }
+          done
+
+      # Ein kaputtes Include faellt bei php -l nicht auf, nur beim Rendern.
+      - name: Alle Seiten rendern
+        run: |
+          php -S localhost:8000 router.php >/tmp/server.log 2>&1 &
+          sleep 1
+          fehler=0
+          for p in / /fuer-eltern /fuer-kinder /funktionen /sicherheit /preise /faq \
+                   /kontakt /support /impressum /datenschutz /agb; do
+            code=$(curl -s -o /tmp/seite.html -w '%{http_code}' "localhost:8000$p")
+            if [ "$code" != 200 ] || grep -qE '(Fatal error|Warning|Notice|Deprecated):' /tmp/seite.html; then
+              echo "::error::$p → $code"; fehler=1
+            fi
+          done
+          cat /tmp/server.log
+          exit $fehler
+
+  deploy:
+    name: Ausrollen
+    needs: pruefen
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: SSH-Schluessel hinterlegen
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.VPS_SSH_KEY }}" > ~/.ssh/id_ed25519
+          chmod 600 ~/.ssh/id_ed25519
+          ssh-keyscan -H "${{ secrets.VPS_HOST }}" >> ~/.ssh/known_hosts 2>/dev/null || true
+
+      # Mit Wiederholung: Hostinger drosselt gelegentlich SSH von wechselnden
+      # Runner-Adressen. Der Deploy ist idempotent, ein zweiter Anlauf gefahrlos.
+      - name: Deploy anstossen
+        run: |
+          for versuch in 1 2 3; do
+            if ssh -i ~/.ssh/id_ed25519 -o BatchMode=yes \
+                 -o StrictHostKeyChecking=accept-new \
+                 -o ConnectTimeout=20 \
+                 "root@${{ secrets.VPS_HOST }}" deploy-lerndex; then
+              exit 0
+            fi
+            echo "Versuch ${versuch} fehlgeschlagen."
+            [ "$versuch" = 3 ] && break
+            sleep $((versuch * 30))
+          done
+          echo "::error::Deploy nach drei Versuchen nicht durchgekommen."
+          exit 1

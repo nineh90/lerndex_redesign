@@ -50,7 +50,7 @@ function faq_groups(): array
                 [
                     'q' => 'Auf welchen Geräten funktioniert Lerndex?',
                     'a' => 'Lerndex ist aktuell für Android-Smartphones und -Tablets im Google Play Store verfügbar. '
-                         . 'Eine iOS-Version ist in Vorbereitung – schreib uns gern über das Kontaktformular, dann '
+                         . 'Eine iOS-Version ist in Vorbereitung – schreib uns gern eine E-Mail, dann '
                          . 'sagen wir dir Bescheid, sobald sie da ist.',
                 ],
                 [

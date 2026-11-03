@@ -175,6 +175,13 @@
 
 .form-side h2 { margin-bottom: var(--space-3); }
 
+/* Kontakt und Support ohne Formular: die Karte traegt Text, Liste und einen
+   mailto-Knopf statt Eingabefeldern. */
+.form-card h2 { margin-bottom: var(--space-4); }
+.form-card > p { margin-bottom: var(--space-4); }
+.form-card > .btn { margin-block: var(--space-2) var(--space-4); gap: var(--space-2); }
+.form-card > .form-mail:last-child { margin-bottom: 0; font-size: var(--text-base); }
+
 .form-mail {
     display: flex;
     align-items: center;

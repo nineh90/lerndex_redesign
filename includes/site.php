@@ -11,6 +11,25 @@ const SITE_URL   = 'https://lerndex.de';
 const SITE_NAME  = 'Lerndex';
 const SITE_MAIL  = 'info@lerndex.de';
 
+// ── Cache-Busting ────────────────────────────
+/**
+ * Adresse einer CSS-/JS-Datei mit Pruefsumme ihres Inhalts.
+ *
+ * Die .htaccess laesst Browser CSS und JS einen Monat lang cachen. Ohne
+ * Kennung saehen Stammbesucher nach einem Update neues HTML mit altem CSS –
+ * leere Bereiche, fehlende Bilder. Aendert sich die Datei, aendert sich die
+ * Adresse, und der Browser laedt sie neu.
+ */
+function asset(string $pfad): string
+{
+    static $cache = [];
+    $datei = __DIR__ . '/..' . $pfad;
+    if (!isset($cache[$pfad])) {
+        $cache[$pfad] = is_file($datei) ? substr(hash_file('crc32b', $datei), 0, 8) : '';
+    }
+    return $pfad . ($cache[$pfad] !== '' ? '?v=' . $cache[$pfad] : '');
+}
+
 // ── Stores ───────────────────────────────────
 const PLAY_STORE_URL = 'https://play.google.com/store/apps/details?id=de.nilsdigital.lerndex&hl=de';
 const IOS_AVAILABLE  = false;   // auf true setzen, sobald die App im App Store ist

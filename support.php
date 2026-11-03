@@ -3,11 +3,12 @@ require_once __DIR__ . '/includes/site.php';
 
 $page_title       = 'Support';
 $page_h1          = 'Etwas funktioniert nicht?';
-$page_lead        = 'Beschreib uns möglichst genau, was passiert ist – je mehr wir wissen, desto schneller ist es behoben.';
-$page_description = 'Fehler in der Lerndex-App melden: Gerät, App-Version und Beschreibung angeben, wir kümmern uns darum.';
+$page_lead        = 'Beschreiben Sie uns möglichst genau, was passiert ist – je mehr wir wissen, desto schneller ist es behoben.';
+$page_title_full  = 'Support: Fehler in der Lerndex-App melden';
+$page_description = 'Etwas funktioniert nicht? Melden Sie den Fehler mit Gerät, Betriebssystem und '
+                  . 'App-Version – wir kümmern uns darum und melden uns zurück.';
 $canonical        = SITE_URL . '/support';
 $current_page     = 'support';
-$needs_forms      = true;
 
 include __DIR__ . '/includes/head.php';
 include __DIR__ . '/includes/navbar.php';
@@ -30,81 +31,42 @@ include __DIR__ . '/includes/navbar.php';
 
                     <div class="form-hintbox">
                         <?php icon('circle-help', 'icon-sm'); ?>
-                        <p>Keine Störung, sondern eine Frage? Dann geht es über das
-                           <a href="/kontakt">Kontaktformular</a> schneller.</p>
-                    </div>
-
-                    <div class="form-hintbox">
-                        <?php icon('mail', 'icon-sm'); ?>
-                        <p>Lieber direkt schreiben? <a href="mailto:<?= e(SITE_MAIL) ?>"><?= e(SITE_MAIL) ?></a></p>
+                        <p>Keine Störung, sondern eine Frage? Dann schauen Sie in die
+                           <a href="/faq">häufigen Fragen</a> oder auf die <a href="/kontakt">Kontaktseite</a>.</p>
                     </div>
                 </div>
 
-                <form class="form-card" id="support-form" data-form="support" novalidate>
-                    <div class="form-group">
-                        <label for="s-device">Gerät <span aria-hidden="true">*</span></label>
-                        <input type="text" id="s-device" name="device" placeholder="z. B. Samsung Galaxy S23" required>
-                    </div>
-
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="s-os">Betriebssystem <span aria-hidden="true">*</span></label>
-                            <select id="s-os" name="os" required>
-                                <option value="" selected disabled>Bitte auswählen</option>
-                                <option value="android">Android</option>
-                                <option value="ios">iOS</option>
-                            </select>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="s-version">App-Version <span aria-hidden="true">*</span></label>
-                            <input type="text" id="s-version" name="appVersion" placeholder="steht in den Einstellungen" required>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="s-desc">Was passiert? <span aria-hidden="true">*</span></label>
-                        <textarea id="s-desc" name="description" placeholder="Was hast du erwartet und was ist stattdessen passiert?" required></textarea>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="s-steps">Wie können wir es nachstellen?</label>
-                        <textarea id="s-steps" name="steps" placeholder="1. Quiz öffnen&#10;2. Auf Weiter tippen&#10;3. …"></textarea>
-                    </div>
-
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="s-urgency">Wie dringend ist es?</label>
-                            <select id="s-urgency" name="urgency">
-                                <option value="niedrig">Stört kaum</option>
-                                <option value="mittel" selected>Nervt regelmäßig</option>
-                                <option value="hoch">Blockiert das Lernen</option>
-                                <option value="kritisch">Gar nichts geht mehr</option>
-                            </select>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="s-email">E-Mail für Rückfragen</label>
-                            <input type="email" id="s-email" name="email" autocomplete="email">
-                        </div>
-                    </div>
-
-                    <div class="hp-field" aria-hidden="true">
-                        <label for="s-website">Website (bitte frei lassen)</label>
-                        <input type="text" id="s-website" name="website" tabindex="-1" autocomplete="off">
-                    </div>
-
-                    <div class="form-group checkbox-group">
-                        <label class="checkbox-label" for="s-privacy">
-                            <input type="checkbox" id="s-privacy" name="privacy" required>
-                            <span>Ich habe die <a href="/datenschutz" target="_blank" rel="noopener">Datenschutzerklärung</a>
-                                  gelesen und stimme der Verarbeitung meiner Angaben zu.</span>
-                        </label>
-                    </div>
-
-                    <button type="submit" class="btn btn-primary btn-block btn-lg">Fehler melden</button>
-                    <div class="form-status" role="status" aria-live="polite"></div>
-                </form>
+                <?php
+                $support_betreff = 'Fehlermeldung Lerndex-App';
+                $support_text    = "Gerät (z. B. Samsung Galaxy S23):\n"
+                                 . "Android-Version:\n"
+                                 . "App-Version (steht in den Einstellungen der App):\n\n"
+                                 . "Was ist passiert, und was hätten Sie erwartet?\n\n\n"
+                                 . "Wie können wir es nachstellen?\n1.\n2.\n3.\n\n"
+                                 . "Wie dringend ist es? (stört kaum / nervt regelmäßig / blockiert das Lernen / gar nichts geht mehr)\n";
+                $support_mailto  = 'mailto:' . SITE_MAIL
+                                 . '?subject=' . rawurlencode($support_betreff)
+                                 . '&body=' . rawurlencode($support_text);
+                ?>
+                <div class="form-card">
+                    <h2>Fehler per E-Mail melden</h2>
+                    <p>Damit wir das Problem schnell nachstellen können, helfen uns diese Angaben:</p>
+                    <ul class="check-list">
+                        <li><?php icon('check', 'icon-sm'); ?> Gerät und Android-Version</li>
+                        <li><?php icon('check', 'icon-sm'); ?> App-Version – steht in den Einstellungen der App</li>
+                        <li><?php icon('check', 'icon-sm'); ?> Was passiert ist und was Sie erwartet hätten</li>
+                        <li><?php icon('check', 'icon-sm'); ?> Wie wir es nachstellen können</li>
+                        <li><?php icon('check', 'icon-sm'); ?> Gern ein Screenshot</li>
+                    </ul>
+                    <p>Der Knopf öffnet Ihr E-Mail-Programm mit einer fertigen Vorlage.</p>
+                    <a class="btn btn-primary btn-block btn-lg" href="<?= e($support_mailto) ?>">
+                        <?php icon('mail', 'icon-sm'); ?> Fehler melden
+                    </a>
+                    <p class="form-mail">
+                        <?php icon('mail'); ?>
+                        <a href="mailto:<?= e(SITE_MAIL) ?>"><?= e(SITE_MAIL) ?></a>
+                    </p>
+                </div>
 
             </div>
         </section>

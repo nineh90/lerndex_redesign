@@ -1,0 +1,414 @@
+{
+  "name": "Lerndex Formulare",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "lerndex-formulare",
+        "authentication": "headerAuth",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "webhook-eingang",
+      "name": "Webhook Eingang",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        -380,
+        300
+      ],
+      "webhookId": "lerndex-formulare",
+      "notes": "Empfaengt POST von api/submit.php. Header-Auth-Credential anlegen:\nName: Authorization, Wert: Bearer <derselbe Token wie n8n_token in config.php>"
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "regel-kontakt",
+                    "leftValue": "={{ $json.body.form }}",
+                    "rightValue": "kontakt",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "kontakt"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "regel-support",
+                    "leftValue": "={{ $json.body.form }}",
+                    "rightValue": "support",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "support"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "switch-formular",
+      "name": "Welches Formular?",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [
+        -160,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "f-1",
+              "name": "formTyp",
+              "value": "Kontaktanfrage",
+              "type": "string"
+            },
+            {
+              "id": "f-2",
+              "name": "betreff",
+              "value": "=[lerndex.de] Kontakt — {{ $json.body.data.subject }} — {{ $json.body.data.name }}",
+              "type": "string"
+            },
+            {
+              "id": "f-3",
+              "name": "absenderName",
+              "value": "={{ $json.body.data.name }}",
+              "type": "string"
+            },
+            {
+              "id": "f-4",
+              "name": "absenderEmail",
+              "value": "={{ $json.body.data.email }}",
+              "type": "string"
+            },
+            {
+              "id": "f-5",
+              "name": "dringlichkeit",
+              "value": "—",
+              "type": "string"
+            },
+            {
+              "id": "f-6",
+              "name": "empfangenAm",
+              "value": "={{ $json.body.meta.receivedAt }}",
+              "type": "string"
+            },
+            {
+              "id": "f-7",
+              "name": "text",
+              "value": "=Neue Kontaktanfrage über lerndex.de\n\nName:    {{ $json.body.data.name }}\nE-Mail:  {{ $json.body.data.email }}\nThema:   {{ $json.body.data.subject }}\n\nNachricht:\n{{ $json.body.data.message }}\n\n———\nEmpfangen: {{ $json.body.meta.receivedAt }}\nHerkunft:  {{ $json.body.meta.referer || '—' }}\nBrowser:   {{ $json.body.meta.userAgent || '—' }}",
+              "type": "string"
+            },
+            {
+              "id": "f-8",
+              "name": "telegram",
+              "value": "=📬 Neue Kontaktanfrage über lerndex.de (Thema: {{ $json.body.data.subject }}). Details im Postfach info@lerndex.de.",
+              "type": "string"
+            },
+            {
+              "id": "f-9",
+              "name": "details",
+              "value": "={{ $json.body.data.message }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "set-kontakt",
+      "name": "Kontakt aufbereiten",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        80,
+        180
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "s-1",
+              "name": "formTyp",
+              "value": "Bug-Meldung",
+              "type": "string"
+            },
+            {
+              "id": "s-2",
+              "name": "betreff",
+              "value": "=[lerndex.de] Bug ({{ $json.body.data.urgency }}) — {{ $json.body.data.device }} / {{ $json.body.data.os }}",
+              "type": "string"
+            },
+            {
+              "id": "s-3",
+              "name": "absenderName",
+              "value": "—",
+              "type": "string"
+            },
+            {
+              "id": "s-4",
+              "name": "absenderEmail",
+              "value": "={{ $json.body.data.email || '' }}",
+              "type": "string"
+            },
+            {
+              "id": "s-5",
+              "name": "dringlichkeit",
+              "value": "={{ $json.body.data.urgency }}",
+              "type": "string"
+            },
+            {
+              "id": "s-6",
+              "name": "empfangenAm",
+              "value": "={{ $json.body.meta.receivedAt }}",
+              "type": "string"
+            },
+            {
+              "id": "s-7",
+              "name": "text",
+              "value": "=Neue Bug-Meldung über lerndex.de\n\nGerät:        {{ $json.body.data.device }}\nSystem:       {{ $json.body.data.os }}\nApp-Version:  {{ $json.body.data.appVersion }}\nDringlichkeit: {{ $json.body.data.urgency }}\nRückmeldung an: {{ $json.body.data.email || 'keine Adresse angegeben' }}\n\nWas ist passiert:\n{{ $json.body.data.description }}\n\nSchritte zum Nachstellen:\n{{ $json.body.data.steps || 'keine angegeben' }}\n\n———\nEmpfangen: {{ $json.body.meta.receivedAt }}\nHerkunft:  {{ $json.body.meta.referer || '—' }}\nBrowser:   {{ $json.body.meta.userAgent || '—' }}",
+              "type": "string"
+            },
+            {
+              "id": "s-8",
+              "name": "telegram",
+              "value": "=🐞 Neue Bug-Meldung über lerndex.de (Dringlichkeit: {{ $json.body.data.urgency }}). Details im Postfach info@lerndex.de.",
+              "type": "string"
+            },
+            {
+              "id": "s-9",
+              "name": "details",
+              "value": "={{ $json.body.data.description }}{{ $json.body.data.steps ? '\\n\\nSchritte:\\n' + $json.body.data.steps : '' }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "set-support",
+      "name": "Bug aufbereiten",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        80,
+        420
+      ]
+    },
+    {
+      "parameters": {
+        "sendTo": "info@lerndex.de",
+        "subject": "={{ $json.betreff }}",
+        "emailType": "text",
+        "message": "={{ $json.text }}",
+        "options": {
+          "replyTo": "={{ $json.absenderEmail || 'info@lerndex.de' }}"
+        }
+      },
+      "id": "gmail-senden",
+      "name": "E-Mail an Lerndex",
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [
+        360,
+        120
+      ],
+      "notes": "Gmail-OAuth2-Credential in n8n hinterlegen.\nreplyTo ist bei Bug-Meldungen ohne Adresse '—' — dann beim Antworten von Hand loeschen."
+    },
+    {
+      "parameters": {
+        "chatId": "TELEGRAM_CHAT_ID_EINTRAGEN",
+        "text": "={{ $json.telegram }}",
+        "additionalFields": {}
+      },
+      "id": "telegram-senden",
+      "name": "Telegram-Push",
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        360,
+        300
+      ],
+      "notes": "Bot ueber @BotFather anlegen, Token als Telegram-Credential.\nChat-ID: dem Bot einmal schreiben, dann\nhttps://api.telegram.org/bot<TOKEN>/getUpdates aufrufen."
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "GOOGLE_SHEET_ID_EINTRAGEN",
+          "mode": "id"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Tabellenblatt1"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Empfangen": "={{ $json.empfangenAm }}",
+            "Typ": "={{ $json.formTyp }}",
+            "Name": "={{ $json.absenderName }}",
+            "E-Mail": "={{ $json.absenderEmail }}",
+            "Betreff": "={{ $json.betreff }}",
+            "Dringlichkeit": "={{ $json.dringlichkeit }}",
+            "Details": "={{ $json.details }}"
+          },
+          "matchingColumns": [],
+          "schema": []
+        },
+        "options": {}
+      },
+      "id": "sheets-archiv",
+      "name": "Ins Archiv-Sheet",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5,
+      "position": [
+        360,
+        480
+      ],
+      "notes": "Kopfzeile im Sheet exakt so anlegen:\nEmpfangen | Typ | Name | E-Mail | Betreff | Dringlichkeit | Details"
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={\"ok\":true}",
+        "options": {}
+      },
+      "id": "antwort-ok",
+      "name": "Antwort an Webseite",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        620,
+        120
+      ]
+    }
+  ],
+  "connections": {
+    "Webhook Eingang": {
+      "main": [
+        [
+          {
+            "node": "Welches Formular?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Welches Formular?": {
+      "main": [
+        [
+          {
+            "node": "Kontakt aufbereiten",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Bug aufbereiten",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Kontakt aufbereiten": {
+      "main": [
+        [
+          {
+            "node": "E-Mail an Lerndex",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Telegram-Push",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Ins Archiv-Sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Bug aufbereiten": {
+      "main": [
+        [
+          {
+            "node": "E-Mail an Lerndex",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Telegram-Push",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Ins Archiv-Sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "E-Mail an Lerndex": {
+      "main": [
+        [
+          {
+            "node": "Antwort an Webseite",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "pinData": {},
+  "meta": {
+    "instanceId": "lerndex"
+  },
+  "tags": []
+}

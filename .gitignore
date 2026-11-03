@@ -3,6 +3,7 @@
 config.php
 .env
 .env.*
+!.env.example
 
 # ── Betriebssystem-Müll ──────────────────────
 desktop.ini

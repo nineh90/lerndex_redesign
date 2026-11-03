@@ -38,7 +38,17 @@ for p in / /fuer-eltern /fuer-kinder /funktionen /sicherheit /preise /faq \
 done
 ```
 
+CSS und JS werden über `asset('/assets/…')` aus `includes/site.php` eingebunden – das hängt eine Prüfsumme an, damit Browser nach einem Update nicht die einen Monat lang gecachte alte Fassung nehmen. Neue Dateien immer so einbinden.
+
 Es gibt keine Tests. Verifikation läuft über `php -l`, Durchklicken im Browser, Lighthouse und den Google Rich Results Test.
+
+## Deployment
+
+**Jeder Push auf `main` geht sofort live**: GitHub Action (`.github/workflows/deploy.yml`, prüft `php -l` und rendert alle Seiten) → SSH auf den Hostinger-VPS → `deploy/deploy.sh` → `docker compose up -d --build`. Der Container hängt hinter dem Traefik des n8n-Stacks, wie die anderen Nils-Digital-Projekte. Ausprobieren also auf einem Branch.
+
+Die Seite läuft direkt unter `lerndex.de`; getestet wird vorher lokal. Einrichtung, Umschalttag und Strato-DNS: `deploy/README.md`. Das Abbild testet sich lokal mit `podman build -f deploy/Dockerfile -t lerndex:test .` – dort greift im Gegensatz zu `router.php` die echte `.htaccess`.
+
+Umleitungen in `.htaccess` immer mit absolutem `https://%{HTTP_HOST}/…`-Ziel: relativ baut Apache hinter Traefik `http://` und jede 301 bekommt einen zweiten Sprung.
 
 ## Architektur
 
@@ -118,9 +128,11 @@ FAQ-Inhalte stehen **nur** in `includes/faq_data.php`. Von dort holen sich sowoh
 
 ### Formulare
 
+**Stand November 2026: Formulare sind abgeschaltet.** `/kontakt` und `/support` zeigen nur die Mailadresse; Support öffnet eine vorausgefüllte E-Mail (mailto). `datenschutz.php` 7a beschreibt entsprechend nur den Kontakt per E-Mail – wer die Formulare zurückholt, muss 7a wieder erweitern (n8n, Google Sheets, Telegram, Spamschutz). Der Code dafür bleibt im Repo:
+
 Browser → `POST /api/submit.php` → n8n-Webhook. Der PHP-Proxy hält die Webhook-URL aus dem Quelltext, validiert serverseitig, prüft ein Honeypot-Feld, begrenzt auf fünf Absendungen pro IP und Stunde und antwortet einheitlich mit `{ok: bool, message: string}`. Ohne `config.php` liefert er eine verständliche Meldung statt eines Fehlers.
 
-Webhook-URLs stehen in `config.php` — **gitignored**. Vorlage: `config.example.php`.
+Webhook-URLs stehen lokal in `config.php` (**gitignored**, Vorlage `config.example.php`), auf dem VPS als `N8N_CONTACT`/`N8N_TOKEN` in `deploy/.env` – mit der **internen** Adresse `http://n8n:5678/…`, weil der Server seine öffentlichen Namen nicht erreicht.
 
 `/api/*.php` ist von der Clean-URL-Umleitung ausgenommen — in `.htaccess` **und** in `router.php`. Fehlt die Ausnahme an einer der beiden Stellen, wird der POST zu einem 301 und das Formular schlägt fehl.
 

@@ -30,7 +30,7 @@
                     return { field: f, message: 'Bitte bestätige die Datenschutzerklärung.' };
                 }
                 if (f.type !== 'checkbox' && !f.value.trim()) {
-                    return { field: f, message: 'Bitte fülle alle Pflichtfelder aus.' };
+                    return { field: f, message: 'Bitte füllen Sie alle Pflichtfelder aus.' };
                 }
                 if (f.type === 'email' && f.value && !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(f.value)) {
                     return { field: f, message: 'Diese E-Mail-Adresse sieht nicht richtig aus.' };

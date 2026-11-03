@@ -28,12 +28,12 @@
 
     <!-- Reihenfolge ist bedeutsam: Tokens vor allem anderen,
          Sections zuletzt (duerfen Komponenten ueberschreiben). -->
-    <link rel="stylesheet" href="/assets/css/01-tokens.css">
-    <link rel="stylesheet" href="/assets/css/02-base.css">
-    <link rel="stylesheet" href="/assets/css/03-components.css">
-    <link rel="stylesheet" href="/assets/css/04-layout.css">
-    <link rel="stylesheet" href="/assets/css/05-sections.css">
-    <link rel="stylesheet" href="/assets/css/06-hero.css">
-    <link rel="stylesheet" href="/assets/css/07-motion.css">
-    <link rel="stylesheet" href="/assets/css/08-quiz.css">
-    <link rel="stylesheet" href="/assets/css/09-pages.css">
+    <link rel="stylesheet" href="<?= asset('/assets/css/01-tokens.css') ?>">
+    <link rel="stylesheet" href="<?= asset('/assets/css/02-base.css') ?>">
+    <link rel="stylesheet" href="<?= asset('/assets/css/03-components.css') ?>">
+    <link rel="stylesheet" href="<?= asset('/assets/css/04-layout.css') ?>">
+    <link rel="stylesheet" href="<?= asset('/assets/css/05-sections.css') ?>">
+    <link rel="stylesheet" href="<?= asset('/assets/css/06-hero.css') ?>">
+    <link rel="stylesheet" href="<?= asset('/assets/css/07-motion.css') ?>">
+    <link rel="stylesheet" href="<?= asset('/assets/css/08-quiz.css') ?>">
+    <link rel="stylesheet" href="<?= asset('/assets/css/09-pages.css') ?>">
