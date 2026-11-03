@@ -3,8 +3,9 @@ require_once __DIR__ . '/includes/site.php';
 
 $page_title       = 'Für Eltern';
 $page_title_full  = 'Lerndex für Eltern: jedes KI-Gespräch mitlesen';
-$page_h1          = 'Was Sie von Lerndex erwarten können';
-$page_lead        = 'Sie entscheiden, was Ihr Kind nutzt. Deshalb hier ohne Umwege: was die App tut, was sie nicht tut und was Sie sehen.';
+$page_h1          = 'Gut begleitet lernen – und Sie sind immer dabei';
+$page_lexi        = 'winkend';   // Illustration im Seitenkopf (page_hero.php)
+$page_lead        = 'Lerndex erklärt Ihrem Kind den Schulstoff, motiviert mit Level und Belohnungen und zeigt Ihnen jederzeit, was passiert. Hier steht ohne Umwege, was die App tut – und was nicht.';
 $page_description = 'Volle Einsicht in jedes Gespräch Ihres Kindes mit der KI, fünf Schutzschichten '
                   . 'und echte Lernzeit statt Bildschirmzeit. Werbefrei und DSGVO-konform.';
 $canonical        = SITE_URL . '/fuer-eltern';
@@ -29,8 +30,8 @@ include __DIR__ . '/includes/navbar.php';
         <?php include __DIR__ . '/includes/sections/benefits.php'; ?>
         <?php include __DIR__ . '/includes/sections/audience_deep.php'; ?>
         <?php include __DIR__ . '/includes/sections/security.php'; ?>
-        <?php include __DIR__ . '/includes/sections/how_it_works.php'; ?>
-        <?php include __DIR__ . '/includes/sections/cta_download.php'; ?>
+        <?php include __DIR__ . '/includes/sections/home_start.php'; ?>
+        <?php include __DIR__ . '/includes/sections/home_cta.php'; ?>
     </main>
 
 <?php

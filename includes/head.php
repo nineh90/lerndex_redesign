@@ -78,7 +78,7 @@ $title = $page_title_full ?? ($page_title . ' – ' . SITE_NAME);
 $force_mode = $force_mode ?? null;
 $startMode  = $force_mode === 'kids' ? 'mode-kids' : 'mode-parents';
 ?>
-<body class="<?= $startMode ?> <?= e($body_class ?? '') ?>">
+<body class="<?= $startMode ?> stil-lebendig <?= e($body_class ?? '') ?>">
 <?php if (!$force_mode): ?>
 <script>
     // Laeuft als erstes im Body, also vor dem ersten Paint: die gemerkte

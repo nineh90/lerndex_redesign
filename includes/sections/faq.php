@@ -20,10 +20,13 @@ if ($faq_teaser) {
 <section id="faq" class="section faq bg-light">
     <div class="container">
 
+        <?php /* Auf /faq steht die Überschrift schon im Seitenkopf – hier nur im Teaser */ ?>
+        <?php if ($faq_teaser): ?>
         <div class="section-header">
             <span class="badge">Fragen</span>
             <?php dual('Häufige Fragen', 'Was du vielleicht wissen willst', 'h2'); ?>
         </div>
+        <?php endif; ?>
 
         <?php if ($faq_teaser): ?>
 
@@ -68,7 +71,7 @@ if ($faq_teaser) {
             <div class="faq-foot">
                 <p>Frage nicht dabei?</p>
                 <div class="faq-foot-cta">
-                    <a href="/kontakt" class="btn btn-primary"><?php icon('mail'); ?> Schreib uns</a>
+                    <a href="/kontakt" class="btn btn-primary"><?php icon('mail'); ?> Schreiben Sie uns</a>
                     <a href="/support" class="btn btn-secondary">Problem mit der App melden</a>
                 </div>
             </div>

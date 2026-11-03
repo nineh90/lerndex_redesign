@@ -17,6 +17,7 @@ require_once __DIR__ . '/includes/site.php';
 $page_title       = 'Für Schulen';
 $page_title_full  = 'Lerndex für Schulen: KI-Lernbegleiter für Klassen 1 bis 8';
 $page_h1          = 'Lerndex für Schulen';
+$page_lexi        = 'forscher';   // Illustration im Seitenkopf (page_hero.php)
 $page_lead        = 'Lexi hilft beim Verstehen, nicht beim Abschreiben – jetzt auch im Unterricht. '
                   . 'Mit Klassen, Schülerkarten und Elternbrief. Wir suchen Schulen für unsere Pilotphase.';
 $page_description = 'Lerndex für Grund- und weiterführende Schulen: Klassen anlegen, Schülerkarten drucken, '

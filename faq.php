@@ -5,6 +5,8 @@ require_once __DIR__ . '/includes/faq_data.php';
 $page_title       = 'Häufige Fragen';
 $page_title_full  = 'Häufige Fragen zu Lerndex: Klassen, Preise, Datenschutz';
 $page_h1          = 'Häufige Fragen zu Lerndex';
+$page_lead        = 'Klassenstufen, Fächer, KI-Tutor, Datenschutz, Preise und Schulen – hier finden Sie kurze, ehrliche Antworten.';
+$page_lexi        = 'winkend';   // Illustration im Seitenkopf (page_hero.php)
 $page_description = 'Antworten zu Klassenstufen, Fächern, dem KI-Tutor, dem Eltern-Dashboard, '
                   . 'Datenschutz, Preisen und Kündigung – kurz und ohne Marketing.';
 $canonical        = SITE_URL . '/faq';

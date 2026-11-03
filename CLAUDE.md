@@ -52,6 +52,10 @@ Umleitungen in `.htaccess` immer mit absolutem `https://%{HTTP_HOST}/…`-Ziel: 
 
 ## Architektur
 
+### Seitenkopf
+
+Unterseiten nutzen `includes/sections/page_hero.php`. Optional setzt die Seite `$page_lexi` (`winkend`, `leuchtend`, `zauberer`, `forscher`) – dann steht die passende Lexi-Illustration im Kopf. Bilder liegen als WebP in `assets/images/lexi/`; ihr Glühen ist im Original oben/unten abgeschnitten, deshalb laufen sie immer mit einer Masken-Ausblendung (`mask-image`), Schatten gehören dann ans umschließende Element.
+
 ### Seitenaufbau
 
 Jede Seite im Root ist eine eigenständige PHP-Datei, die vor dem Head ihre Metadaten als Variablen setzt und dann die gemeinsamen Includes zusammensteckt:
@@ -97,7 +101,7 @@ Die Dateien in `assets/css/` werden **in dieser Reihenfolge geladen** — sie ba
 | `05-sections.css` | Seitenspezifische Blöcke inkl. Rechtsseiten |
 | `06-hero.css` … `09-pages.css` | Hero, Bewegung, Quiz/Chat-Demo, Unterseiten |
 | `10-kids.css` | Spielwelt der Kinderseite – **nur** auf `/fuer-kinder` geladen (`$needs_kids`), dazu `assets/js/kids.js` |
-| `11-lebendig.css` | Lebendiger Stil (Aurora-Hero, Zahlenband, Bento, Schritte). Geladen über `$needs_lebendig`, Regeln für geteilte Abschnitte hängen an `body.stil-lebendig` – Stand 04.11.2026 nur auf der Startseite, zur Freigabe durch Nils |
+| `11-lebendig.css` | Lebendiger Stil auf **allen** Seiten (Aurora-Köpfe mit Lexi, Bento, Zahlenband, Schritte, FAQ-/Preis-Feinschliff). Regeln für geteilte Abschnitte hängen an `body.stil-lebendig` (setzt `head.php` immer) |
 
 **Keine Hex-Werte in Regeln** — alles über Tokens. Neue Farbe? Erst als Token in `01-tokens.css`.
 

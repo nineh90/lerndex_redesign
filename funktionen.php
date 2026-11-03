@@ -3,7 +3,9 @@ require_once __DIR__ . '/includes/site.php';
 
 $page_title       = 'Funktionen';
 $page_title_full  = 'Funktionen: KI-Tutor, Quiz und Eltern-Dashboard – Lerndex';
-$page_h1          = 'Alle Funktionen von Lerndex im Überblick';
+$page_h1          = 'Alles, was Lerndex kann – auf einen Blick';
+$page_lead        = 'Quizze passend zur Klasse, ein KI-Tutor mit unendlich Geduld, ein Modus für Leseanfänger und ein Eltern-Dashboard mit allem Wichtigen. Alle Bilder stammen direkt aus der App.';
+$page_lexi        = 'forscher';   // Illustration im Seitenkopf (page_hero.php)
 $page_description = 'KI-Tutor Lexi, Quizze für Klasse 1 bis 8, Early-Learner-Modus mit Vorlesefunktion, '
                   . 'Eltern-Dashboard, Aufgaben-Freigabe, Belohnungen und Lernstatistiken.';
 $canonical        = SITE_URL . '/funktionen';
@@ -26,7 +28,7 @@ include __DIR__ . '/includes/navbar.php';
         <?php include __DIR__ . '/includes/sections/page_hero.php'; ?>
         <?php include __DIR__ . '/includes/sections/features.php'; ?>
         <?php include __DIR__ . '/includes/sections/dashboard_slider.php'; ?>
-        <?php include __DIR__ . '/includes/sections/cta_download.php'; ?>
+        <?php include __DIR__ . '/includes/sections/home_cta.php'; ?>
     </main>
 
 <?php

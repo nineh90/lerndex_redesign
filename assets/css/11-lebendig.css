@@ -505,6 +505,157 @@
 }
 
 
+/* ── Seitenkopf der Unterseiten ───────────────────────────────── */
+.stil-lebendig .page-hero {
+    padding-block: clamp(2rem, 1.5rem + 3vw, 4rem) clamp(2.5rem, 2rem + 3vw, 4.5rem);
+    background: var(--surface);
+}
+
+/* leiser als im Startseiten-Hero und nach unten ausgeblendet */
+.aurora--leise {
+    -webkit-mask-image: linear-gradient(to bottom, black 55%, transparent);
+    mask-image: linear-gradient(to bottom, black 55%, transparent);
+}
+.aurora--leise .aurora-fleck { opacity: 0.75; }
+
+.page-hero-inner {
+    display: grid;
+    gap: var(--space-4);
+    align-items: center;
+    justify-items: center;
+}
+
+.stil-lebendig .page-hero h1 {
+    font-size: clamp(2rem, 1.5rem + 2.4vw, 3.2rem);
+    line-height: 1.1;
+    letter-spacing: -0.025em;
+    color: var(--heading-color);
+}
+
+.page-hero-lexi {
+    order: -1;                       /* am Handy über dem Text */
+    filter: drop-shadow(0 16px 26px color-mix(in srgb, var(--brand-900) 30%, transparent));
+}
+
+.page-hero-lexi img {
+    width: 120px;
+    height: auto;
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0, black 6%, black 78%, transparent 100%);
+    mask-image: linear-gradient(to bottom, transparent 0, black 6%, black 78%, transparent 100%);
+}
+
+@media (min-width: 860px) {
+    .page-hero--lexi .page-hero-inner {
+        grid-template-columns: 1fr auto;
+        justify-items: start;
+        gap: var(--space-8);
+        text-align: left;
+    }
+    .page-hero--lexi .crumbs { justify-content: flex-start; }
+    .page-hero--lexi .lead   { margin-inline: 0; }
+    .page-hero-lexi { order: 0; }
+    .page-hero-lexi img { width: 230px; }
+}
+
+
+/* ── Vorteilskarten (Für Eltern) ──────────────────────────────── */
+.stil-lebendig .benefits-grid { gap: var(--space-4); }
+
+@media (min-width: 900px) {
+    .stil-lebendig .benefits-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+.stil-lebendig .benefit-card {
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow-sm);
+    background: var(--surface);
+}
+
+.stil-lebendig .benefit-card:nth-child(3n + 1) { background: linear-gradient(160deg, var(--brand-50), var(--surface)); }
+.stil-lebendig .benefit-card:nth-child(3n + 2) { background: linear-gradient(160deg, var(--teal-light), var(--surface)); }
+.stil-lebendig .benefit-card:nth-child(3n + 3) { background: linear-gradient(160deg, var(--peach-light), var(--surface)); }
+
+.stil-lebendig .benefit-card:hover { box-shadow: var(--shadow-hover); }
+
+
+/* ── Funktionen: weiche Sonne hinter jedem Telefon ────────────── */
+.stil-lebendig .feature-image { position: relative; isolation: isolate; }
+
+.stil-lebendig .feature-image::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    left: 50%;
+    top: 50%;
+    width: min(340px, 80vw);
+    aspect-ratio: 1;
+    translate: -50% -50%;
+    border-radius: 50%;
+    background: linear-gradient(140deg, var(--brand-200), var(--teal-light) 60%, var(--peach-light));
+}
+
+
+/* ── Preise ───────────────────────────────────────────────────── */
+.stil-lebendig .pricing-card {
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border);
+}
+
+/* Beliebtester Plan: Verlaufsrahmen statt einfarbiger Linie */
+.stil-lebendig .pricing-card--featured {
+    border: 2px solid transparent;
+    background:
+        linear-gradient(160deg, var(--brand-50), var(--surface)) padding-box,
+        linear-gradient(140deg, var(--brand-600), var(--teal), var(--peach)) border-box;
+    box-shadow: var(--shadow-lift);
+}
+
+@media (min-width: 900px) {
+    .stil-lebendig .pricing-card--featured { scale: 1.04; }
+    .stil-lebendig .pricing-card--featured:hover { scale: 1.04; }
+}
+
+
+/* ── FAQ ──────────────────────────────────────────────────────── */
+/* Gruppenköpfe: helle Karten statt schwerer lila Balken */
+.stil-lebendig .faq-section-header {
+    padding: var(--space-4) var(--space-5);
+    margin-top: var(--space-3);
+    border-radius: var(--radius);
+    background: var(--surface);
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow-sm);
+    color: var(--heading-color);
+    font-size: var(--text-lg);
+    font-weight: 800;
+    letter-spacing: 0;
+    transition: background var(--duration) var(--ease-out), box-shadow var(--duration) var(--ease-out);
+}
+
+.stil-lebendig .faq-section-header:hover { opacity: 1; box-shadow: var(--shadow); }
+.stil-lebendig .faq-section-header.open  { background: linear-gradient(120deg, var(--brand-100), var(--teal-light)); }
+.stil-lebendig .faq-section-header svg   { color: var(--accent); }
+
+.stil-lebendig .faq-section-body { padding: var(--space-2) var(--space-2) 0; }
+
+.stil-lebendig .faq-item {
+    margin-bottom: var(--space-2);
+    padding-inline: var(--space-4);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    background: var(--surface);
+}
+
+.stil-lebendig .faq-item.active { border-color: var(--brand-300); box-shadow: var(--shadow-sm); }
+.stil-lebendig .faq-question { font-size: var(--text-base); color: var(--text); }
+.stil-lebendig .faq-question svg { color: var(--accent); flex-shrink: 0; margin-left: var(--space-3); }
+.stil-lebendig .faq-answer p { color: var(--text-muted); }
+
+/* Lange Antworten (z. B. Schulfragen) wurden bei 200 px abgeschnitten */
+.faq-item.active .faq-answer { max-height: 900px; }
+
+
 /* ═══════════════════════════════════════════════════════════════
    BEWEGUNG
    ═══════════════════════════════════════════════════════════════ */
@@ -536,6 +687,7 @@
     .js-anim .bento.is-visible .blase:nth-child(4) { transition-delay: 3.1s; }
 
     .bento-lexi { animation: schweben-sanft 5.5s ease-in-out infinite; }
+    .page-hero-lexi img { animation: schweben-sanft 5s ease-in-out infinite; }
 
     .schritt:hover .schritt-emoji { animation: huepfen 0.6s var(--ease-out); }
 

@@ -3,6 +3,7 @@ require_once __DIR__ . '/includes/site.php';
 
 $page_title       = 'Kontakt';
 $page_h1          = 'Schreiben Sie uns';
+$page_lexi        = 'winkend';   // Illustration im Seitenkopf (page_hero.php)
 $page_lead        = 'Frage zur App, zum Abo oder zum Datenschutz? Wir antworten in der Regel innerhalb von zwei Werktagen.';
 $page_title_full  = 'Kontakt: Fragen zu App, Abo und Datenschutz – Lerndex';
 $page_description = 'Fragen zur App, zum Abo, zum Datenschutz oder eine Presseanfrage? Schreiben Sie '

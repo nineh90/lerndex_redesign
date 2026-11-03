@@ -7,7 +7,9 @@ $page_title       = 'Preise';
    stehengeblieben, waehrend die Seite selbst schon etwas anderes zeigt. */
 $page_title_full  = 'Preise: ab ' . PLANS['solo']['price'] . ' € im Monat, '
                   . TRIAL_DAYS . ' Tage gratis – Lerndex';
-$page_h1          = 'Preise – ' . TRIAL_DAYS . ' Tage kostenlos testen';
+$page_h1          = 'Faire Preise – und ' . TRIAL_DAYS . ' Tage gratis zum Ausprobieren';
+$page_lead        = 'Ab ' . PLANS['solo']['price'] . ' € im Monat, monatlich kündbar und komplett werbefrei. Alle Funktionen sind in jedem Plan enthalten – Sie wählen nur, wie viele Kinder mitlernen.';
+$page_lexi        = 'leuchtend';   // Illustration im Seitenkopf (page_hero.php)
 $page_description = PLANS['solo']['price'] . ' € für ein Kind, ' . PLANS['duo']['price']
                   . ' € für zwei, ' . PLANS['family']['price'] . ' € für bis zu vier Kinder. '
                   . TRIAL_DAYS . ' Tage kostenlos testen, monatlich kündbar, keine Werbung.';
@@ -31,7 +33,7 @@ include __DIR__ . '/includes/navbar.php';
         <?php include __DIR__ . '/includes/sections/page_hero.php'; ?>
         <?php include __DIR__ . '/includes/sections/pricing.php'; ?>
         <?php include __DIR__ . '/includes/sections/pricing_detail.php'; ?>
-        <?php include __DIR__ . '/includes/sections/cta_download.php'; ?>
+        <?php include __DIR__ . '/includes/sections/home_cta.php'; ?>
     </main>
 
 <?php

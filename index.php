@@ -11,10 +11,6 @@ $current_page     = 'home';
    das noch im Browser gespeichert hat, nicht mehr zurueck. Fuer Kinder gibt es
    /fuer-kinder als eigene Seite. */
 $force_mode       = 'parents';
-/* Lebendiger Stil (11-lebendig.css) – zuerst nur auf der Startseite,
-   damit die Richtung an einem echten Beispiel entschieden werden kann. */
-$body_class       = 'stil-lebendig';
-$needs_lebendig   = true;
 $needs_quiz       = true;
 $needs_chat       = true;
 $feature_limit    = 3;      // Rest steht auf /funktionen

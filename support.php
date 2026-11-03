@@ -3,7 +3,8 @@ require_once __DIR__ . '/includes/site.php';
 
 $page_title       = 'Support';
 $page_h1          = 'Etwas funktioniert nicht?';
-$page_lead        = 'Beschreiben Sie uns möglichst genau, was passiert ist – je mehr wir wissen, desto schneller ist es behoben.';
+$page_lexi        = 'forscher';   // Illustration im Seitenkopf (page_hero.php)
+$page_lead        = 'Kein Problem – wir kümmern uns darum. Je genauer Sie beschreiben, was passiert ist, desto schneller ist es behoben.';
 $page_title_full  = 'Support: Fehler in der Lerndex-App melden';
 $page_description = 'Etwas funktioniert nicht? Melden Sie den Fehler mit Gerät, Betriebssystem und '
                   . 'App-Version – wir kümmern uns darum und melden uns zurück.';
