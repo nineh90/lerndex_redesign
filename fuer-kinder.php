@@ -2,10 +2,11 @@
 require_once __DIR__ . '/includes/site.php';
 
 $page_title       = 'Für Kinder';
+$page_title_full  = 'Lerndex für Kinder: mit Lexi lernen und XP sammeln';
 $page_h1          = 'Hey! Das ist Lerndex';
 $page_lead        = 'Eine App, in der Lernen sich nicht nach Hausaufgaben anfühlt. Hier steht, was du damit machen kannst.';
-$page_description = 'Lerndex für Kinder: Lexi erklärt dir alles, so oft du willst. Sammle XP, steige Level auf, '
-                  . 'schalte Avatare frei und halte deine Lern-Streak.';
+$page_description = 'Lexi erklärt dir alles, so oft du willst – und verrät nie die Lösung. Sammle XP, '
+                  . 'steig im Level auf, schalte Avatare frei und halte deine Lern-Streak.';
 $canonical        = SITE_URL . '/fuer-kinder';
 $current_page     = 'fuer-kinder';
 $force_mode       = 'kids';

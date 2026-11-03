@@ -2,10 +2,11 @@
 require_once __DIR__ . '/includes/site.php';
 
 $page_title       = 'Für Eltern';
+$page_title_full  = 'Lerndex für Eltern: jedes KI-Gespräch mitlesen';
 $page_h1          = 'Was Sie von Lerndex erwarten können';
 $page_lead        = 'Sie entscheiden, was Ihr Kind nutzt. Deshalb hier ohne Umwege: was die App tut, was sie nicht tut und was Sie sehen.';
-$page_description = 'Lerndex für Eltern: volle Einsicht in jedes KI-Gespräch, fünf Schutzschichten, echte Lernzeit statt Bildschirmzeit, '
-                  . 'Aufgaben-Freigabe und frei definierbare Belohnungen. Werbefrei und DSGVO-konform.';
+$page_description = 'Volle Einsicht in jedes Gespräch Ihres Kindes mit der KI, fünf Schutzschichten '
+                  . 'und echte Lernzeit statt Bildschirmzeit. Werbefrei und DSGVO-konform.';
 $canonical        = SITE_URL . '/fuer-eltern';
 $current_page     = 'fuer-eltern';
 $force_mode       = 'parents';

@@ -2,8 +2,10 @@
 require_once __DIR__ . '/includes/site.php';
 
 $page_title       = 'Sicherheit';
-$page_description = 'Wie Lerndex Kinder im Umgang mit KI schützt: fünf Schutzschichten, Themenfilter, '
-                  . 'Manipulationsschutz und vollständige Eltern-Transparenz. Mit echtem Beispiel aus der App.';
+$page_title_full  = 'Sicherheit: Wie Lerndex Kinder bei KI schützt';
+$page_h1          = 'Wie Lerndex Ihr Kind im Umgang mit KI schützt';
+$page_description = 'Fünf Schutzschichten, Themenfilter und Manipulationsschutz: Lexi bleibt beim '
+                  . 'Schulstoff und verrät keine Lösungen. Eltern lesen jedes Gespräch mit.';
 $canonical        = SITE_URL . '/sicherheit';
 $current_page     = 'sicherheit';
 

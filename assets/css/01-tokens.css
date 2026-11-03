@@ -113,6 +113,21 @@
     --z-nav: 1000;
     --z-menu: 1001;
     --z-banner: 9999;
+
+    /* ── Chat-Demo: Nachbau des Lexi-Chats aus der App ────────
+       Bewusst modusunabhaengig. Der Kasten auf der Startseite bildet
+       einen Screenshot nach, und die App sieht fuer Eltern wie fuer
+       Kinder gleich aus – er darf also nicht mit --accent umkippen.
+       Werte abgeglichen mit lib/src/shared/widgets/message_bubble.dart
+       und neue_screenshots/lerndex_lexi_chat_2.jpg.                 */
+    --chat-brand:       var(--brand-700);   /* Kopfleiste, Kind-Blase, Senden */
+    --chat-brand-soft:  var(--brand-100);   /* XP-Banner, Avatarkreis */
+    --chat-brand-track: var(--brand-200);   /* Schiene des XP-Balkens */
+    --chat-bubble:      var(--gray-100);    /* Lexis Blase, Eingabefeld */
+    --chat-face:        36px;               /* Avatarkreis an der Blase */
+    --chat-radius:      18px;
+    --chat-radius-tail: 4px;                /* die „Spitze" zum Absender hin */
+    --chat-radius-btn:  14px;
 }
 
 

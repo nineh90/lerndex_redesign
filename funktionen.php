@@ -2,9 +2,10 @@
 require_once __DIR__ . '/includes/site.php';
 
 $page_title       = 'Funktionen';
-$page_description = 'Alle Funktionen von Lerndex im Detail: KI-Tutor Lexi, Quizze für Klasse 1 bis 8, '
-                  . 'Early-Learner-Modus mit Vorlesefunktion, Eltern-Dashboard, Aufgaben-Freigabe, '
-                  . 'Belohnungen und Lernstatistiken.';
+$page_title_full  = 'Funktionen: KI-Tutor, Quiz und Eltern-Dashboard – Lerndex';
+$page_h1          = 'Alle Funktionen von Lerndex im Überblick';
+$page_description = 'KI-Tutor Lexi, Quizze für Klasse 1 bis 8, Early-Learner-Modus mit Vorlesefunktion, '
+                  . 'Eltern-Dashboard, Aufgaben-Freigabe, Belohnungen und Lernstatistiken.';
 $canonical        = SITE_URL . '/funktionen';
 $current_page     = 'funktionen';
 

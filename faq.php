@@ -3,8 +3,10 @@ require_once __DIR__ . '/includes/site.php';
 require_once __DIR__ . '/includes/faq_data.php';
 
 $page_title       = 'Häufige Fragen';
-$page_description = 'Antworten zu Lerndex: Klassenstufen, Fächer, KI-Tutor, Eltern-Dashboard, '
-                  . 'Datenschutz, Preise und Kündigung.';
+$page_title_full  = 'Häufige Fragen zu Lerndex: Klassen, Preise, Datenschutz';
+$page_h1          = 'Häufige Fragen zu Lerndex';
+$page_description = 'Antworten zu Klassenstufen, Fächern, dem KI-Tutor, dem Eltern-Dashboard, '
+                  . 'Datenschutz, Preisen und Kündigung – kurz und ohne Marketing.';
 $canonical        = SITE_URL . '/faq';
 $current_page     = 'faq';
 

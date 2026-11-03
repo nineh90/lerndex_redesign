@@ -1,8 +1,9 @@
 <?php
 require_once __DIR__ . '/includes/site.php';
 
-$page_title_full  = 'Lerndex – KI-Nachhilfe App für Kinder | Mathe, Deutsch, Englisch lernen';
-$page_description = 'Lerndex ist die sichere KI-Lernapp für Schüler der Klassen 1–8. Die KI erklärt statt Lösungen vorzugeben, passt sich Alter & Schulform an und bietet volle Eltern-Transparenz. Ein Bildungsprojekt von Nils-Digital.';
+$page_title_full  = 'Lerndex: KI-Nachhilfe-App für Kinder, Klasse 1 bis 8';
+$page_description = 'Die KI-Lernapp, die erklärt statt vorzusagen: Lexi begleitet Kinder der '
+                  . 'Klassen 1–8 in Mathe, Deutsch und mehr. Eltern lesen jedes Gespräch mit.';
 $canonical        = SITE_URL . '/';
 $current_page     = 'home';
 $needs_quiz       = true;
@@ -40,6 +41,10 @@ $page_jsonld = [
         'inLanguage'          => 'de',
         'brand'               => ['@type' => 'Brand', 'name' => 'Lerndex'],
         'publisher'           => ['@type' => 'Organization', 'name' => 'Nils-Digital', 'url' => 'https://nils-digital.de'],
+        /* priceSpecification sagt, dass der Preis pro Monat gilt. Ohne den
+           Block steht in den strukturierten Daten nur "12.99 EUR" – das liest
+           sich wie ein einmaliger Kaufpreis, und genau so kann Google es auch
+           ausspielen. Der Abrechnungszeitraum steht in Monaten (unitCode MON). */
         'offers'              => array_values(array_map(static fn(array $p): array => [
             '@type'         => 'Offer',
             'name'          => $p['name'] . ' – ' . $p['children'],
@@ -47,6 +52,17 @@ $page_jsonld = [
             'priceCurrency' => 'EUR',
             'availability'  => 'https://schema.org/InStock',
             'url'           => SITE_URL . '/preise',
+            'priceSpecification' => [
+                '@type'            => 'UnitPriceSpecification',
+                'price'            => $p['schema'],
+                'priceCurrency'    => 'EUR',
+                'billingIncrement' => 1,
+                'referenceQuantity' => [
+                    '@type'    => 'QuantitativeValue',
+                    'value'    => 1,
+                    'unitCode' => 'MON',
+                ],
+            ],
         ], PLANS)),
         'audience' => [
             '@type'           => 'EducationalAudience',

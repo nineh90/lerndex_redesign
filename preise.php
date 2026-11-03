@@ -2,8 +2,15 @@
 require_once __DIR__ . '/includes/site.php';
 
 $page_title       = 'Preise';
-$page_description = 'Lerndex kostet 12,99 € für ein Kind, 24,99 € für zwei und 39,99 € für bis zu vier. '
-                  . '14 Tage kostenlos testen, monatlich kündbar, keine Werbung.';
+/* Preise und Testtage kommen aus den Konstanten in site.php. Frueher standen
+   sie hier als Text – und waeren beim naechsten Preiswechsel in der Suche
+   stehengeblieben, waehrend die Seite selbst schon etwas anderes zeigt. */
+$page_title_full  = 'Preise: ab ' . PLANS['solo']['price'] . ' € im Monat, '
+                  . TRIAL_DAYS . ' Tage gratis – Lerndex';
+$page_h1          = 'Preise – ' . TRIAL_DAYS . ' Tage kostenlos testen';
+$page_description = PLANS['solo']['price'] . ' € für ein Kind, ' . PLANS['duo']['price']
+                  . ' € für zwei, ' . PLANS['family']['price'] . ' € für bis zu vier Kinder. '
+                  . TRIAL_DAYS . ' Tage kostenlos testen, monatlich kündbar, keine Werbung.';
 $canonical        = SITE_URL . '/preise';
 $current_page     = 'preise';
 
