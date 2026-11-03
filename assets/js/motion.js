@@ -55,7 +55,7 @@
     // Die Geräte kippen leicht in Richtung Mauszeiger. Nur auf Geräten
     // mit echtem Zeiger – auf dem Handy wäre das nur Akkuverbrauch.
     // ─────────────────────────────────────────────
-    var hero = document.querySelector('.hero');
+    var hero = document.querySelector('.hero, .hero-lebendig');
 
     if (hero && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
         var pointerLayers = hero.querySelectorAll('[data-pointer]');

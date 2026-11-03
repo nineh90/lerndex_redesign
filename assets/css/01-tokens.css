@@ -60,6 +60,12 @@
     --rose:    #F43F5E;
     --rose-light: #FFE4E6;
 
+    /* ── Warme Ergaenzung fuer den lebendigen Stil ───────────
+       Pfirsich als dritter Ton neben Lila und Tuerkis – macht die
+       hellen Verlaufsflaechen freundlich statt kuehl-technisch. */
+    --peach:       #FDBA8C;
+    --peach-light: #FFEDE3;
+
     /* ── Spielwelt (/fuer-kinder) ─────────────────────────────
        Nachthimmel und Neonfarben fuer die Kinderseite: wirkt auf
        Erstklaessler magisch und auf Achtklaessler wie ein Game,

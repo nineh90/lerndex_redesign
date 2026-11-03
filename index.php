@@ -11,6 +11,10 @@ $current_page     = 'home';
    das noch im Browser gespeichert hat, nicht mehr zurueck. Fuer Kinder gibt es
    /fuer-kinder als eigene Seite. */
 $force_mode       = 'parents';
+/* Lebendiger Stil (11-lebendig.css) – zuerst nur auf der Startseite,
+   damit die Richtung an einem echten Beispiel entschieden werden kann. */
+$body_class       = 'stil-lebendig';
+$needs_lebendig   = true;
 $needs_quiz       = true;
 $needs_chat       = true;
 $feature_limit    = 3;      // Rest steht auf /funktionen
@@ -95,23 +99,21 @@ include __DIR__ . '/includes/navbar.php';
 
     <main id="main">
         <?php include __DIR__ . '/includes/sections/hero.php'; ?>
+        <?php include __DIR__ . '/includes/sections/home_zahlen.php'; ?>
+        <?php include __DIR__ . '/includes/sections/home_vorteile.php'; ?>
         <?php include __DIR__ . '/includes/sections/demo_quiz.php'; ?>
         <?php /* Direkt nach dem Quiz: dort hat man gerade eine Erklaerung gelesen,
                  hier sieht man, wie sie zustande kommt. */ ?>
         <?php include __DIR__ . '/includes/sections/demo_chat.php'; ?>
-        <?php include __DIR__ . '/includes/sections/benefits.php'; ?>
-        <?php /* Ansprache-Wechsel direkt vor dem Block, der sich am staerksten
-                 unterscheidet – wer auf Kinderansicht schaltet, landet sofort in "Deine Welt" */ ?>
         <?php include __DIR__ . '/includes/sections/audience_deep.php'; ?>
         <?php include __DIR__ . '/includes/sections/dashboard_slider.php'; ?>
         <?php include __DIR__ . '/includes/sections/features.php'; ?>
         <?php /* Sicherheit direkt nach den Features: staerkstes Argument, bevor es um Geld geht */ ?>
         <?php include __DIR__ . '/includes/sections/security.php'; ?>
-        <?php include __DIR__ . '/includes/sections/how_it_works.php'; ?>
-        <?php include __DIR__ . '/includes/sections/target_group.php'; ?>
+        <?php include __DIR__ . '/includes/sections/home_start.php'; ?>
         <?php include __DIR__ . '/includes/sections/pricing.php'; ?>
         <?php include __DIR__ . '/includes/sections/faq.php'; ?>
-        <?php include __DIR__ . '/includes/sections/cta_download.php'; ?>
+        <?php include __DIR__ . '/includes/sections/home_cta.php'; ?>
     </main>
 
 <?php

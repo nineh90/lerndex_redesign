@@ -97,6 +97,7 @@ Die Dateien in `assets/css/` werden **in dieser Reihenfolge geladen** — sie ba
 | `05-sections.css` | Seitenspezifische Blöcke inkl. Rechtsseiten |
 | `06-hero.css` … `09-pages.css` | Hero, Bewegung, Quiz/Chat-Demo, Unterseiten |
 | `10-kids.css` | Spielwelt der Kinderseite – **nur** auf `/fuer-kinder` geladen (`$needs_kids`), dazu `assets/js/kids.js` |
+| `11-lebendig.css` | Lebendiger Stil (Aurora-Hero, Zahlenband, Bento, Schritte). Geladen über `$needs_lebendig`, Regeln für geteilte Abschnitte hängen an `body.stil-lebendig` – Stand 04.11.2026 nur auf der Startseite, zur Freigabe durch Nils |
 
 **Keine Hex-Werte in Regeln** — alles über Tokens. Neue Farbe? Erst als Token in `01-tokens.css`.
 
