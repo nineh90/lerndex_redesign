@@ -2,7 +2,7 @@
 require_once __DIR__ . '/includes/site.php';
 
 $page_title       = 'Für Kinder';
-$page_title_full  = 'Lerndex für Kinder: mit Lexi lernen und XP sammeln';
+$page_title_full  = 'Lerndex für Kinder: mit Lexi lernen, XP sammeln, Level aufsteigen';
 $page_h1          = 'Hey! Das ist Lerndex';
 $page_lead        = 'Eine App, in der Lernen sich nicht nach Hausaufgaben anfühlt. Hier steht, was du damit machen kannst.';
 $page_description = 'Lexi erklärt dir alles, so oft du willst – und verrät nie die Lösung. Sammle XP, '
@@ -11,6 +11,7 @@ $canonical        = SITE_URL . '/fuer-kinder';
 $current_page     = 'fuer-kinder';
 $force_mode       = 'kids';
 $needs_quiz       = true;
+$needs_kids       = true;   // 10-kids.css + kids.js
 
 $page_jsonld = [[
     '@context' => 'https://schema.org',
@@ -26,12 +27,13 @@ include __DIR__ . '/includes/navbar.php';
 ?>
 
     <main id="main">
-        <?php include __DIR__ . '/includes/sections/page_hero.php'; ?>
-        <?php include __DIR__ . '/includes/sections/audience_deep.php'; ?>
+        <?php include __DIR__ . '/includes/sections/kids_hero.php'; ?>
+        <?php include __DIR__ . '/includes/sections/kids_welten.php'; ?>
         <?php include __DIR__ . '/includes/sections/demo_quiz.php'; ?>
-        <?php include __DIR__ . '/includes/sections/benefits.php'; ?>
+        <?php include __DIR__ . '/includes/sections/kids_level.php'; ?>
+        <?php include __DIR__ . '/includes/sections/kids_karten.php'; ?>
         <?php include __DIR__ . '/includes/sections/dashboard_slider.php'; ?>
-        <?php include __DIR__ . '/includes/sections/cta_download.php'; ?>
+        <?php include __DIR__ . '/includes/sections/kids_cta.php'; ?>
     </main>
 
 <?php

@@ -13,6 +13,9 @@
 <?php if (!empty($needs_chat)): ?>
     <script src="<?= asset('/assets/js/chat-demo.js') ?>" defer></script>
 <?php endif; ?>
+<?php if (!empty($needs_kids)): ?>
+    <script src="<?= asset('/assets/js/kids.js') ?>" defer></script>
+<?php endif; ?>
 <?php if (!empty($needs_forms)): ?>
     <script src="<?= asset('/assets/js/forms.js') ?>" defer></script>
 <?php endif; ?>

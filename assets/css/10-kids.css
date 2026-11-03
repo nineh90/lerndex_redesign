@@ -1,0 +1,777 @@
+/* ═══════════════════════════════════════════════════════════════
+   KINDERSEITE  (/fuer-kinder)
+   Nur dort geladen ($needs_kids). Spielwelt-Optik: Nachthimmel,
+   Neon, Sammelkarten. Farben ausschliesslich ueber Tokens
+   (--game-* in 01-tokens.css).
+
+   Bewegung haengt komplett an prefers-reduced-motion: no-preference.
+   Startzustaende fuer Einblendungen nur unter html.js-anim – ohne JS
+   ist alles sichtbar.
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ── Gemeinsam: Sternenhimmel ─────────────────────────────────── */
+.kids-sky {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.stern {
+    position: absolute;
+    left: var(--x);
+    top: var(--y);
+    width: var(--s);
+    height: var(--s);
+    border-radius: 50%;
+    background: var(--game-text);
+    box-shadow: 0 0 6px var(--game-text);
+    opacity: 0.7;
+}
+
+.nebel {
+    position: absolute;
+    width: 60vmax;
+    height: 60vmax;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.45;
+}
+
+.nebel-1 { left: -20vmax; top: -25vmax; background: radial-gradient(circle, var(--game-pink), transparent 65%); }
+.nebel-2 { right: -25vmax; bottom: -30vmax; background: radial-gradient(circle, var(--game-cyan), transparent 65%); }
+
+/* Ruhige Variante fuer Abschnitte weiter unten: Punkte als Hintergrund */
+.kids-sky--leise {
+    background-image:
+        radial-gradient(1.5px 1.5px at 12% 22%, var(--game-text), transparent),
+        radial-gradient(1px 1px at 32% 78%, var(--game-text), transparent),
+        radial-gradient(2px 2px at 58% 18%, var(--game-text), transparent),
+        radial-gradient(1px 1px at 76% 62%, var(--game-text), transparent),
+        radial-gradient(1.5px 1.5px at 90% 30%, var(--game-text), transparent),
+        radial-gradient(1px 1px at 44% 48%, var(--game-text), transparent),
+        radial-gradient(1.5px 1.5px at 8% 88%, var(--game-text), transparent);
+    opacity: 0.55;
+}
+
+
+/* ── Spiel-Knöpfe ─────────────────────────────────────────────── */
+.btn-game {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-2);
+    padding: 0.95rem 1.6rem;
+    border-radius: var(--radius-pill);
+    font-weight: 800;
+    font-size: var(--text-lg);
+    text-decoration: none;
+    border: 2px solid transparent;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.btn-game .icon { width: 22px; height: 22px; }
+
+/* Gelb mit „Kante“ unten – wie ein Knopf, den man wirklich drückt */
+.btn-game--gelb {
+    background: var(--game-yellow);
+    color: var(--game-night-1);
+    box-shadow: 0 6px 0 var(--game-orange), var(--game-shadow);
+}
+
+.btn-game--gelb:hover  { transform: translateY(-2px); box-shadow: 0 8px 0 var(--game-orange), var(--game-shadow); }
+.btn-game--gelb:active { transform: translateY(4px);  box-shadow: 0 2px 0 var(--game-orange), var(--game-shadow); }
+
+.btn-game--glas {
+    background: var(--game-glass);
+    color: var(--game-text);
+    border-color: var(--game-line);
+    backdrop-filter: blur(8px);
+}
+
+.btn-game--glas:hover { background: var(--game-glass-strong); transform: translateY(-2px); }
+
+.btn-game:focus-visible { outline: 3px solid var(--game-cyan); outline-offset: 3px; }
+
+
+/* ── Hero: Startbildschirm ────────────────────────────────────── */
+.kids-hero {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    padding-block: clamp(2.5rem, 2rem + 4vw, 5.5rem) clamp(5rem, 4rem + 4vw, 7.5rem);
+    color: var(--game-text);
+    background:
+        radial-gradient(ellipse at 70% 20%, var(--game-night-2), transparent 60%),
+        linear-gradient(170deg, var(--game-night-1) 0%, var(--game-night-2) 55%, var(--game-night-3) 100%);
+}
+
+.kids-hero-inner {
+    display: grid;
+    gap: var(--space-6);
+    align-items: center;
+}
+
+.kids-eyebrow {
+    display: inline-block;
+    margin-bottom: var(--space-4);
+    padding: var(--space-2) var(--space-4);
+    border-radius: var(--radius-pill);
+    background: var(--game-glass);
+    border: 1px solid var(--game-line);
+    color: var(--game-muted);
+    font-size: var(--text-sm);
+    font-weight: 600;
+}
+
+.kids-eyebrow span { color: var(--game-yellow); font-weight: 800; }
+
+.kids-hero h1 {
+    margin-bottom: var(--space-5);
+    color: var(--game-text);
+    font-size: clamp(2.9rem, 1.8rem + 5.5vw, 5.75rem);
+    line-height: 0.95;
+    letter-spacing: -0.035em;
+}
+
+.kids-glitzer {
+    background: linear-gradient(100deg, var(--game-yellow), var(--game-pink), var(--game-cyan), var(--game-yellow));
+    background-size: 250% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.kids-lead {
+    max-width: 44ch;
+    margin-bottom: var(--space-6);
+    color: var(--game-muted);
+    font-size: var(--text-lg);
+}
+
+.kids-hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-4);
+}
+
+.kids-hero-note {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    margin: var(--space-5) 0 0;
+    color: var(--game-muted);
+    font-size: var(--text-sm);
+}
+
+.kids-hero-note .icon { color: var(--game-lime); }
+
+/* Die Bühne mit Lexi */
+.kids-stage {
+    position: relative;
+    display: grid;
+    place-items: center;
+    min-height: 360px;
+    order: -1;                 /* auf dem Handy zuerst: der Wow-Moment kommt sofort */
+}
+
+.kids-ring {
+    position: absolute;
+    width: min(400px, 82vw);
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background: conic-gradient(from 0deg, var(--game-cyan), var(--game-pink), var(--game-yellow), var(--brand-500), var(--game-cyan));
+    filter: blur(28px);
+    opacity: 0.55;
+}
+
+.kids-lexi {
+    position: relative;
+    z-index: 1;
+    padding: 0;
+    border: 0;
+    background: none;
+    cursor: pointer;
+    border-radius: 50%;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.kids-lexi img {
+    width: min(330px, 64vw);
+    height: auto;
+    /* Das Glühen ist im Originalbild oben und unten gerade abgeschnitten –
+       der Verlauf blendet die Kanten weich aus. */
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0, black 6%, black 80%, transparent 100%);
+    mask-image: linear-gradient(to bottom, transparent 0, black 6%, black 80%, transparent 100%);
+}
+
+/* Schatten und Glühen am Knopf, nicht am Bild: am Bild wuerde die Maske
+   den Schatten mit abschneiden – es entstuende eine rechteckige Kante. */
+.kids-lexi { filter: drop-shadow(0 20px 40px rgba(18, 7, 47, 0.55)) drop-shadow(0 0 30px rgba(167, 139, 250, 0.45)); }
+
+.kids-lexi:focus-visible { outline: 3px solid var(--game-cyan); outline-offset: 8px; }
+
+.kids-bubble {
+    position: absolute;
+    z-index: 2;
+    top: 0;
+    left: 50%;
+    translate: -50% -30%;
+    width: max-content;
+    max-width: min(280px, 78vw);
+    padding: var(--space-3) var(--space-4);
+    border-radius: var(--radius);
+    background: var(--game-text);
+    color: var(--game-night-1);
+    font-weight: 700;
+    font-size: var(--text-sm);
+    line-height: 1.35;
+    box-shadow: var(--game-shadow);
+}
+
+.kids-bubble::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: -9px;
+    translate: -50% 0;
+    border: 10px solid transparent;
+    border-bottom: 0;
+    border-top-color: var(--game-text);
+}
+
+.kids-bubble.tippt [data-lexi-text]::after {
+    content: "▍";
+    margin-left: 2px;
+    color: var(--brand-600);
+}
+
+/* Schwebende Spiel-Anzeigen rund um Lexi */
+.hud {
+    position: absolute;
+    z-index: 2;
+    padding: var(--space-2) var(--space-3);
+    border-radius: var(--radius-pill);
+    background: var(--game-glass-strong);
+    border: 1px solid var(--game-line);
+    backdrop-filter: blur(10px);
+    color: var(--game-text);
+    font-weight: 800;
+    font-size: var(--text-sm);
+    white-space: nowrap;
+    box-shadow: var(--game-shadow);
+}
+
+.hud--xp     { left: 4%;  top: 42%; color: var(--game-yellow); }
+.hud--streak { right: 3%; top: 30%; }
+.hud--level  { left: 8%;  bottom: 8%; }
+.hud--stern  { right: 6%; bottom: 14%; }
+
+/* Weicher Übergang in den hellen Teil */
+.kids-hero-wave {
+    position: absolute;
+    left: -5%;
+    right: -5%;
+    bottom: -1px;
+    height: clamp(40px, 6vw, 80px);
+    background: var(--surface-alt);
+    border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+}
+
+@media (min-width: 960px) {
+    .kids-hero-inner { grid-template-columns: 1.05fr 0.95fr; gap: var(--space-8); }
+    .kids-stage { order: 0; min-height: 520px; }
+    .kids-lexi img { width: 380px; }
+    .kids-bubble { left: 6%; translate: 0 0; top: 2%; }
+    .kids-bubble::after { left: 70%; }
+}
+
+
+/* ── Welten (Fächer) ──────────────────────────────────────────── */
+.kids-welten { background: var(--surface-alt); }
+
+.welten-stufe {
+    margin: var(--space-6) 0 var(--space-3);
+    text-align: center;
+}
+
+.welten-stufe span {
+    display: inline-block;
+    padding: var(--space-1) var(--space-4);
+    border-radius: var(--radius-pill);
+    background: var(--brand-100);
+    color: var(--brand-800);
+    font-size: var(--text-sm);
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+
+.welten-raster {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-4);
+    max-width: 960px;
+    margin-inline: auto;
+}
+
+.welt {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    min-height: 150px;
+    padding: var(--space-4) var(--space-5);
+    border-radius: var(--radius);
+    overflow: hidden;
+    color: var(--game-text);
+    background:
+        radial-gradient(circle at 80% 15%, color-mix(in srgb, var(--welt) 70%, transparent), transparent 55%),
+        linear-gradient(150deg, color-mix(in srgb, var(--welt) 85%, var(--game-night-2)), var(--game-night-2));
+    box-shadow: var(--game-shadow);
+    transition: transform 0.25s ease;
+}
+
+.welt:nth-child(odd)  { rotate: -1.5deg; }
+.welt:nth-child(even) { rotate: 1.5deg; }
+
+.welt-emoji {
+    position: absolute;
+    top: var(--space-3);
+    right: var(--space-4);
+    font-size: 3.2rem;
+    line-height: 1;
+    filter: drop-shadow(0 6px 10px rgba(18, 7, 47, 0.35));
+}
+
+.welt-fach {
+    font-size: var(--text-xl, 1.4rem);
+    font-weight: 800;
+    letter-spacing: -0.01em;
+    text-shadow: 0 2px 8px rgba(18, 7, 47, 0.5);
+}
+
+.welt:hover { transform: translateY(-6px) scale(1.03); rotate: 0deg; }
+
+@media (min-width: 760px) {
+    .welten-raster { grid-template-columns: repeat(4, 1fr); }
+    .welt { min-height: 180px; }
+}
+
+
+/* ── XP-Spiel ─────────────────────────────────────────────────── */
+.kids-level {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    color: var(--game-text);
+    background: linear-gradient(170deg, var(--game-night-2), var(--game-night-1));
+}
+
+.section-header--hell h2 { color: var(--game-text); }
+.section-header--hell p  { color: var(--game-muted); }
+
+.badge-game {
+    background: var(--game-yellow);
+    color: var(--game-night-1);
+}
+
+.xp-spiel {
+    max-width: 760px;
+    margin-inline: auto;
+    padding: clamp(1.25rem, 1rem + 2vw, 2.25rem);
+    border-radius: var(--radius-lg);
+    background: var(--game-glass);
+    border: 1px solid var(--game-line);
+    backdrop-filter: blur(12px);
+    box-shadow: var(--game-shadow);
+}
+
+.xp-kopf {
+    display: flex;
+    align-items: center;
+    gap: var(--space-5);
+}
+
+.xp-level {
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+    width: 104px;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background:
+        radial-gradient(circle, var(--game-night-2) 58%, transparent 60%),
+        conic-gradient(var(--game-yellow), var(--game-pink), var(--game-cyan), var(--game-yellow));
+    box-shadow: 0 0 30px color-mix(in srgb, var(--game-yellow) 40%, transparent);
+    text-align: center;
+}
+
+.xp-level-zahl { font-size: 2.6rem; font-weight: 800; line-height: 1; }
+.xp-level-wort { margin-top: -1.6rem; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--game-muted); }
+
+.xp-info { flex: 1; min-width: 0; }
+
+.xp-rang {
+    margin-bottom: var(--space-2);
+    color: var(--game-text);
+    font-size: var(--text-lg);
+    font-weight: 800;
+}
+
+.xp-balken {
+    height: 22px;
+    border-radius: var(--radius-pill);
+    background: var(--game-glass-strong);
+    overflow: hidden;
+}
+
+.xp-fuellung {
+    display: block;
+    height: 100%;
+    border-radius: inherit;
+    background:
+        linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.45), transparent) 0 0 / 40% 100% no-repeat,
+        linear-gradient(90deg, var(--game-yellow), var(--game-pink));
+    transition: width 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.xp-zahlen {
+    margin: var(--space-2) 0 0;
+    color: var(--game-muted);
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+}
+
+.xp-knoepfe {
+    display: grid;
+    gap: var(--space-3);
+    margin-top: var(--space-6);
+}
+
+.xp-knopf {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    padding: var(--space-3) var(--space-4);
+    border: 1px solid var(--game-line);
+    border-radius: var(--radius);
+    background: var(--game-glass-strong);
+    color: var(--game-text);
+    font: inherit;
+    font-weight: 700;
+    text-align: left;
+    cursor: pointer;
+    transition: transform 0.12s ease, background 0.2s ease;
+}
+
+.xp-knopf strong { margin-left: auto; color: var(--game-yellow); white-space: nowrap; }
+.xp-knopf-emoji { font-size: 1.5rem; }
+.xp-knopf:hover  { background: color-mix(in srgb, var(--game-glass-strong) 60%, var(--brand-600)); }
+.xp-knopf:active { transform: scale(0.96); }
+.xp-knopf:focus-visible { outline: 3px solid var(--game-cyan); outline-offset: 2px; }
+
+.xp-knopf--gross {
+    border-color: var(--game-yellow);
+    background: color-mix(in srgb, var(--game-yellow) 18%, transparent);
+}
+
+.xp-meldung {
+    min-height: 1.6em;
+    margin: var(--space-4) 0 0;
+    color: var(--game-yellow);
+    font-weight: 800;
+    font-size: var(--text-lg);
+    text-align: center;
+}
+
+.xp-hinweis {
+    margin: var(--space-2) 0 0;
+    color: var(--game-muted);
+    font-size: var(--text-sm);
+    text-align: center;
+}
+
+@media (min-width: 640px) {
+    .xp-knoepfe { grid-template-columns: repeat(3, 1fr); }
+    .xp-knopf { flex-direction: column; text-align: center; padding: var(--space-4); }
+    .xp-knopf strong { margin-left: 0; }
+}
+
+/* Rang-Leiter */
+.rang-leiter {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    gap: var(--space-3);
+    max-width: 960px;
+    margin: var(--space-7) auto 0;
+    counter-reset: rang;
+}
+
+.rang {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-1);
+    padding: var(--space-4) var(--space-3);
+    border-radius: var(--radius);
+    background: var(--game-glass);
+    border: 2px solid var(--game-line);
+    text-align: center;
+    transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.rang-emoji { font-size: 2rem; }
+.rang-name  { font-weight: 800; }
+.rang-level { color: var(--game-muted); font-size: var(--text-sm); }
+
+.rang.ist-aktiv {
+    border-color: var(--game-yellow);
+    box-shadow: 0 0 24px color-mix(in srgb, var(--game-yellow) 45%, transparent);
+    transform: translateY(-4px);
+}
+
+
+/* ── Sammelkarten ─────────────────────────────────────────────── */
+.kids-karten { background: var(--surface-alt); }
+
+.karten-raster {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: var(--space-6);
+}
+
+.lexi-karte {
+    --rx: 0deg;
+    --ry: 0deg;
+    --mx: 50%;
+    --my: 50%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: var(--space-4);
+    border-radius: var(--radius);
+    border: 3px solid var(--karte);
+    background:
+        radial-gradient(circle at 50% 30%, color-mix(in srgb, var(--karte) 35%, transparent), transparent 60%),
+        linear-gradient(165deg, var(--game-night-2), var(--game-night-1));
+    color: var(--game-text);
+    box-shadow: var(--game-shadow), 0 0 0 6px color-mix(in srgb, var(--karte) 18%, transparent);
+    overflow: hidden;
+    transform: perspective(900px) rotateX(var(--rx)) rotateY(var(--ry));
+    transition: transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.lexi-karte:focus-visible { outline: 3px solid var(--game-cyan); outline-offset: 4px; }
+
+.karte-kopf {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: var(--text-sm);
+    font-weight: 800;
+}
+
+.karte-nr { color: var(--game-muted); font-variant-numeric: tabular-nums; }
+
+.karte-selten {
+    padding: 0.15rem 0.7rem;
+    border-radius: var(--radius-pill);
+    background: var(--karte);
+    color: var(--game-night-1);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    font-size: 0.72rem;
+}
+
+.karte-bild {
+    display: grid;
+    place-items: center;
+    height: 190px;
+    margin-block: var(--space-2) var(--space-3);
+    overflow: hidden;
+}
+
+.karte-bild img {
+    height: 190px;
+    width: auto;
+    max-width: 100%;
+    object-fit: contain;
+    /* Zauberer, Forscher und der leuchtende Lexi sind unten abgeschnitten */
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0, black 5%, black 72%, transparent 100%);
+    mask-image: linear-gradient(to bottom, transparent 0, black 5%, black 72%, transparent 100%);
+    transition: transform 0.3s ease;
+}
+
+.karte-bild { filter: drop-shadow(0 12px 20px rgba(18, 7, 47, 0.6)); }
+
+.karte-name {
+    margin-bottom: var(--space-2);
+    color: var(--game-text);
+    font-size: var(--text-lg);
+}
+
+.karte-text {
+    flex: 1;
+    margin-bottom: var(--space-4);
+    color: var(--game-muted);
+    font-size: var(--text-sm);
+}
+
+.karte-werte {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-2);
+    margin: 0;
+}
+
+.karte-werte div {
+    padding: var(--space-2);
+    border-radius: var(--radius-sm);
+    background: var(--game-glass);
+    text-align: center;
+}
+
+.karte-werte dt { color: var(--game-muted); font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; }
+.karte-werte dd { margin: 0; font-size: var(--text-lg); font-weight: 800; color: var(--karte); }
+
+/* Holo-Glanz, folgt dem Mauszeiger */
+.karte-glanz {
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    pointer-events: none;
+    opacity: 0;
+    background:
+        radial-gradient(circle at var(--mx) var(--my), rgba(255, 255, 255, 0.35), transparent 45%),
+        linear-gradient(115deg, transparent 20%, color-mix(in srgb, var(--game-cyan) 30%, transparent) 40%,
+                        color-mix(in srgb, var(--game-pink) 30%, transparent) 60%, transparent 80%);
+    mix-blend-mode: screen;
+    transition: opacity 0.3s ease;
+}
+
+.lexi-karte:hover .karte-glanz,
+.lexi-karte.ist-aktiv .karte-glanz { opacity: 1; }
+
+.lexi-karte:hover,
+.lexi-karte.ist-aktiv {
+    box-shadow: var(--game-shadow), 0 0 0 6px color-mix(in srgb, var(--karte) 35%, transparent),
+                0 0 40px color-mix(in srgb, var(--karte) 45%, transparent);
+}
+
+.lexi-karte:hover .karte-bild img,
+.lexi-karte.ist-aktiv .karte-bild img { transform: translateY(-8px) scale(1.05); }
+
+
+/* ── Abschluss: Zeig's deinen Eltern ──────────────────────────── */
+.kids-cta-box {
+    position: relative;
+    isolation: isolate;
+    display: grid;
+    gap: var(--space-5);
+    align-items: center;
+    justify-items: center;
+    padding: clamp(2rem, 1.5rem + 3vw, 3.5rem);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    color: var(--game-text);
+    text-align: center;
+    background:
+        radial-gradient(ellipse at 20% 10%, color-mix(in srgb, var(--game-pink) 35%, transparent), transparent 55%),
+        linear-gradient(160deg, var(--game-night-2), var(--game-night-3));
+    box-shadow: var(--shadow-lift);
+}
+
+.kids-cta-lexi { width: 180px; height: auto; filter: drop-shadow(0 16px 30px rgba(18, 7, 47, 0.6)); }
+
+.kids-cta-text h2 { color: var(--game-text); }
+.kids-cta-text p  { color: var(--game-muted); max-width: 46ch; margin-inline: auto; }
+.kids-cta-text .kids-hero-actions { justify-content: center; }
+.kids-cta-text .kids-hero-note    { justify-content: center; }
+
+@media (min-width: 860px) {
+    .kids-cta-box { grid-template-columns: auto 1fr; text-align: left; justify-items: start; }
+    .kids-cta-lexi { width: 220px; }
+    .kids-cta-text p { margin-inline: 0; }
+    .kids-cta-text .kids-hero-actions,
+    .kids-cta-text .kids-hero-note { justify-content: flex-start; }
+}
+
+
+/* ── Konfetti (von kids.js erzeugt) ───────────────────────────── */
+.konfetti {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.konfetti i {
+    position: absolute;
+    top: -20px;
+    left: var(--x);
+    width: var(--b);
+    height: calc(var(--b) * 0.45);
+    border-radius: 2px;
+    background: var(--f);
+}
+
+
+/* ═══════════════════════════════════════════════════════════════
+   BEWEGUNG – nur wenn niemand reduzierte Bewegung eingestellt hat
+   ═══════════════════════════════════════════════════════════════ */
+@media (prefers-reduced-motion: no-preference) {
+
+    .stern { animation: funkeln var(--t) ease-in-out var(--d) infinite; }
+    .nebel { animation: treiben 18s ease-in-out infinite alternate; }
+    .nebel-2 { animation-duration: 24s; }
+
+    .kids-glitzer { animation: glitzern 6s linear infinite; }
+
+    .kids-ring { animation: drehen 14s linear infinite; }
+    .kids-lexi img { animation: schweben 4.5s ease-in-out infinite; }
+    .kids-lexi.hopst img { animation: hopsen 0.6s cubic-bezier(0.3, 1.6, 0.5, 1); }
+
+    .hud { animation: schweben 5s ease-in-out infinite; }
+    .hud--streak { animation-delay: -1.2s; }
+    .hud--level  { animation-delay: -2.4s; }
+    .hud--stern  { animation-delay: -3.6s; }
+
+    .welt:hover .welt-emoji { animation: wackeln 0.6s ease-in-out; }
+
+    .xp-fuellung { animation: glanz-lauf 2.4s ease-in-out infinite; }
+    .xp-level.levelup { animation: levelup 0.8s cubic-bezier(0.3, 1.6, 0.5, 1); }
+    .xp-meldung.neu { animation: aufploppen 0.5s cubic-bezier(0.3, 1.6, 0.5, 1); }
+
+    .kids-cta-lexi { animation: winken 3s ease-in-out infinite; transform-origin: 50% 90%; }
+
+    .konfetti i { animation: fallen var(--z) cubic-bezier(0.2, 0.6, 0.4, 1) forwards; }
+
+    /* Einblenden der Spiel-Anzeigen beim Laden */
+    .js-anim .kids-hero .hud { opacity: 0; }
+    .js-anim .kids-hero.ist-bereit .hud { opacity: 1; transition: opacity 0.6s ease 0.4s; }
+}
+
+@keyframes funkeln   { 0%, 100% { opacity: 0.25; scale: 0.8; } 50% { opacity: 1; scale: 1.2; } }
+@keyframes treiben   { to { translate: 6vmax 4vmax; } }
+@keyframes glitzern  { to { background-position: 250% 0; } }
+@keyframes drehen    { to { rotate: 360deg; } }
+@keyframes schweben  { 0%, 100% { translate: 0 0; } 50% { translate: 0 -14px; } }
+@keyframes hopsen    { 0% { scale: 1; } 30% { scale: 1.12 0.9; translate: 0 6px; } 60% { scale: 0.95 1.08; translate: 0 -26px; } 100% { scale: 1; translate: 0 0; } }
+@keyframes wackeln   { 0%, 100% { rotate: 0deg; } 25% { rotate: -14deg; } 75% { rotate: 14deg; } }
+@keyframes glanz-lauf { 0% { background-position: -60% 0, 0 0; } 100% { background-position: 160% 0, 0 0; } }
+@keyframes levelup   { 0% { scale: 1; } 40% { scale: 1.3; rotate: -8deg; } 70% { scale: 0.95; rotate: 4deg; } 100% { scale: 1; rotate: 0deg; } }
+@keyframes aufploppen { 0% { scale: 0.6; opacity: 0; } 100% { scale: 1; opacity: 1; } }
+@keyframes winken    { 0%, 100% { rotate: 0deg; } 20% { rotate: -6deg; } 40% { rotate: 5deg; } 60% { rotate: -3deg; } }
+@keyframes fallen    { to { translate: var(--dx) 110vh; rotate: var(--r); } }
+
+/* Gleicher Grund wie der Slider davor – kein weisser Streifen */
+.kids-cta { background: var(--surface-alt); }
+
+/* Handy: der letzte Rang (Meister) allein in der Zeile – dann volle Breite */
+@media (max-width: 700px) {
+    .rang:last-child:nth-child(odd) { grid-column: 1 / -1; }
+}

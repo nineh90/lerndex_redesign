@@ -15,7 +15,7 @@
     if (!root || !window.LERNDEX_QUIZ) return;
 
     var DATA = window.LERNDEX_QUIZ;
-    var XP_PER_CORRECT = 10;
+    var XP_PER_CORRECT = 5;   // wie in der App: quiz_engine.dart, 5 XP je richtige Antwort
 
     var state = { band: null, subject: null, index: 0, correct: 0, questions: [] };
 

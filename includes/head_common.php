@@ -37,3 +37,6 @@
     <link rel="stylesheet" href="<?= asset('/assets/css/07-motion.css') ?>">
     <link rel="stylesheet" href="<?= asset('/assets/css/08-quiz.css') ?>">
     <link rel="stylesheet" href="<?= asset('/assets/css/09-pages.css') ?>">
+<?php if (!empty($needs_kids)): ?>
+    <link rel="stylesheet" href="<?= asset('/assets/css/10-kids.css') ?>">
+<?php endif; ?>

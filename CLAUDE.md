@@ -86,7 +86,7 @@ include 'includes/head.php';
 
 ### CSS
 
-Fünf Dateien in `assets/css/`, **in dieser Reihenfolge geladen** — sie bauen aufeinander auf:
+Die Dateien in `assets/css/` werden **in dieser Reihenfolge geladen** — sie bauen aufeinander auf:
 
 | Datei | Inhalt |
 |---|---|
@@ -95,6 +95,8 @@ Fünf Dateien in `assets/css/`, **in dieser Reihenfolge geladen** — sie bauen 
 | `03-components.css` | Buttons, Cards, Badges, Phone-Frame, Formulare, Umschalter |
 | `04-layout.css` | Navbar, mobiles Menü, Footer |
 | `05-sections.css` | Seitenspezifische Blöcke inkl. Rechtsseiten |
+| `06-hero.css` … `09-pages.css` | Hero, Bewegung, Quiz/Chat-Demo, Unterseiten |
+| `10-kids.css` | Spielwelt der Kinderseite – **nur** auf `/fuer-kinder` geladen (`$needs_kids`), dazu `assets/js/kids.js` |
 
 **Keine Hex-Werte in Regeln** — alles über Tokens. Neue Farbe? Erst als Token in `01-tokens.css`.
 
