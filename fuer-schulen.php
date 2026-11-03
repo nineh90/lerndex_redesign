@@ -85,8 +85,7 @@ include __DIR__ . '/includes/navbar.php';
                 <div class="section-header">
                     <span class="badge">Im Unterricht</span>
                     <h2>Was Lerndex in der Schule kann</h2>
-                    <p>Entstanden aus den Wünschen einer Lehrerin, die Lerndex mit ihrer Klasse testet –
-                       und bereits fertig gebaut.</p>
+                    <p>Für den Schulalltag gebaut – von der Klassenliste bis zum Elternbrief.</p>
                 </div>
 
                 <div class="benefits-grid schul-karten reveal-stagger">
@@ -223,7 +222,7 @@ include __DIR__ . '/includes/navbar.php';
                 <div class="cta-box">
                     <div class="cta-text">
                         <h2>Pilotschule werden</h2>
-                        <p>Wir starten zum zweiten Halbjahr 2026/27 mit ersten Pilotschulen. Die Pilotphase
+                        <p>Geplant ist der Start mit ersten Pilotschulen zum zweiten Halbjahr 2026/27. Die Pilotphase
                            ist für Schule und Eltern kostenfrei und verpflichtet zu nichts. Schreiben Sie uns –
                            wir stellen Lerndex gern in einem kurzen Gespräch vor.</p>
                     </div>
