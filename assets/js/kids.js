@@ -66,6 +66,14 @@
             }, 28);
         };
 
+        var hinweis = document.querySelector('[data-tipp-hinweis]');
+        var hinweisText = document.querySelector('[data-tipp-text]');
+        var stage = lexi.closest('.kids-stage');
+
+        // Solange niemand getippt hat, wackelt Lexi alle paar Sekunden –
+        // wie eine Spielfigur, die auf einen wartet.
+        if (stage && !ruhig) stage.classList.add('wartet');
+
         lexi.addEventListener('click', function () {
             if (!sprueche.length) return;
             tippe(sprueche[naechster % sprueche.length]);
@@ -74,8 +82,22 @@
             lexi.classList.remove('hopst');
             void lexi.offsetWidth;          // Animation neu starten
             lexi.classList.add('hopst');
+            if (stage) stage.classList.remove('wartet');
 
-            if (naechster % 5 === 0) konfetti(40);   // kleine Belohnung fuers Dranbleiben
+            // Zaehler: zeigt, dass noch mehr kommt – und spornt an
+            if (hinweisText) {
+                var gesehen = Math.min(naechster, sprueche.length);
+                hinweisText.textContent = gesehen < sprueche.length
+                    ? 'Nochmal! ' + gesehen + '/' + sprueche.length
+                    : 'Alle entdeckt! 🎉';
+                hinweis.classList.add('gezaehlt');
+            }
+
+            if (naechster === sprueche.length) {
+                konfetti(120);              // alle Sprueche gefunden
+            } else if (naechster % 3 === 0) {
+                konfetti(30);               // kleine Belohnung zwischendurch
+            }
         });
 
         // Begruessung einmal abtippen, damit man sieht: hier passiert was

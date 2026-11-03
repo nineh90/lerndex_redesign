@@ -68,7 +68,7 @@ $lexi_sprueche = [
             <div class="kids-ring" aria-hidden="true"></div>
 
             <div class="kids-bubble" role="status" aria-live="polite">
-                <span data-lexi-text>Hi! Ich bin Lexi. Tipp mich an!</span>
+                <span data-lexi-text>Hi! Ich bin Lexi. 👋 Ich hab dir was zu erzählen …</span>
             </div>
 
             <button type="button" class="kids-lexi" data-lexi
@@ -85,6 +85,13 @@ $lexi_sprueche = [
             <span class="hud hud--streak" aria-hidden="true">🔥 7 Tage</span>
             <span class="hud hud--level" aria-hidden="true">🔍 Level 12</span>
             <span class="hud hud--stern" aria-hidden="true">⭐⭐⭐</span>
+
+            <?php /* Tipp-Hinweis: funktioniert auch fuer Kinder, die noch nicht
+                     lesen – der Finger huepft, Lexi wackelt. kids.js zaehlt mit. */ ?>
+            <span class="tipp-hinweis" data-tipp-hinweis aria-hidden="true">
+                <span class="tipp-finger">👆</span>
+                <span data-tipp-text>Tipp mich an!</span>
+            </span>
         </div>
 
     </div>
