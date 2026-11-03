@@ -182,7 +182,7 @@ include __DIR__ . '/includes/navbar.php';
             </div>
         </section>
 
-        <section class="section security-detail bg-light">
+        <section class="section ds-schule bg-light">
             <div class="container">
                 <div class="section-header">
                     <span class="badge">Datenschutz</span>
@@ -190,29 +190,60 @@ include __DIR__ . '/includes/navbar.php';
                     <p>Bevor echte Schülerdaten eingetragen werden, ist der Datenschutz geklärt – nicht danach.</p>
                 </div>
 
-                <div class="detail-list">
-                    <article class="detail-item reveal">
-                        <h3>Daten in Frankfurt</h3>
-                        <p>Lern- und Nutzungsdaten liegen in einem Rechenzentrum in Frankfurt am Main.
-                           Die KI läuft über Google Vertex AI in der EU; die Gespräche werden nicht zum
-                           Training von KI-Modellen verwendet.</p>
-                    </article>
-                    <article class="detail-item reveal">
-                        <h3>Datensparsam von Anfang an</h3>
-                        <p>Für eine Klasse genügen Vorname und Anfangsbuchstabe des Nachnamens. PINs liegen
-                           verschlüsselt auf dem Server, Anmeldekarten und Codes nur als Prüfsumme.</p>
-                    </article>
-                    <article class="detail-item reveal">
-                        <h3>Vertrag vor dem Start</h3>
-                        <p>Mit jeder Schule schließen wir vor dem Start einen Auftragsverarbeitungsvertrag nach
-                           Art. 28 DSGVO und stimmen uns mit Ihrer bzw. Ihrem Datenschutzbeauftragten ab.
-                           Ein Informationsblatt für Eltern stellen wir bereit.</p>
-                    </article>
-                    <article class="detail-item reveal">
-                        <h3>Werbefrei und kostenlos für Eltern</h3>
-                        <p>Lerndex zeigt keine Werbung. Die Schullizenz deckt alle Kinder der Schule ab – für
-                           Eltern ist die Verbindung mit ihrem Schulkind kostenlos.</p>
-                    </article>
+                <div class="ds-raster">
+                    <div class="ds-standort reveal">
+                        <p class="ds-ort-label"><?php icon('map-pin', 'icon-sm'); ?> Serverstandort</p>
+                        <p class="ds-ort">Frankfurt am Main</p>
+                        <p class="ds-ort-text">Lern- und Nutzungsdaten der Kinder liegen in einem Rechenzentrum in Deutschland.</p>
+                        <ul class="ds-fakten">
+                            <li><?php icon('check', 'icon-sm'); ?> Datenbank und Server-Funktionen in Frankfurt</li>
+                            <li><?php icon('check', 'icon-sm'); ?> KI über Google Vertex AI in der EU</li>
+                            <li><?php icon('check', 'icon-sm'); ?> Gespräche werden nicht zum KI-Training verwendet</li>
+                            <li><?php icon('check', 'icon-sm'); ?> Keine Werbung</li>
+                        </ul>
+                    </div>
+
+                    <div class="ds-karten reveal-stagger">
+                        <article class="ds-karte">
+                            <div class="icon-box bg-blue"><?php icon('user'); ?></div>
+                            <h3>Vorname genügt</h3>
+                            <p>Für eine Klasse reichen Vorname und Anfangsbuchstabe des Nachnamens.</p>
+                        </article>
+                        <article class="ds-karte">
+                            <div class="icon-box bg-purple"><?php icon('lock-keyhole'); ?></div>
+                            <h3>Verschlüsselt gespeichert</h3>
+                            <p>PINs liegen verschlüsselt auf dem Server, Anmeldekarten und Codes nur als Prüfsumme.</p>
+                        </article>
+                        <article class="ds-karte">
+                            <div class="icon-box bg-green"><?php icon('shield-check'); ?></div>
+                            <h3>Rechte prüft der Server</h3>
+                            <p>Wer was sehen darf, wird bei jedem Zugriff auf dem Server geprüft – nicht im Gerät.</p>
+                        </article>
+                        <article class="ds-karte">
+                            <div class="icon-box bg-orange"><?php icon('house'); ?></div>
+                            <h3>Kostenlos für Eltern</h3>
+                            <p>Die Schullizenz deckt alle Kinder der Schule ab. Eltern verbinden sich ohne Abo.</p>
+                        </article>
+                    </div>
+                </div>
+
+                <div class="ds-vorher reveal">
+                    <h3>Vor dem Start mit Ihrer Schule</h3>
+                    <ol>
+                        <li>
+                            <span class="icon-box bg-purple"><?php icon('file-check'); ?></span>
+                            <span><strong>Auftragsverarbeitungsvertrag</strong> nach Art. 28 DSGVO</span>
+                        </li>
+                        <li>
+                            <span class="icon-box bg-purple"><?php icon('users'); ?></span>
+                            <span><strong>Abstimmung</strong> mit Ihrer bzw. Ihrem Datenschutzbeauftragten</span>
+                        </li>
+                        <li>
+                            <span class="icon-box bg-purple"><?php icon('mail'); ?></span>
+                            <span><strong>Informationsblatt für Eltern:</strong> welche Daten, wofür, wo gespeichert</span>
+                        </li>
+                    </ol>
+                    <p class="ds-vorher-fuss"><?php icon('check-circle', 'icon-sm'); ?> Erst danach werden echte Schülerdaten eingetragen.</p>
                 </div>
             </div>
         </section>

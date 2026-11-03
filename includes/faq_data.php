@@ -124,6 +124,56 @@ function faq_groups(): array
                 ],
             ],
         ],
+        [
+            'icon'  => '🏫',
+            'title' => 'Lerndex für Schulen',
+            /* Neutral formuliert (weder „du“ noch „Sie“): die Gruppe richtet sich
+               an Schulen, steht aber auf derselben Seite wie die Elternfragen.
+               Quelle: „Lerndex für Schulen – Stand 03.11.2026“. */
+            'items' => [
+                [
+                    'q' => 'Gibt es Lerndex auch für Schulen?',
+                    'a' => 'Ja. Lerndex hat einen eigenen Schulbereich: Die Schulleitung legt Lehrkräfte an, Lehrkräfte '
+                         . 'legen Klassen an, drucken Schülerkarten und Elternbriefe und verteilen Aufgaben an die Klasse. '
+                         . 'Geplant ist der Start mit ersten Pilotschulen zum zweiten Halbjahr 2026/27. Schulen werden von '
+                         . 'uns freigeschaltet und können sich nicht selbst anlegen – Interessierte Schulen schreiben uns '
+                         . 'einfach an ' . SITE_MAIL . '.',
+                ],
+                [
+                    'q' => 'Was kostet Lerndex für Schulen und Eltern?',
+                    'a' => 'Die Pilotphase ist für Schule und Eltern kostenfrei und unverbindlich. Kinder, die über die '
+                         . 'Schule kommen, deckt die Schullizenz ab: Eltern verbinden sich ohne Abo mit ihrem Schulkind. '
+                         . 'Nur wer zusätzlich ein eigenes Kind ohne Schule anlegen möchte, braucht wie bisher ein Abo.',
+                ],
+                [
+                    'q' => 'Brauchen die Kinder ein eigenes Gerät?',
+                    'a' => 'Nein. Der Schulbereich läuft im Browser auf Tablet, iPhone und PC, ohne Installation über '
+                         . 'einen App-Store. Jedes Kind meldet sich mit seiner Schülerkarte per QR-Code an. Auf geteilten '
+                         . 'Schul-Tablets meldet es sich nach dem Lernen wieder ab, und das nächste Kind scannt seine Karte.',
+                ],
+                [
+                    'q' => 'Sehen Lehrkräfte die Gespräche der Kinder mit Lexi?',
+                    'a' => 'Nein. Lehrkräfte sehen die Klassen- und Einzelstatistik – Lernzeit, Quizze, Fortschritt – und '
+                         . 'verteilen Aufgaben. Die Lexi-Gespräche eines Kindes sehen nur das Kind selbst und seine '
+                         . 'verbundenen Eltern. Die Schulleitung verwaltet nur die Lehrkräfte und sieht keine Schülerdaten.',
+                ],
+                [
+                    'q' => 'Wie werden Schülerdaten geschützt?',
+                    'a' => 'Lern- und Nutzungsdaten liegen in einem Rechenzentrum in Frankfurt am Main, die KI läuft über '
+                         . 'Google Vertex AI in der EU. Für eine Klasse genügen Vorname und Anfangsbuchstabe des '
+                         . 'Nachnamens. Was wer sehen darf, prüft der Server bei jedem Zugriff. Bevor echte Schülerdaten '
+                         . 'eingetragen werden, schließen wir mit der Schule einen Auftragsverarbeitungsvertrag nach '
+                         . 'Art. 28 DSGVO und stellen ein Informationsblatt für Eltern bereit.',
+                ],
+                [
+                    'q' => 'Können Eltern sehen, was ihr Kind in der Schule lernt?',
+                    'a' => 'Ja. Über den Elternbrief verbinden sich Eltern kostenlos mit ihrem Schulkind und sehen im '
+                         . 'Eltern-Dashboard Statistik, Lexi-Gespräche und Belohnungen. Mit der zweiten Karte aus dem Brief '
+                         . 'lernt das Kind zu Hause mit demselben Fortschritt weiter. Die Verbindung lässt sich jederzeit '
+                         . 'trennen; in der Schule ändert sich dadurch nichts.',
+                ],
+            ],
+        ],
     ];
 }
 

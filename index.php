@@ -6,6 +6,11 @@ $page_description = 'Die KI-Lernapp, die erklärt statt vorzusagen: Lexi begleit
                   . 'Klassen 1–8 in Mathe, Deutsch und mehr. Eltern lesen jedes Gespräch mit.';
 $canonical        = SITE_URL . '/';
 $current_page     = 'home';
+/* Die Startseite spricht immer Eltern an. Der Umschalter in die Kinderansicht
+   ist entfallen (03.11.2026) – ohne ihn kaeme, wer frueher umgeschaltet hat und
+   das noch im Browser gespeichert hat, nicht mehr zurueck. Fuer Kinder gibt es
+   /fuer-kinder als eigene Seite. */
+$force_mode       = 'parents';
 $needs_quiz       = true;
 $needs_chat       = true;
 $feature_limit    = 3;      // Rest steht auf /funktionen
@@ -97,7 +102,6 @@ include __DIR__ . '/includes/navbar.php';
         <?php include __DIR__ . '/includes/sections/benefits.php'; ?>
         <?php /* Ansprache-Wechsel direkt vor dem Block, der sich am staerksten
                  unterscheidet – wer auf Kinderansicht schaltet, landet sofort in "Deine Welt" */ ?>
-        <?php include __DIR__ . '/includes/sections/audience_invite.php'; ?>
         <?php include __DIR__ . '/includes/sections/audience_deep.php'; ?>
         <?php include __DIR__ . '/includes/sections/dashboard_slider.php'; ?>
         <?php include __DIR__ . '/includes/sections/features.php'; ?>

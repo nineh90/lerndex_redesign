@@ -187,6 +187,129 @@
 .rollen-tabelle .ist-nein { color: var(--text-muted); }
 .rollen-tabelle .ist-ja { color: var(--accent-strong); font-weight: 600; }
 
+/* ── Für Schulen: Datenschutz ────────────────────────────────── */
+.ds-raster {
+    display: grid;
+    gap: var(--space-5);
+    align-items: stretch;
+}
+
+/* Standort-Block: dunkle Markenflaeche, damit „Frankfurt“ als erstes ins Auge faellt */
+.ds-standort {
+    padding: clamp(1.5rem, 1rem + 2vw, 2.5rem);
+    border-radius: var(--radius-lg);
+    background: var(--footer-bg);
+    color: var(--footer-muted);
+    box-shadow: var(--shadow-lift);
+}
+
+.ds-ort-label {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    margin-bottom: var(--space-2);
+    padding: var(--space-1) var(--space-3);
+    border-radius: var(--radius-pill);
+    background: var(--footer-fill);
+    color: var(--footer-accent);
+    font-size: var(--text-sm);
+    font-weight: 600;
+}
+
+.ds-ort {
+    margin-bottom: var(--space-3);
+    color: var(--footer-text);
+    font-size: clamp(1.75rem, 1.3rem + 2vw, 2.5rem);
+    font-weight: var(--heading-weight);
+    line-height: 1.1;
+}
+
+.ds-standort .ds-ort-text { margin-bottom: 0; color: var(--footer-muted); }
+
+.ds-fakten {
+    display: grid;
+    gap: var(--space-3);
+    margin-top: var(--space-5);
+    padding-top: var(--space-5);
+    border-top: 1px solid var(--footer-border);
+}
+
+.ds-fakten li {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-3);
+    color: var(--footer-text);
+    font-weight: 500;
+}
+
+.ds-fakten .icon { color: var(--footer-accent); flex-shrink: 0; margin-top: 3px; }
+
+.ds-karten {
+    display: grid;
+    gap: var(--space-4);
+}
+
+.ds-karte {
+    padding: var(--space-5);
+    border-radius: var(--radius);
+    background: var(--surface);
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow-sm);
+}
+
+.ds-karte .icon-box { width: 44px; height: 44px; margin-bottom: var(--space-3); }
+.ds-karte .icon-box .icon { width: 22px; height: 22px; }
+.ds-karte h3 { margin-bottom: var(--space-2); font-size: var(--text-lg); }
+.ds-karte p  { margin-bottom: 0; font-size: var(--text-sm); color: var(--text-muted); }
+
+/* Leiste „Vor dem Start“: drei Schritte nebeneinander */
+.ds-vorher {
+    margin-top: var(--space-6);
+    padding: clamp(1.25rem, 1rem + 1.5vw, 2rem);
+    border-radius: var(--radius-lg);
+    background: var(--surface);
+    border: 1px solid var(--border);
+}
+
+.ds-vorher h3 { margin-bottom: var(--space-4); }
+
+.ds-vorher ol {
+    display: grid;
+    gap: var(--space-4);
+    margin-bottom: var(--space-4);
+}
+
+.ds-vorher li {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    color: var(--text);
+}
+
+.ds-vorher li .icon-box { width: 44px; height: 44px; margin-bottom: 0; flex-shrink: 0; }
+.ds-vorher li .icon-box .icon { width: 22px; height: 22px; }
+.ds-vorher strong { color: var(--heading-color); }
+
+.ds-vorher-fuss {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    margin-bottom: 0;
+    padding-top: var(--space-4);
+    border-top: 1px solid var(--border);
+    color: var(--accent-strong);
+    font-weight: 600;
+}
+
+@media (min-width: 640px) {
+    .ds-karten { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (min-width: 960px) {
+    .ds-raster { grid-template-columns: 5fr 7fr; }
+    .ds-vorher ol { grid-template-columns: repeat(3, 1fr); }
+}
+
 /* Sechs Karten: drei Spalten statt 4 + 2 */
 @media (min-width: 900px) {
     .schul-karten { grid-template-columns: repeat(3, 1fr); }
