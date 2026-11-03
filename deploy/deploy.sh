@@ -79,7 +79,7 @@ main() {
         fi
     }
     FEHLER=0
-    for p in / /fuer-eltern /fuer-kinder /funktionen /sicherheit /preise /faq \
+    for p in / /fuer-eltern /fuer-kinder /fuer-schulen /funktionen /sicherheit /preise /faq \
              /kontakt /support /impressum /datenschutz /agb /sitemap.xml /robots.txt; do
         pruefe "$p" 200
     done

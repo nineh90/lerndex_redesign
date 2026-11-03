@@ -153,6 +153,51 @@
     .pricing-split { grid-template-columns: 1.1fr 0.9fr; }
 }
 
+/* ── Für Schulen: Rollen-Tabelle ─────────────────────────────── */
+.rollen-tabelle {
+    overflow-x: auto;
+    margin-bottom: var(--space-6);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow);
+    background: var(--surface);
+}
+
+.rollen-tabelle table {
+    width: 100%;
+    min-width: 620px;           /* auf dem Handy horizontal scrollen statt quetschen */
+    border-collapse: collapse;
+    font-size: var(--text-sm);
+}
+
+.rollen-tabelle th,
+.rollen-tabelle td {
+    padding: var(--space-3) var(--space-4);
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+}
+
+.rollen-tabelle thead th {
+    background: var(--accent-strong);
+    color: var(--text-invert);
+    font-weight: 600;
+}
+
+.rollen-tabelle tbody th { font-weight: 600; color: var(--text); }
+.rollen-tabelle tbody tr:last-child > * { border-bottom: none; }
+.rollen-tabelle .ist-nein { color: var(--text-muted); }
+.rollen-tabelle .ist-ja { color: var(--accent-strong); font-weight: 600; }
+
+/* Sechs Karten: drei Spalten statt 4 + 2 */
+@media (min-width: 900px) {
+    .schul-karten { grid-template-columns: repeat(3, 1fr); }
+}
+
+/* Fünf Schritte: auf breiten Schirmen in einer Reihe statt 3 + 2 */
+@media (min-width: 1100px) {
+    .schul-schritte { grid-template-columns: repeat(5, 1fr); gap: var(--space-5); }
+    .schul-schritte .step-card { padding: var(--space-5); }
+}
+
 /* ── Formularseiten ──────────────────────────────────────────── */
 .form-layout {
     display: grid;

@@ -43,7 +43,7 @@ jobs:
           php -S localhost:8000 router.php >/tmp/server.log 2>&1 &
           sleep 1
           fehler=0
-          for p in / /fuer-eltern /fuer-kinder /funktionen /sicherheit /preise /faq \
+          for p in / /fuer-eltern /fuer-kinder /fuer-schulen /funktionen /sicherheit /preise /faq \
                    /kontakt /support /impressum /datenschutz /agb; do
             code=$(curl -s -o /tmp/seite.html -w '%{http_code}' "localhost:8000$p")
             if [ "$code" != 200 ] || grep -qE '(Fatal error|Warning|Notice|Deprecated):' /tmp/seite.html; then

@@ -56,6 +56,7 @@ const EXTRA_CHILD_PRICE = '6,99';
 const NAV_MAIN = [
     'fuer-eltern' => ['Für Eltern',  '/fuer-eltern'],
     'fuer-kinder' => ['Für Kinder',  '/fuer-kinder'],
+    'fuer-schulen' => ['Für Schulen', '/fuer-schulen'],
     'funktionen'  => ['Funktionen',  '/funktionen'],
     'sicherheit'  => ['Sicherheit',  '/sicherheit'],
     'preise'      => ['Preise',      '/preise'],

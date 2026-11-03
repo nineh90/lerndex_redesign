@@ -32,7 +32,7 @@ php -S localhost:8000
 for f in *.php includes/*.php includes/sections/*.php api/*.php; do php -l "$f"; done
 
 # Alle Routen auf 200 prüfen
-for p in / /fuer-eltern /fuer-kinder /funktionen /sicherheit /preise /faq \
+for p in / /fuer-eltern /fuer-kinder /fuer-schulen /funktionen /sicherheit /preise /faq \
          /kontakt /support /impressum /datenschutz /agb; do
   printf '%-16s %s\n' "$p" "$(curl -s -o /dev/null -w '%{http_code}' localhost:8000$p)"
 done
@@ -118,7 +118,7 @@ Dazu gibt es `/fuer-eltern` und `/fuer-kinder` als eigenständige Vollseiten mit
 
 ### Seiten
 
-`/` · `/fuer-eltern` · `/fuer-kinder` · `/funktionen` · `/sicherheit` · `/preise` · `/faq` · `/kontakt` · `/support`, dazu `/impressum` · `/datenschutz` · `/agb` (noindex).
+`/` · `/fuer-eltern` · `/fuer-kinder` · `/fuer-schulen` · `/funktionen` · `/sicherheit` · `/preise` · `/faq` · `/kontakt` · `/support`, dazu `/impressum` · `/datenschutz` · `/agb` (noindex).
 
 **Teaser statt Dopplung:** Die Startseite setzt `$feature_limit = 3` und `$faq_teaser = true`. Dieselben Sections rendern auf `/funktionen` und `/faq` den vollen Inhalt. Wer eine Section anfasst, bedient damit beide Seiten — und Google sieht denselben Text nicht auf zwei URLs.
 
