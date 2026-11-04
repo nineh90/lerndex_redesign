@@ -57,7 +57,12 @@ document.addEventListener('DOMContentLoaded', function () {
           obs.unobserve(entry.target);
         }
       });
-    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.12 });
+    // threshold 0 statt 0.12: eingeblendet wird, sobald ein Element ins Bild
+    // kommt. Mit 0.12 mussten 12 % eines Elements GLEICHZEITIG sichtbar sein –
+    // bei sehr hohen Sections (die acht Funktionen sind am Handy ~6000 px hoch)
+    // ist das auf kleinen Bildschirmen unmoeglich, und die ganze Seite blieb
+    // leer (04.11.2026). Der Rand unten sorgt weiter fuer das Einblenden von unten.
+    }, { rootMargin: '0px 0px -8% 0px', threshold: 0 });
 
     // Sections ohne eigene Auszeichnung bekommen das Standard-Reveal
     document.querySelectorAll('.section, .hero').forEach(function (el) {
