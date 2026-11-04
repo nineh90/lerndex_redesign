@@ -8,6 +8,16 @@
    Farben nur über Tokens. Bewegung nur unter no-preference.
    ═══════════════════════════════════════════════════════════════ */
 
+/* ── Nummerierte Listen ohne Browser-Ziffern ──────────────────
+   Das Grund-CSS setzt nur ul zurück. Diese Listen tragen ihre Nummern
+   selbst (Kreise, Emojis) – die Browser-Ziffern standen daneben. */
+.schritte,
+.rang-leiter,
+.ds-vorher ol {
+    list-style: none;
+    padding-left: 0;
+}
+
 /* ── Geteilte Abschnitte: Feinschliff ─────────────────────────── */
 .stil-lebendig .section-header h2 { font-size: var(--text-4xl); }
 
@@ -486,21 +496,20 @@
 }
 
 .home-cta-notiz {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: var(--space-2);
+    display: block;                 /* Häkchen bleibt beim Umbruch am Text */
     margin: 0;
     font-size: var(--text-sm);
     color: color-mix(in srgb, var(--white) 80%, transparent);
 }
+
+.home-cta-notiz .icon { display: inline; vertical-align: -3px; margin-right: var(--space-1); }
 
 .home-cta-lexi { justify-self: center; width: 180px; height: auto; }
 
 @media (min-width: 860px) {
     .home-cta-box { grid-template-columns: 1fr auto; text-align: left; }
     .home-cta-text p { margin-inline: 0; }
-    .home-cta-knoepfe, .home-cta-notiz { justify-content: flex-start; }
+    .home-cta-knoepfe { justify-content: flex-start; }
     .home-cta-lexi { width: 260px; margin-block: -1rem -3.5rem; }
 }
 

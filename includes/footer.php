@@ -40,7 +40,7 @@ require_once __DIR__ . '/icons.php';
                 </ul>
             </div>
 
-            <div class="footer-col">
+            <div class="footer-col footer-legal">
                 <h4>Rechtliches</h4>
                 <ul>
                     <?php foreach (NAV_LEGAL as [$label, $url]): ?>

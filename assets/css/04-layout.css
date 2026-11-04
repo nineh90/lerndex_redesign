@@ -604,3 +604,33 @@ body.nav-open .navbar { z-index: calc(var(--z-menu) + 1); }
         text-align: center;
     }
 }
+
+/* Handy: alles mittig, damit der Footer ruhig und aufgeraeumt wirkt.
+   Seiten und Hilfe nebeneinander, Rechtliches als eine Zeile – vorher
+   stand es allein in einer halb leeren Zeile. */
+@media (max-width: 600px) {
+    .footer { text-align: center; }
+
+    .footer-content { gap: var(--space-7) var(--space-4); }
+
+    .footer-brand { justify-self: center; max-width: 36ch; }
+    .footer-logo  { justify-content: center; }
+
+    .footer-col ul { align-items: center; }
+
+    .footer-legal { grid-column: 1 / -1; }
+    .footer-legal ul {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: var(--space-2) var(--space-5);
+    }
+
+    .store-buttons { justify-content: center; }
+
+    .footer-download,
+    .footer-legal {
+        padding-top: var(--space-5);
+        border-top: 1px solid var(--footer-border);
+    }
+}
