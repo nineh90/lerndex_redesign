@@ -11,6 +11,15 @@ $page_description = 'Fragen zur App, zum Abo, zum Datenschutz oder eine Pressean
 $canonical        = SITE_URL . '/kontakt';
 $current_page     = 'kontakt';
 
+$page_jsonld = [[
+    '@context' => 'https://schema.org',
+    '@type'    => 'BreadcrumbList',
+    'itemListElement' => [
+        ['@type' => 'ListItem', 'position' => 1, 'name' => 'Startseite', 'item' => SITE_URL . '/'],
+        ['@type' => 'ListItem', 'position' => 2, 'name' => 'Kontakt', 'item' => SITE_URL . '/kontakt'],
+    ],
+]];
+
 include __DIR__ . '/includes/head.php';
 include __DIR__ . '/includes/navbar.php';
 ?>

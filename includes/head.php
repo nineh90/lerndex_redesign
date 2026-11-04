@@ -75,23 +75,11 @@ $title = $page_title_full ?? ($page_title . ' – ' . SITE_NAME);
  * Auf /fuer-kinder waere es unsinnig, wenn eine alte localStorage-Wahl
  * die Seite in den Elternmodus kippt.
  */
-$force_mode = $force_mode ?? null;
+$force_mode = $force_mode ?? 'parents';   // jede Seite hat eine feste Ansprache (kein Umschalter mehr)
 $startMode  = $force_mode === 'kids' ? 'mode-kids' : 'mode-parents';
 ?>
 <body class="<?= $startMode ?> stil-lebendig <?= e($body_class ?? '') ?>">
-<?php if (!$force_mode): ?>
-<script>
-    // Laeuft als erstes im Body, also vor dem ersten Paint: die gemerkte
-    // Ansprache wird gesetzt, ohne dass kurz die falsche Variante aufblitzt.
-    // Bewusst kein defer/extern – jede Verzoegerung waere sichtbar.
-    (function () {
-        try {
-            if (localStorage.getItem('lerndex_audience') === 'kids') {
-                document.body.classList.replace('mode-parents', 'mode-kids');
-            }
-        } catch (e) { /* localStorage gesperrt – Eltern-Modus bleibt */ }
-    })();
-</script>
-<?php endif; ?>
+<?php /* Das Inline-Skript, das eine gemerkte Ansprache aus localStorage setzte,
+         ist mit dem Umschalter entfallen – jede Seite steht fest. */ ?>
 
 <div class="scroll-progress" id="scroll-progress" aria-hidden="true"></div>

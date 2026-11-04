@@ -49,6 +49,7 @@ $kidCards = [
             ); ?>
         </div>
 
+<?php if (ansicht() !== 'kids'): ?>
         <div class="benefits-grid reveal-stagger for-parents">
             <?php foreach ($parentCards as [$ic, $bg, $title, $text]): ?>
                 <article class="benefit-card tilt">
@@ -58,7 +59,9 @@ $kidCards = [
                 </article>
             <?php endforeach; ?>
         </div>
+<?php endif; ?>
 
+<?php if (ansicht() !== 'parents'): ?>
         <div class="benefits-grid reveal-stagger for-kids">
             <?php foreach ($kidCards as [$ic, $bg, $title, $text]): ?>
                 <article class="benefit-card tilt">
@@ -68,6 +71,7 @@ $kidCards = [
                 </article>
             <?php endforeach; ?>
         </div>
+<?php endif; ?>
 
     </div>
 </section>

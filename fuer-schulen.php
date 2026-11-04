@@ -20,8 +20,8 @@ $page_h1          = 'Lerndex für Schulen';
 $page_lexi        = 'forscher';   // Illustration im Seitenkopf (page_hero.php)
 $page_lead        = 'Lexi hilft beim Verstehen, nicht beim Abschreiben – jetzt auch im Unterricht. '
                   . 'Mit Klassen, Schülerkarten und Elternbrief. Wir suchen Schulen für unsere Pilotphase.';
-$page_description = 'Lerndex für Grund- und weiterführende Schulen: Klassen anlegen, Schülerkarten drucken, '
-                  . 'Aufgaben aus einem Foto verteilen, Lexi liest vor. Daten in Frankfurt, Pilotphase kostenfrei.';
+$page_description = 'Lerndex für Schulen: Klassen anlegen, Schülerkarten drucken, Aufgaben aus Fotos verteilen, '
+                  . 'Lexi liest vor. Daten in Frankfurt, Pilotphase kostenfrei.';
 $canonical        = SITE_URL . '/fuer-schulen';
 $current_page     = 'fuer-schulen';
 $force_mode       = 'parents';

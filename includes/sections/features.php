@@ -146,16 +146,20 @@ $shown = $feature_limit ? array_slice($features, 0, $feature_limit) : $features;
                     <?php dual(e($f['title']), e($f['kid_title']), 'h3'); ?>
                     <?php dual('<p>' . e($f['text']) . '</p>', '<p>' . e($f['kid_text']) . '</p>'); ?>
 
+<?php if (ansicht() !== 'kids'): ?>
                     <ul class="check-list for-parents">
                         <?php foreach ($f['list'] as $item): ?>
                             <li><?php icon('check-circle'); ?> <?= e($item) ?></li>
                         <?php endforeach; ?>
                     </ul>
+<?php endif; ?>
+<?php if (ansicht() !== 'parents'): ?>
                     <ul class="check-list for-kids">
                         <?php foreach ($f['kid_list'] as $item): ?>
                             <li><?php icon('check-circle'); ?> <?= e($item) ?></li>
                         <?php endforeach; ?>
                     </ul>
+<?php endif; ?>
                 </div>
 
                 <div class="feature-image reveal reveal--scale">

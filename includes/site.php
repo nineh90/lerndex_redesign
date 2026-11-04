@@ -90,8 +90,24 @@ function e(?string $value): string
  *   dual('Ihr Kind lernt …', 'Du lernst …');
  *   dual('Sicherheit', 'Für dich', 'h3');
  */
+/**
+ * Feste Ansprache der aktuellen Seite: 'parents' oder 'kids'.
+ * head.php setzt $force_mode für jede Seite (Standard: Eltern). Vor dem
+ * Kopf – oder in Teilen ohne Seite – ist sie unbekannt: dann 'beide'.
+ */
+function ansicht(): string
+{
+    return $GLOBALS['force_mode'] ?? 'beide';
+}
+
+/**
+ * Gibt nur die Fassung aus, die zur Seite passt. Früher standen immer beide
+ * im HTML und CSS blendete eine aus – das war versteckter Text für Google
+ * und doppelte Überschriften für Vorleseprogramme (04.11.2026).
+ */
 function dual(string $parents, string $kids, string $tag = 'span'): void
 {
-    echo "<{$tag} class=\"for-parents\">{$parents}</{$tag}>";
-    echo "<{$tag} class=\"for-kids\">{$kids}</{$tag}>";
+    $modus = ansicht();
+    if ($modus !== 'kids')    echo "<{$tag} class=\"for-parents\">{$parents}</{$tag}>";
+    if ($modus !== 'parents') echo "<{$tag} class=\"for-kids\">{$kids}</{$tag}>";
 }

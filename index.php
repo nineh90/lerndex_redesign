@@ -26,17 +26,25 @@ $page_jsonld = [
         'founder'  => ['@type' => 'Person', 'name' => 'Nils Nehring'],
     ],
     [
+        /* Lässt Google „Lerndex“ als Seitennamen in den Suchergebnissen zeigen */
+        '@context'      => 'https://schema.org',
+        '@type'         => 'WebSite',
+        'name'          => 'Lerndex',
+        'alternateName' => 'Lerndex – KI-Lernapp für Kinder',
+        'url'           => SITE_URL . '/',
+        'inLanguage'    => 'de',
+    ],
+    [
         '@context' => 'https://schema.org',
         '@type'    => 'Brand',
         'name'     => 'Lerndex',
         'url'      => SITE_URL,
         'logo'     => SITE_URL . '/assets/images/logo/icon-512.png',
         'slogan'   => 'Lernen, das Kinder lieben. Kontrolle, die Eltern brauchen.',
-        'isPartOf' => ['@type' => 'Organization', 'name' => 'Nils-Digital'],
     ],
     [
         '@context'            => 'https://schema.org',
-        '@type'               => 'WebApplication',
+        '@type'               => 'MobileApplication',   // Android-App im Play Store, keine Web-App
         'name'                => 'Lerndex',
         'url'                 => SITE_URL,
         'applicationCategory' => 'EducationApplication',
@@ -77,7 +85,7 @@ $page_jsonld = [
         'featureList' => [
             'KI erklärt statt Lösungen vorzugeben',
             'Alters- und schulformgerechte Anpassung',
-            'Sieben Fächer: Mathe, Deutsch, Englisch, Biologie, Chemie, Physik, Geschichte',
+            'Acht Fächer: Mathe, Deutsch, Englisch, Sachkunde (Grundschule), ab Klasse 5 Biologie, Chemie, Physik, Geschichte',
             'Early-Learner-Modus mit Vorlesefunktion für Klasse 1–2',
             '5-Schichten-Kinderschutzsystem',
             'PIN-geschütztes Eltern-Dashboard',

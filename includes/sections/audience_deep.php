@@ -24,6 +24,7 @@ $compare = [
 ?>
 
 <!-- ══════════ NUR FÜR ELTERN ══════════ -->
+<?php if (ansicht() !== 'kids'): ?>
 <section class="section compare for-parents" id="fuer-eltern">
     <div class="container">
         <div class="section-header">
@@ -64,9 +65,11 @@ $compare = [
         </div>
     </div>
 </section>
+<?php endif; ?>
 
 
 <!-- ══════════ NUR FÜR KINDER ══════════ -->
+<?php if (ansicht() !== 'parents'): ?>
 <section class="section kidsworld for-kids" id="fuer-kinder">
     <div class="container">
 
@@ -154,3 +157,4 @@ $compare = [
 
     </div>
 </section>
+<?php endif; ?>

@@ -37,10 +37,14 @@
 
                 <p class="proof-note">
                     <?php icon('bell', 'icon-sm'); ?>
+<?php if (ansicht() !== 'kids'): ?>
                     <span class="for-parents">Gleichzeitig landet der Vorfall in Ihrem Dashboard – markiert
                     und nachlesbar. Sie erfahren es, ohne dass Sie danach suchen müssen.</span>
+<?php endif; ?>
+<?php if (ansicht() !== 'parents'): ?>
                     <span class="for-kids">So etwas landet immer auch bei deinen Eltern. Kein heimliches
                     Mitlesen – es ist von Anfang an klar, dass sie es sehen.</span>
+<?php endif; ?>
                 </p>
 
                 <a href="/sicherheit" class="btn btn-secondary">
